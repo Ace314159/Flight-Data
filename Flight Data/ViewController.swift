@@ -266,16 +266,18 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             alt = 0
         }
         let sign = alt.sign == .plus ? "+" : ""
+        let altColor = alt > altTresh ? UIColor.red : UIColor.green
         
         var d = (50 * (dAlt / 50).rounded())
         if d.sign == .minus && d == 0 {
             d = 0
         }
-        let color = d >= 0 ? UIColor.black : UIColor.blue
+        let dColor = d >= 0 ? UIColor.black : UIColor.blue
         
         altLabel.text = String(format: "\(sign)%.0f", alt)
+        altLabel.textColor = altColor
         dAltLabel.text = String(format: "%.0f", d)
-        dAltLabel.textColor = color
+        dAltLabel.textColor = dColor
     }
     
     func CMAltitudeHandler(data: CMAltitudeData?, error: Error?)  {
@@ -302,6 +304,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             speedLabel.text = "-"
         } else {
             speedLabel.text = String(format: "%.0f", speed.rounded())
+            speedLabel.textColor = speed < speedTresh ? UIColor.red : UIColor.green
         }
         
         updateAudioFreq()
