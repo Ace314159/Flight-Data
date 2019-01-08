@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var dAltUnitsLabel: UILabel!
     @IBOutlet weak var altUnitsLabel: UILabel!
     @IBOutlet weak var absAltLabel: UILabel!
+    @IBOutlet weak var altTitleLabel: UILabel!
     // Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
     @IBOutlet weak var altPlaceholder: UIView!
@@ -30,20 +31,25 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var speedUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var altUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var dAltUnitsPos: NSLayoutConstraint!
+    @IBOutlet weak var altPos: NSLayoutConstraint!
+    @IBOutlet weak var dAltPos: NSLayoutConstraint!
     // Mute Button
     @IBOutlet weak var muteBtn: UIImageView!
     @IBOutlet weak var muteBtnSize: NSLayoutConstraint!
     // Alt Buttons
+    @IBOutlet weak var altButtonsLabel: UILabel!
     @IBOutlet weak var zeroBtn: UIButton!
     @IBOutlet weak var thousandBtn: UIButton!
+    @IBOutlet weak var setCurrentAltBtn: UIButton!
     
-    
-    var speed = -1.0
-    var relAlt = -1.0
+    var speed = 0.0
+    var relAlt = 0.0
     var altOffset = 0.0
-    var alts: [Double] = [0.0]
-    var times: [Double] = [CACurrentMediaTime()]
-    var dAlt = -1.0
+    var absAlt = 0.0
+    var groundAlt = 0.0
+    var alts: [Double] = []
+    var times: [Double] = []
+    var dAlt = 0.0
     
     // MARK: Tresholds
     var speedTresh = 0.0
@@ -62,14 +68,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         super.viewDidLoad()
         
         speedLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
-        altLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setAltTresh(_:))))
+        // altLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setAltTresh(_:))))
         
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
-        zeroBtn.tag = 0
-        zeroBtn.addTarget(self, action: #selector(self.setCurrentAlt(_:)), for: .touchUpInside)
-        thousandBtn.tag = 1000
-        thousandBtn.addTarget(self, action: #selector(self.setCurrentAlt(_:)), for: .touchUpInside)
+        setCurrentAltBtn.addTarget(self, action: #selector(self.setCurrentAlt(_:)), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -144,7 +147,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         })
     }
     
-    @objc func setAltTresh(_ gesture: UILongPressGestureRecognizer) {
+/*    @objc func setAltTresh(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state != .began { return }
         
         let alert = UIAlertController(title: "Target Altitude", message: "Set target altitude", preferredStyle: .alert)
@@ -172,13 +175,13 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 self.confirm("Confirm Target Altitude", String(format: "Are you sure you want to set the target altitude as %.0f ft?", tresh), { (_) in
                     self.altTresh = tresh
                     if self.altTresh >= 0 {
-                        self.altTreshLabel.text = String(format: "Target @ %.0f", self.altTresh)
+                        self.altTreshLabel.text = String(format: "Target MSL @ %.0f", self.altTresh)
                     }
                     print("Updating Altitude Treshold:", self.altTresh)
+                    self.updateAltLabels(nil)
+                    self.updateAudioInterval()
                 })
             }
-            self.updateAltLabels(self.relAlt)
-            self.updateAudioInterval()
         }))
         
         self.mute()
@@ -187,14 +190,26 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 self.unmute()
             }
         })
-    }
+    }*/
     
     @objc func setCurrentAlt(_ sender: UIButton!) {
-        let currentAlt = Double(sender.tag)
-        self.altOffset = currentAlt - self.relAlt
-        print("Updating Altitude Offset:", self.altOffset)
+        let currentAlt: Double
+        if speed < 20 {
+            currentAlt = 0.0
+        } else if speed > 40 {
+            currentAlt = 1000.0
+        } else {
+            setCurrentAltBtn.isEnabled = false
+            return
+        }
+        //let currentAlt = Double(sender.tag)
+        altOffset = currentAlt - relAlt
+        print("Updating Altitude Offset:", altOffset)
+        groundAlt = absAlt - currentAlt
         
-        self.updateAltLabels(self.relAlt)
+        altTreshLabel.text = String(format: "Target MSL @ %.0f", groundAlt)
+        
+        self.updateAltLabels(nil)
         self.updateAudioInterval()
     }
     
@@ -218,10 +233,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func mute() {
         audio.mute()
         muteBtn.image = UIImage(named: "muted")
-    }
-    
-    func setTresh(_ title: String, _ message: String, _ placeholders: Array<String>, _ callback: @escaping (Double) -> Void) {
-        
     }
     
     func updateAudioFreq() {
@@ -250,15 +261,31 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         print("Updating Audio Interval:", audio.interval)
     }
     
-    func updateAltLabels(_ newRelAlt: Double) {
-        let curTime = CACurrentMediaTime()
-        relAlt = newRelAlt
-        alts.append(relAlt)
-        times.append(curTime)
-        if times.last! - times.first! >= 3 {
-            dAlt = (alts.last! - alts.first!) / (times.last! - times.first!) * 60
-            alts.removeFirst()
-            times.removeFirst()
+    func updateAltLabels(_ newRelAlt: Double?) {
+        if newRelAlt != nil {
+            let curTime = CACurrentMediaTime()
+            relAlt = newRelAlt!
+            alts.append(relAlt)
+            times.append(curTime)
+            if times.last! - times.first! >= 3 {
+                var instants: [Double] = []
+                for i in 1..<times.endIndex {
+                    let begin = round((times[i - 1] - times.first!) * 10) / 10.0
+                    let end = round((times[i] - times.first!) * 10) / 10.0
+                    var t = Double(instants.count)
+                    while begin..<end  ~= t {
+                        instants.append((alts[i] - alts[i - 1]) / (t - times[i - 1]))
+                        t = Double(instants.count)
+                    }
+                    if instants.count >= 3 {
+                        break
+                    }
+                }
+                dAlt = (instants[0] + instants[1]*0.5 + instants[2]*0.33)/(1 + 0.5 + 0.33) * 60
+                
+                alts.removeFirst()
+                times.removeFirst()
+            }
         }
         
         var alt = (relAlt + altOffset).rounded()
@@ -276,8 +303,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         altLabel.text = String(format: "\(sign)%.0f", alt)
         altLabel.textColor = altColor
+        
         dAltLabel.text = String(format: "%.0f", d)
         dAltLabel.textColor = dColor
+        
+        absAltLabel.text = String(format: "Current Est MSL @ %.0f", groundAlt + alt)
     }
     
     func CMAltitudeHandler(data: CMAltitudeData?, error: Error?)  {
@@ -293,12 +323,13 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let speedRaw = manager.location?.speed else { print("Invalid Speed"); return }
-        guard let altRaw = manager.location?.altitude else { print ("Invalid Altitude"); return }
+        let speedRaw = manager.location?.speed ?? -1.0
         speed = speedRaw * 1.94384
-        let absAlt = altRaw * 3.28084
         print("Updating Speed:", speed)
-        print("Updating Absolute Altitude:", absAlt)
+        
+        if 20.0...40.0 ~= speed {
+            setCurrentAltBtn.isEnabled = false
+        }
         
         if speed.sign == .minus {
             speedLabel.text = "-"
@@ -306,10 +337,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             speedLabel.text = String(format: "%.0f", speed.rounded())
             speedLabel.textColor = speed < speedTresh ? UIColor.red : UIColor.green
         }
-        
         updateAudioFreq()
         
-        absAltLabel.text = String(format: "MSL @ %.0f", absAlt)
+        guard let altRaw = manager.location?.altitude else { return }
+        absAlt = altRaw * 3.28084
+        print("Updating Absolute Altitude:", absAlt)
     }
     
     func adjustFonts() {
@@ -318,7 +350,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         speedUnitsLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         speedTreshLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         
+        altTitleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         altLabel.fitTextToHeight(altPlaceholder.frame.height * 0.7)
+        altPos.constant = -(altLabel.font.ascender - altLabel.font.capHeight) + 8
         altUnitsPos.constant = altLabel.font.descender + 8
         altUnitsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         altTreshLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
@@ -327,11 +361,16 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         dAltLabel.fitTextToHeight(altPlaceholder.frame.height * 0.7)
         dAltUnitsPos.constant = dAltLabel.font.descender + 8
         dAltUnitsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
+        dAltPos.constant = -(dAltLabel.font.ascender - dAltLabel.font.capHeight) + 8
         
         muteBtnSize.constant = self.view.frame.height * 0.1
         
+        setCurrentAltBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
+        /*altButtonsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         zeroBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        thousandBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
+        thousandBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)*/
+        
+        print(-(altLabel.font.ascender - altLabel.font.capHeight) + 8)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -354,8 +393,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: handler))
         
-        mute()
-        self.present(alert, animated: true)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
