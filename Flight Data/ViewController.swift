@@ -283,6 +283,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         if 20.0...40.0 ~= speed {
             setCurrentAltBtn.isEnabled = false
+        } else {
+            setCurrentAltBtn.isEnabled = true
         }
         
         if speed.sign == .minus {
