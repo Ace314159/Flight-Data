@@ -99,20 +99,11 @@
                                                 <rect key="frame" x="547" y="122.5" width="112" height="30"/>
                                                 <state key="normal" title="Set Current AGL"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target MSL @ 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdp-x1-AYG">
-                                                <rect key="frame" x="537.5" y="98" width="121.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="top" secondItem="fnQ-Ex-5dQ" secondAttribute="bottom" id="01F-YS-Oiz"/>
-                                            <constraint firstAttribute="trailing" secondItem="sdp-x1-AYG" secondAttribute="trailing" constant="8" id="18N-dt-9jQ"/>
-                                            <constraint firstItem="FMl-uM-2nb" firstAttribute="bottom" secondItem="sdp-x1-AYG" secondAttribute="top" id="2a5-aO-7QX"/>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="9Vf-HY-C3w"/>
-                                            <constraint firstItem="sdp-x1-AYG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D8K-fI-BSd" secondAttribute="leading" id="AbL-qf-2kL"/>
                                             <constraint firstItem="VkS-he-80D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D8K-fI-BSd" secondAttribute="leading" id="Dpz-OR-TKJ"/>
                                             <constraint firstItem="Mzk-LH-PWg" firstAttribute="top" secondItem="D8K-fI-BSd" secondAttribute="top" constant="-15" id="ELn-CF-Afj"/>
                                             <constraint firstAttribute="trailing" secondItem="VkS-he-80D" secondAttribute="trailing" constant="8" id="GO0-nJ-6kt"/>
@@ -175,7 +166,6 @@
                         <outlet property="altPlaceholder" destination="D8K-fI-BSd" id="hGt-IK-pH3"/>
                         <outlet property="altPos" destination="ELn-CF-Afj" id="log-9i-M7y"/>
                         <outlet property="altTitleLabel" destination="thU-2g-8uV" id="lHM-zT-XSG"/>
-                        <outlet property="altTreshLabel" destination="sdp-x1-AYG" id="ORw-rL-OCR"/>
                         <outlet property="altUnitsLabel" destination="QYL-ao-NB1" id="3ZM-Gb-wHb"/>
                         <outlet property="altUnitsPos" destination="01F-YS-Oiz" id="B7b-av-Lv2"/>
                         <outlet property="dAltLabel" destination="fnQ-Ex-5dQ" id="ZMJ-bU-sTc"/>

@@ -18,7 +18,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var altLabel: UILabel!
     @IBOutlet weak var dAltLabel: UILabel!
     @IBOutlet weak var speedTreshLabel: UILabel!
-    @IBOutlet weak var altTreshLabel: UILabel!
     @IBOutlet weak var speedUnitsLabel: UILabel!
     @IBOutlet weak var dAltUnitsLabel: UILabel!
     @IBOutlet weak var altUnitsLabel: UILabel!
@@ -160,8 +159,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         altOffset = currentAlt - relAlt
         print("Updating Altitude Offset:", altOffset)
         groundAlt = absAlt - currentAlt
-        
-        altTreshLabel.text = String(format: "Target MSL @ %.0f", groundAlt)
         
         self.updateAltLabels(nil)
         self.updateAudioInterval()
@@ -311,7 +308,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         altPos.constant = -(altLabel.font.ascender - altLabel.font.capHeight) + 8
         altUnitsPos.constant = altLabel.font.descender + 8
         altUnitsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        altTreshLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         absAltLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         
         dAltLabel.fitTextToHeight(altPlaceholder.frame.height * 0.7)
