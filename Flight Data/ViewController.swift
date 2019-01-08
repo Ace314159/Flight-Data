@@ -121,7 +121,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             textField.delegate = self
         }
         let prevMuted = audio.isMuted()
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            if !prevMuted {
+                self.unmute()
+            }
+        }))
         alert.addAction(UIAlertAction(title: "Set", style: .default, handler: { (_) in
             let textField = alert.textFields![0] as UITextField
             if textField.text != "" {
@@ -133,6 +137,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     }
                     print("Updating Speed Treshold:", self.speedTresh)
                     self.updateAudioFreq()
+                    if !prevMuted {
+                        self.unmute()
+                    }
                 })
                 
             }
@@ -140,11 +147,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }))
         
         mute()
-        self.present(alert, animated: true, completion: { () in
-            if !prevMuted {
-                self.unmute()
-            }
-        })
+        self.present(alert, animated: true, completion: nil)
     }
     
 /*    @objc func setAltTresh(_ gesture: UILongPressGestureRecognizer) {
