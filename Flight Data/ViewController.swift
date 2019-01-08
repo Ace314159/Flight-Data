@@ -37,9 +37,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var muteBtn: UIImageView!
     @IBOutlet weak var muteBtnSize: NSLayoutConstraint!
     // Alt Buttons
-    @IBOutlet weak var altButtonsLabel: UILabel!
-    @IBOutlet weak var zeroBtn: UIButton!
-    @IBOutlet weak var thousandBtn: UIButton!
     @IBOutlet weak var setCurrentAltBtn: UIButton!
     
     var speed = 0.0
@@ -68,7 +65,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         super.viewDidLoad()
         
         speedLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
-        // altLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setAltTresh(_:))))
         
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
@@ -150,51 +146,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         self.present(alert, animated: true, completion: nil)
     }
     
-/*    @objc func setAltTresh(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state != .began { return }
-        
-        let alert = UIAlertController(title: "Target Altitude", message: "Set target altitude", preferredStyle: .alert)
-        
-        /*alert.addTextField { (textField: UITextField!) in
-            textField.placeholder = "Current Altitude"
-            textField.keyboardType = .numberPad
-            textField.delegate = self
-        }*/
-        alert.addTextField { (textField: UITextField!) in
-            textField.placeholder = "Target Altitude"
-            textField.keyboardType = .numberPad
-            textField.delegate = self
-        }
-        let prevMuted = audio.isMuted()
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Set", style: .default, handler: { (_) in
-            /*if (alert.textFields![0] as UITextField).text != "" {
-                let currentAlt = Double((alert.textFields![0] as UITextField).text!)!
-                self.altOffset = currentAlt - self.relAlt
-                print("Updating Altitude Offset:", self.altOffset)
-            }*/
-            if (alert.textFields![0] as UITextField).text != "" {
-                let tresh = Double((alert.textFields![0] as UITextField).text!)!
-                self.confirm("Confirm Target Altitude", String(format: "Are you sure you want to set the target altitude as %.0f ft?", tresh), { (_) in
-                    self.altTresh = tresh
-                    if self.altTresh >= 0 {
-                        self.altTreshLabel.text = String(format: "Target MSL @ %.0f", self.altTresh)
-                    }
-                    print("Updating Altitude Treshold:", self.altTresh)
-                    self.updateAltLabels(nil)
-                    self.updateAudioInterval()
-                })
-            }
-        }))
-        
-        self.mute()
-        self.present(alert, animated: true, completion: { () in
-            if !prevMuted {
-                self.unmute()
-            }
-        })
-    }*/
-    
     @objc func setCurrentAlt(_ sender: UIButton!) {
         let currentAlt: Double
         if speed < 20 {
@@ -205,7 +156,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             setCurrentAltBtn.isEnabled = false
             return
         }
-        //let currentAlt = Double(sender.tag)
+        
         altOffset = currentAlt - relAlt
         print("Updating Altitude Offset:", altOffset)
         groundAlt = absAlt - currentAlt
@@ -369,9 +320,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         muteBtnSize.constant = self.view.frame.height * 0.1
         
         setCurrentAltBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        /*altButtonsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        zeroBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        thousandBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)*/
         
         print(-(altLabel.font.ascender - altLabel.font.capHeight) + 8)
     }
