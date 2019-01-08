@@ -225,14 +225,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     let end = round((times[i] - times.first!) * 10) / 10.0
                     var t = Double(instants.count)
                     while begin..<end  ~= t {
-                        instants.append((alts[i] - alts[i - 1]) / (t - times[i - 1]))
+                        instants.append((alts[i] - alts[i - 1]) / (times[i] - times[i - 1]))
                         t = Double(instants.count)
                     }
-                    if instants.count >= 3 {
-                        break
-                    }
                 }
-                dAlt = (instants[0] + instants[1]*0.5 + instants[2]*0.33)/(1 + 0.5 + 0.33) * 60
+                dAlt = (instants[0] + instants[1]*0.5 + instants[2]*0.33) / (1 + 0.5 + 0.33) * 60
                 
                 alts.removeFirst()
                 times.removeFirst()
