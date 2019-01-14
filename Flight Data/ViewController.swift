@@ -41,6 +41,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var bgColor: UIColor?
     
     var speed = 0.0
+    var prevSpeed = 0.0
+    var prevSpeedTime = Date()
+    var dSpeed = 0.0
     var relAlt = 0.0
     var altOffset = 0.0
     var absAlt = 0.0
@@ -48,6 +51,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var alts: [Double] = []
     var times: [TimeInterval] = []
     var dAlt = 0.0
+    var ddAlt = 0.0
+    var prevDdAlt = 0.0
     
     // MARK: Tresholds
     var speedTresh = 0.0
@@ -197,7 +202,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 audio.frequency = adjustedAlertFrequency
                 print("Updaing Frequency: Alert", audio.frequency)
             }
-            if speed < speedTresh - 10 {
+            if speed < speedTresh - 10 && !(speed < speedTresh - 25 && dSpeed > 3 && dAlt < -70 && abs(ddAlt - prevDdAlt) < 15) {
                 audio.hellMinFrequency = adjustedAlertFrequency
                 audio.hell = true
                 speedLabel.layer.removeAllAnimations()
@@ -246,6 +251,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func updateAltLabels(_ newRelAlt: Double?, _ timestamp: TimeInterval?) {
         if newRelAlt != nil {
             let curTime = timestamp!
+            let prevTime = times.last ?? -1.0
+            let prevDAlt = dAlt
             relAlt = newRelAlt!
             alts.append(relAlt)
             times.append(curTime)
@@ -261,7 +268,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     }
                 }
                 dAlt = (instants[0] + instants[1]*0.5 + instants[2]*0.33) / (1 + 0.5 + 0.33) * 60
-                
+                if prevTime >= 0 {
+                    prevDdAlt = ddAlt
+                    ddAlt = (dAlt - prevDAlt) / (curTime - prevTime)
+                }
+                print("dAlt", dAlt)
                 alts.removeFirst()
                 times.removeFirst()
             }
@@ -303,8 +314,13 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let speedRaw = manager.location?.speed ?? -1.0
-        speed = speedRaw * 1.94384
-        print("Updating Speed:", speed)
+        if speed >= 0 {
+            prevSpeed = speed
+            speed = speedRaw * 1.94384
+            dSpeed = (speed - prevSpeed) / manager.location!.timestamp.timeIntervalSince(prevSpeedTime)
+            prevSpeedTime = manager.location!.timestamp
+            print("Updating Speed:", speed)
+        }
         
         if speed < 20 {
             setCurrentAltBtn.setTitle("Set AGL to 0", for: .normal)
