@@ -49,7 +49,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="thU-2g-8uV" secondAttribute="bottom" id="2De-DP-FAp"/>
                                             <constraint firstItem="n6x-l9-OFC" firstAttribute="centerX" secondItem="Hqv-Zf-rkg" secondAttribute="centerX" id="5Z6-zI-Lej"/>
@@ -100,7 +99,6 @@
                                                 <state key="normal" title="Set AGL to 0"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="top" secondItem="fnQ-Ex-5dQ" secondAttribute="bottom" id="01F-YS-Oiz"/>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="9Vf-HY-C3w"/>

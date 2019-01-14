@@ -38,6 +38,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     // Alt Buttons
     @IBOutlet weak var setCurrentAltBtn: UIButton!
     
+    var bgColor: UIColor?
+    
     var speed = 0.0
     var relAlt = 0.0
     var altOffset = 0.0
@@ -62,6 +64,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bgColor = view.backgroundColor
         
         speedLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
         
@@ -188,11 +192,38 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     func updateAudioFreq() {
         if speed >= 0 && speed < speedTresh {
-            audio.frequency = audio.alertFrequency + Float(freqDiffFactor * (speedTresh - speed))
-            print("Updaing Frequency: Alert", audio.frequency)
+            let adjustedAlertFrequency = audio.alertFrequency + Float(freqDiffFactor * (speedTresh - speed))
+            if !audio.hell {
+                audio.frequency = adjustedAlertFrequency
+                print("Updaing Frequency: Alert", audio.frequency)
+            }
+            if speed < speedTresh - 10 {
+                audio.hellMinFrequency = adjustedAlertFrequency
+                audio.hell = true
+                speedLabel.layer.removeAllAnimations()
+                speedLabel.alpha = 1
+                
+                UIView.animate(withDuration: 0.3, delay: 0, options: [.repeat, .allowUserInteraction], animations: {
+                    self.view.backgroundColor = self.view.backgroundColor == self.bgColor ? .red : self.bgColor
+                })
+            } else {
+                audio.hell = false
+                view.layer.removeAllAnimations()
+                view.backgroundColor = bgColor
+                
+                UIView.animate(withDuration: 1.0 / 3, delay: 0, options: [.repeat, .allowUserInteraction], animations: {
+                    self.speedLabel.alpha = self.speedLabel.alpha == 1.0 ? 0.1 : 1
+                })
+            }
         } else {
+            audio.hell = false
             audio.frequency = audio.regFrequency
             print("Updating Frequency: Regular", audio.frequency)
+            
+            speedLabel.layer.removeAllAnimations()
+            speedLabel.alpha = 1
+            view.layer.removeAllAnimations()
+            view.backgroundColor = bgColor
         }
     }
     
@@ -241,13 +272,13 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             alt = 0
         }
         let sign = alt.sign == .plus ? "+" : ""
-        let altColor = alt > altTresh ? UIColor.red : UIColor.green
+        let altColor: UIColor = alt > altTresh ? .red : .green
         
         var d = (50 * (dAlt / 50).rounded())
         if d.sign == .minus && d == 0 {
             d = 0
         }
-        let dColor = d >= 0 ? UIColor.black : UIColor.blue
+        let dColor: UIColor = d >= 0 ? .black : .blue
         
         altLabel.text = String(format: "\(sign)%.0f", alt)
         altLabel.textColor = altColor
@@ -289,7 +320,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             speedLabel.text = "-"
         } else {
             speedLabel.text = String(format: "%.0f", speed.rounded())
-            speedLabel.textColor = speed < speedTresh ? UIColor.red : UIColor.green
+            speedLabel.textColor = audio.hell ? .black : speed < speedTresh ? .red : .green
         }
         updateAudioFreq()
         
