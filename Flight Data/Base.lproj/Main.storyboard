@@ -96,8 +96,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkS-he-80D">
-                                                <rect key="frame" x="547" y="122.5" width="112" height="30"/>
-                                                <state key="normal" title="Set Current AGL"/>
+                                                <rect key="frame" x="572" y="122.5" width="87" height="30"/>
+                                                <state key="normal" title="Set AGL to 0"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

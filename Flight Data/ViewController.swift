@@ -275,10 +275,14 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         speed = speedRaw * 1.94384
         print("Updating Speed:", speed)
         
-        if 20.0...40.0 ~= speed {
-            setCurrentAltBtn.isEnabled = false
-        } else {
+        if speed < 20 {
+            setCurrentAltBtn.setTitle("Set AGL to 0", for: .normal)
             setCurrentAltBtn.isEnabled = true
+        } else if speed > 40 {
+            setCurrentAltBtn.setTitle("Set AGL to 1000", for: .normal)
+            setCurrentAltBtn.isEnabled = true
+        } else {
+            setCurrentAltBtn.isEnabled = false
         }
         
         if speed.sign == .minus {
