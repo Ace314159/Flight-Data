@@ -271,8 +271,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 if prevTime >= 0 {
                     prevDdAlt = ddAlt
                     ddAlt = (dAlt - prevDAlt) / (curTime - prevTime)
+                    print("Updating ddAlt:", ddAlt)
                 }
-                print("dAlt", dAlt)
+                print("Updating dAlt:", dAlt)
                 alts.removeFirst()
                 times.removeFirst()
             }
