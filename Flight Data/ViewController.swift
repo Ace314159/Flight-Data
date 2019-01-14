@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var absAlt = 0.0
     var groundAlt = 0.0
     var alts: [Double] = []
-    var times: [Double] = []
+    var times: [TimeInterval] = []
     var dAlt = 0.0
     
     // MARK: Tresholds
@@ -164,7 +164,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         print("Updating Altitude Offset:", altOffset)
         groundAlt = absAlt - currentAlt
         
-        self.updateAltLabels(nil)
+        self.updateAltLabels(nil, nil)
         self.updateAudioInterval()
     }
     
@@ -243,9 +243,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         print("Updating Audio Interval:", audio.interval)
     }
     
-    func updateAltLabels(_ newRelAlt: Double?) {
+    func updateAltLabels(_ newRelAlt: Double?, _ timestamp: TimeInterval?) {
         if newRelAlt != nil {
-            let curTime = CACurrentMediaTime()
+            let curTime = timestamp!
             relAlt = newRelAlt!
             alts.append(relAlt)
             times.append(curTime)
@@ -295,7 +295,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             return
         }
         
-        updateAltLabels(Double(exactly: data!.relativeAltitude)! * 3.28084)
+        updateAltLabels(Double(exactly: data!.relativeAltitude)! * 3.28084, data!.timestamp)
         updateAudioInterval()
         
         print("Updating Relative Altitude:", relAlt)
