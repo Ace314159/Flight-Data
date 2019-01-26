@@ -334,7 +334,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
         
         if speed.sign == .minus {
-            speedLabel.text = "-"
+            speedLabel.text = "no GPS"
         } else {
             speedLabel.text = String(format: "%.0f", speed.rounded())
             speedLabel.textColor = audio.hell ? .black : speed < speedTresh ? .red : .green
