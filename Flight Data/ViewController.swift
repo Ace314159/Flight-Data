@@ -367,8 +367,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         muteBtnSize.constant = self.view.frame.height * 0.1
         
         setCurrentAltBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        
-        print(-(altLabel.font.ascender - altLabel.font.capHeight) + 8)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
