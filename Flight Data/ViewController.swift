@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var altTitleLabel: UILabel!
     // Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
+    var speedEllipse: UIBezierPath?
     @IBOutlet weak var altPlaceholder: UIView!
     // Positioning Constraints
     @IBOutlet weak var speedUnitsPos: NSLayoutConstraint!
@@ -72,7 +73,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         bgColor = view.backgroundColor
         
-        speedLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
+        speedPlaceholder.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
         
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
@@ -81,6 +82,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        speedEllipse = UIBezierPath(ovalIn: speedPlaceholder.frame)
         
         adjustFonts()
         
@@ -115,7 +117,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     @objc func setSpeedTresh(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state != .began { return }
+        if gesture.state != .began || !speedEllipse!.contains(gesture.location(in: view)) { return }
         
         let alert = UIAlertController(title: "Set Minimum Speed", message: "Alert below minimum speed", preferredStyle: .alert)
         
