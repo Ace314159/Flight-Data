@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var altUnitsLabel: UILabel!
     @IBOutlet weak var absAltLabel: UILabel!
     @IBOutlet weak var altTitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     // Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
     var speedEllipse: UIBezierPath?
@@ -336,8 +337,14 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
         
         if speed.sign == .minus {
+            if speedLabel.text != "no GPS" {
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
+            }
             speedLabel.text = "no GPS"
         } else {
+            if speedLabel.text == "no GPS" {
+                speedLabel.fitTextToHeight(speedLabel.frame.height * 0.8)
+            }
             speedLabel.text = String(format: "%.0f", speed.rounded())
             speedLabel.textColor = audio.hell ? .black : speed < speedTresh ? .red : .green
         }
@@ -349,7 +356,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func adjustFonts() {
-        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.8)
+        titleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.15)
+        
+        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
         speedUnitsPos.constant = speedLabel.font.descender + 8
         speedUnitsLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         speedTreshLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)

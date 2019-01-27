@@ -98,6 +98,12 @@
                                                 <rect key="frame" x="572" y="122.5" width="87" height="30"/>
                                                 <state key="normal" title="Set AGL to 0"/>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn To Fly \\ Heads-Up Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-Kb-K4I">
+                                                <rect key="frame" x="208.5" y="132" width="250.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="top" secondItem="fnQ-Ex-5dQ" secondAttribute="bottom" id="01F-YS-Oiz"/>
@@ -113,7 +119,9 @@
                                             <constraint firstAttribute="trailing" secondItem="Mzk-LH-PWg" secondAttribute="trailing" constant="8" id="Sd7-CF-MzH"/>
                                             <constraint firstItem="QYL-ao-NB1" firstAttribute="top" secondItem="Mzk-LH-PWg" secondAttribute="bottom" id="XOz-z7-3oH"/>
                                             <constraint firstItem="fnQ-Ex-5dQ" firstAttribute="top" secondItem="D8K-fI-BSd" secondAttribute="top" constant="-15" id="gXQ-sN-Ahq"/>
+                                            <constraint firstItem="BhU-Kb-K4I" firstAttribute="centerX" secondItem="D8K-fI-BSd" secondAttribute="centerX" id="lJQ-E2-OAp"/>
                                             <constraint firstItem="fnQ-Ex-5dQ" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="mCL-39-BVe"/>
+                                            <constraint firstAttribute="bottom" secondItem="BhU-Kb-K4I" secondAttribute="bottom" constant="8" id="rNs-O5-Qr9"/>
                                             <constraint firstItem="Mzk-LH-PWg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnQ-Ex-5dQ" secondAttribute="trailing" id="tfv-lO-eXm"/>
                                             <constraint firstAttribute="trailing" secondItem="QYL-ao-NB1" secondAttribute="trailing" constant="8" id="vSa-hN-l6T"/>
                                             <constraint firstItem="QYL-ao-NB1" firstAttribute="top" secondItem="Mzk-LH-PWg" secondAttribute="bottom" id="wVv-HJ-bRo"/>
@@ -178,6 +186,7 @@
                         <outlet property="speedTreshLabel" destination="ldr-bx-wMZ" id="4SG-Y5-uFK"/>
                         <outlet property="speedUnitsLabel" destination="n6x-l9-OFC" id="8uN-dk-eqC"/>
                         <outlet property="speedUnitsPos" destination="ZIM-HK-oPj" id="Z8B-nE-L2s"/>
+                        <outlet property="titleLabel" destination="BhU-Kb-K4I" id="JrT-Xa-Cce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
