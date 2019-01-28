@@ -74,7 +74,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         bgColor = view.backgroundColor
         
-        speedPlaceholder.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
+        speedPlaceholder.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
         
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
@@ -118,7 +118,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     @objc func setSpeedTresh(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state != .began || !speedEllipse!.contains(gesture.location(in: view)) { return }
+        if gesture.state != .ended || !speedEllipse!.contains(gesture.location(in: view)) { return }
         
         let alert = UIAlertController(title: "Set Minimum Speed", message: "Alert below minimum speed", preferredStyle: .alert)
         
