@@ -72,6 +72,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         bgColor = view.backgroundColor
         
         speedPlaceholder.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
