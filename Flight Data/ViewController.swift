@@ -318,30 +318,40 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let speedRaw = manager.location?.speed ?? -1.0
-        if speed >= 0 {
+        
+        if speedRaw < 0 {
+            prevSpeed = 0
+            speed = 0
+            dSpeed = 0
+            prevSpeedTime = manager.location!.timestamp
+            print("Updating Speed - Invalid:", speed)
+
+            setCurrentAltBtn.setTitle("Set AGL", for: .normal)
+            setCurrentAltBtn.isEnabled = false
+            
+            if speedLabel.text != "no GPS" {
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
+            }
+            speedLabel.text = "no GPS"
+            speedLabel.textColor = .red
+        } else {
             prevSpeed = speed
             speed = speedRaw * 1.94384
             dSpeed = (speed - prevSpeed) / manager.location!.timestamp.timeIntervalSince(prevSpeedTime)
             prevSpeedTime = manager.location!.timestamp
             print("Updating Speed:", speed)
-        }
-        
-        if speed < 20 {
-            setCurrentAltBtn.setTitle("Set AGL to 0", for: .normal)
-            setCurrentAltBtn.isEnabled = true
-        } else if speed > 40 {
-            setCurrentAltBtn.setTitle("Set AGL to 1000", for: .normal)
-            setCurrentAltBtn.isEnabled = true
-        } else {
-            setCurrentAltBtn.isEnabled = false
-        }
-        
-        if speed.sign == .minus {
-            if speedLabel.text != "no GPS" {
-                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
+            
+            if speed < 20 {
+                setCurrentAltBtn.setTitle("Set AGL to 0", for: .normal)
+                setCurrentAltBtn.isEnabled = true
+            } else if speed > 40 {
+                setCurrentAltBtn.setTitle("Set AGL to 1000", for: .normal)
+                setCurrentAltBtn.isEnabled = true
+            } else {
+                setCurrentAltBtn.setTitle("Set AGL", for: .normal)
+                setCurrentAltBtn.isEnabled = false
             }
-            speedLabel.text = "no GPS"
-        } else {
+            
             if speedLabel.text == "no GPS" {
                 speedLabel.fitTextToHeight(speedLabel.frame.height * 0.8)
             }
@@ -353,6 +363,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         guard let altRaw = manager.location?.altitude else { return }
         absAlt = altRaw * 3.28084
         print("Updating Absolute Altitude:", absAlt)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Error:", error)
+        alert("Location Error", error.localizedDescription)
     }
     
     func adjustFonts() {
