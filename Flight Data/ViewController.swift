@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var absAltLabel: UILabel!
     @IBOutlet weak var altTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var onGroundLabel: UILabel!
     // Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
     var speedEllipse: UIBezierPath?
@@ -41,6 +42,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var setCurrentAltBtn: UIButton!
     
     var bgColor: UIColor?
+    var inactivityTimer: Timer?
     
     var speed = 0.0
     var prevSpeed = 0.0
@@ -57,14 +59,25 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var prevDdAlt = 0.0
     
     // MARK: Tresholds
-    var speedTresh = 0.0
+    var speedTresh = -1.0
     var altTresh = 0.0
     let changeIntervalTresh = 30.0
     
     // MARK: Audio
     let audio = Audio()
-    let freqDiffFactor = 1.0
+    let minAudioSpeed = 20.0
+    let maxAudioSpeed = 100.0
+    var higherPitch = true
     lazy var intervalFactor = audio.regInterval / changeIntervalTresh
+    
+    var alternatingPitchTimer: Timer?
+    var alternatingPitchOriginal = true
+    var originalAlternatingPitch: Float = 0.0
+    var otherAlternatingPitch: Float = 0.0
+    
+    var onGround = true
+    var prevOnGroundTime = Date()
+    var setAGL0Timer: Timer?
 
     let locationManager = CLLocationManager()
     let altimeter = CMAltimeter()
@@ -72,11 +85,13 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.shared.isIdleTimerDisabled = true
+        inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
+        
+        setAGL0Timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.setAGL0), userInfo: nil, repeats: false)
         
         bgColor = view.backgroundColor
         
-        speedPlaceholder.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setSpeedTresh(_:))))
+        speedPlaceholder.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setSpeedTreshCheck(_:))))
         
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
@@ -97,6 +112,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 alert("Location Services Required", "Please enable location services for this app in Settings.")
             case .authorizedAlways, .authorizedWhenInUse:
                 print("Access Allowed")
+            @unknown default:
+                fatalError()
             }
             
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -117,28 +134,47 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         mute()
         audio.start()
+        
+        setSpeedTresh()
     }
     
-    @objc func setSpeedTresh(_ gesture: UILongPressGestureRecognizer) {
+    @objc func setSpeedTreshCheck(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state != .ended || !speedEllipse!.contains(gesture.location(in: view)) { return }
-        
-        let alert = UIAlertController(title: "Set Minimum Speed", message: "Alert below minimum speed", preferredStyle: .alert)
-        
+        setSpeedTresh()
+    }
+    
+    func setSpeedTresh() {
+        // Min Speed Alert
+        let alert = UIAlertController(title: "Enter Warning Ground Speed", message: "Advice: use your target approach speed minus the wind speed down the runway minus 5 knots.\nWarning: this speed is *not* your airspeed, much less a stall warning. We will raise alarms at 0 knots, 5 knots and 10 knots below your warning speed.", preferredStyle: .alert)
         alert.addTextField { (textField: UITextField!) in
             textField.placeholder = "Minimum Speed"
             textField.keyboardType = .numberPad
             textField.delegate = self
         }
         let prevMuted = audio.isMuted()
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            if !prevMuted {
-                self.unmute()
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Set", style: .default, handler: { (_) in
+        if speedTresh >= 0 {
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                if !prevMuted {
+                    self.unmute()
+                }
+            }))
+        }
+        let setAction  = UIAlertAction(title: "Set", style: .default, handler: { (_) in
             let textField = alert.textFields![0] as UITextField
             if textField.text != "" {
                 let tresh = Double(textField.text!)!
+                if self.speedTresh < 0 {
+                    self.speedTresh = tresh >= 0 ? tresh : self.speedTresh
+                    if self.speedTresh >= 0 {
+                        self.speedTreshLabel.text = String(format: "Warn @ %.0f", self.speedTresh)
+                    }
+                    print("Updating Speed Treshold:", self.speedTresh)
+                    self.updateAudioFreq()
+                    if !prevMuted {
+                        self.unmute()
+                    }
+                    return
+                }
                 self.confirm("Confirm Minimum Speed", String(format: "Are you sure you want to set the minimum speed to %.0f knots?", tresh), { (_) in
                     self.speedTresh = tresh >= 0 ? tresh : self.speedTresh
                     if self.speedTresh >= 0 {
@@ -153,13 +189,37 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 
             }
             
+        })
+        setAction.isEnabled = false
+        alert.addAction(setAction)
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alert.textFields?[0], queue: OperationQueue.main) { (notification) in
+            let textField = alert.textFields![0]
+            setAction.isEnabled = !textField.text!.isEmpty
+        }
+        
+        // High or Low Pitch
+        let actionSheet = UIAlertController(title: "Higher or Lower Pitch?", message: "Should the tone get higher or lower pitched when the speed goes below the warn speed?", preferredStyle: .alert)
+        actionSheet.addAction(UIAlertAction(title: "Higher", style: .default, handler: { (UIAlertAction) in
+            self.higherPitch = true
+            self.present(alert, animated: true, completion: nil)
         }))
+        actionSheet.addAction(UIAlertAction(title: "Lower", style: .default, handler: { (UIAlertAction) in
+            self.higherPitch = false
+            self.present(alert, animated: true, completion: nil)
+        }))
+        if speedTresh >= 0 {
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+                if !prevMuted {
+                    self.unmute()
+                }
+            }))
+        }
         
         mute()
-        self.present(alert, animated: true, completion: nil)
+        self.present(actionSheet, animated: true)
     }
     
-    @objc func setCurrentAlt(_ sender: UIButton!) {
+    @objc func setCurrentAlt(_ sender: UIButton?) {
         let currentAlt: Double
         if speed < 20 {
             currentAlt = 0.0
@@ -188,6 +248,16 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
     }
     
+    @objc func enableIdleTimer() {
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    @objc func setAGL0() {
+        if speed < 2 && dAlt < 50 {
+            setCurrentAlt(nil)
+        }
+    }
+    
     func unmute() {
         audio.unmute()
         muteBtn.image = UIImage(named: "unmuted")
@@ -201,14 +271,48 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func updateAudioFreq() {
-        if speed >= 0 && speed < speedTresh {
-            let adjustedAlertFrequency = audio.alertFrequency + Float(freqDiffFactor * (speedTresh - speed))
-            if !audio.hell {
+        if onGround {
+            audio.disabled = true
+            if !inactivityTimer!.isValid {
+                inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
+            }
+            return
+        }
+        inactivityTimer!.invalidate()
+        UIApplication.shared.isIdleTimerDisabled = true
+        if !(minAudioSpeed...maxAudioSpeed ~= speed) {
+            audio.disabled = true
+            return
+        }
+        audio.disabled = false
+
+        if speed < speedTresh {
+            let adjustedAlertFrequency = higherPitch ? Float(Double(audio.regFrequency) * pow(2.0, (speedTresh - speed)/6)) : Float(Double(audio.regFrequency) * pow(2.0, 1 - (speedTresh - speed)/6))
+            if speed >= speedTresh - 5  {
+                print("REG")
                 audio.frequency = adjustedAlertFrequency
                 print("Updaing Frequency: Alert", audio.frequency)
             }
-            if speed < speedTresh - 10 && !(speed < speedTresh - 25 && dSpeed > 3 && dAlt < -70 && abs(ddAlt - prevDdAlt) < 15) {
+            if speed < speedTresh - 5 && speed > speedTresh - 10 {
+                print("MID")
+                if !(alternatingPitchTimer?.isValid ?? false) {
+                    alternatingPitchOriginal = true
+                    alternatingPitchTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.alternatePitch), userInfo: nil, repeats: true)
+                }
+                originalAlternatingPitch = adjustedAlertFrequency
+                if higherPitch {
+                    otherAlternatingPitch = adjustedAlertFrequency * pow(2, 1.0/6)
+                } else {
+                    otherAlternatingPitch = adjustedAlertFrequency / pow(2, 1.0/6)
+                }
+            } else {
+                alternatingPitchOriginal = true
+                alternatingPitchTimer?.invalidate()
+            }
+            if speedTresh - 30 <= speed && speed <= speedTresh - 10 && abs(dAlt) > 70 && relAlt + altOffset < 1000 {
+                print("HELL")
                 audio.hellMinFrequency = adjustedAlertFrequency
+                audio.hellMaxFrequency = 2 * adjustedAlertFrequency
                 audio.hell = true
                 speedLabel.layer.removeAllAnimations()
                 speedLabel.alpha = 1
@@ -226,14 +330,32 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 })
             }
         } else {
+            // Disable hell mechanisms
             audio.hell = false
-            audio.frequency = audio.regFrequency
+            alternatingPitchTimer?.invalidate()
+            alternatingPitchOriginal = true
+            
+            if higherPitch {
+                audio.frequency = Float(Double(audio.regFrequency) * pow(2.0, (speed - minAudioSpeed)/(maxAudioSpeed - minAudioSpeed)))
+            } else {
+                audio.frequency = Float(Double(audio.regFrequency) * pow(2.0, (speed - maxAudioSpeed) / (minAudioSpeed - maxAudioSpeed)))
+            }
             print("Updating Frequency: Regular", audio.frequency)
             
             speedLabel.layer.removeAllAnimations()
             speedLabel.alpha = 1
             view.layer.removeAllAnimations()
             view.backgroundColor = bgColor
+        }
+    }
+    
+    @objc func alternatePitch() {
+        if alternatingPitchOriginal {
+            alternatingPitchOriginal = false
+            audio.frequency = originalAlternatingPitch
+        } else {
+            alternatingPitchOriginal = true
+            audio.frequency = otherAlternatingPitch
         }
     }
     
@@ -284,6 +406,21 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             }
         }
         
+        if speed < 30 && dAlt < 50 {
+            prevOnGroundTime = Date()
+        }
+        if prevOnGroundTime.timeIntervalSinceNow < -5 {
+            onGround = false
+            onGroundLabel.isHidden = true
+        } else {
+            onGround = true
+            onGroundLabel.isHidden = false
+        }
+        
+        if dAlt >= 50 {
+            setAGL0Timer?.invalidate()
+        }
+        
         var alt = (relAlt + altOffset).rounded()
         if alt.sign == .minus && alt == 0 {
             alt = 0
@@ -326,7 +463,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             speed = 0
             dSpeed = 0
             prevSpeedTime = manager.location!.timestamp
-            print("Updating Speed - Invalid:", speed)
+            print("Updating Speed - Invalid:", speedRaw)
 
             setCurrentAltBtn.setTitle("Set AGL", for: .normal)
             setCurrentAltBtn.isEnabled = false
@@ -342,6 +479,21 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             dSpeed = (speed - prevSpeed) / manager.location!.timestamp.timeIntervalSince(prevSpeedTime)
             prevSpeedTime = manager.location!.timestamp
             print("Updating Speed:", speed)
+            
+            if speed < 30 && dAlt < 50 {
+                prevOnGroundTime = Date()
+            }
+            if prevOnGroundTime.timeIntervalSinceNow < -5 {
+                onGround = false
+                onGroundLabel.isHidden = true
+            } else {
+                onGround = true
+                onGroundLabel.isHidden = false
+            }
+            
+            if speed >= 2 {
+                setAGL0Timer?.invalidate()
+            }
             
             if speed < 20 {
                 setCurrentAltBtn.setTitle("Set AGL to 0", for: .normal)

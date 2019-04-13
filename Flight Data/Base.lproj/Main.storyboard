@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -104,6 +104,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the Ground" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da9-OC-eSS">
+                                                <rect key="frame" x="277" y="103.5" width="113" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="top" secondItem="fnQ-Ex-5dQ" secondAttribute="bottom" id="01F-YS-Oiz"/>
@@ -117,7 +123,9 @@
                                             <constraint firstItem="FMl-uM-2nb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ode-Uy-Ltv" secondAttribute="trailing" id="O0t-Xg-1aj"/>
                                             <constraint firstItem="QYL-ao-NB1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ode-Uy-Ltv" secondAttribute="trailing" id="OWg-h6-kTu"/>
                                             <constraint firstAttribute="trailing" secondItem="Mzk-LH-PWg" secondAttribute="trailing" constant="8" id="Sd7-CF-MzH"/>
+                                            <constraint firstItem="BhU-Kb-K4I" firstAttribute="top" secondItem="Da9-OC-eSS" secondAttribute="bottom" constant="8" id="X9n-uQ-U4x"/>
                                             <constraint firstItem="QYL-ao-NB1" firstAttribute="top" secondItem="Mzk-LH-PWg" secondAttribute="bottom" id="XOz-z7-3oH"/>
+                                            <constraint firstItem="Da9-OC-eSS" firstAttribute="centerX" secondItem="D8K-fI-BSd" secondAttribute="centerX" id="c8O-cw-Gt1"/>
                                             <constraint firstItem="fnQ-Ex-5dQ" firstAttribute="top" secondItem="D8K-fI-BSd" secondAttribute="top" constant="-15" id="gXQ-sN-Ahq"/>
                                             <constraint firstItem="BhU-Kb-K4I" firstAttribute="centerX" secondItem="D8K-fI-BSd" secondAttribute="centerX" id="lJQ-E2-OAp"/>
                                             <constraint firstItem="fnQ-Ex-5dQ" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="mCL-39-BVe"/>
@@ -180,6 +188,7 @@
                         <outlet property="dAltUnitsPos" destination="wVv-HJ-bRo" id="Ez8-Sz-NrV"/>
                         <outlet property="muteBtn" destination="SvF-Vi-IwX" id="Jds-rD-1au"/>
                         <outlet property="muteBtnSize" destination="zIP-DK-txb" id="cTu-mm-Jod"/>
+                        <outlet property="onGroundLabel" destination="Da9-OC-eSS" id="reW-BV-eTX"/>
                         <outlet property="setCurrentAltBtn" destination="VkS-he-80D" id="pTM-F4-5gj"/>
                         <outlet property="speedLabel" destination="yol-E5-NKM" id="LVx-k8-yUQ"/>
                         <outlet property="speedPlaceholder" destination="Hqv-Zf-rkg" id="uUu-HM-9C8"/>

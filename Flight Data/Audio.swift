@@ -19,7 +19,6 @@ final class Audio: NSObject {
     let twoPI: Float32 = 2.0 * Float32.pi
     let regFrequency: Float32 = 440
     let alertFrequency: Float32 = 900
-    let hellMaxFrequency: Float32 = 2000
     let regInterval: Double = 0.8
     let playSoundLen: Double = 0.2
     
@@ -32,10 +31,12 @@ final class Audio: NSObject {
     var prevPlayedTime: Double = 0.0
     var playContinuous = false
     private var muted = true
+    var disabled = false
     
     var hell = false
     var hellOp: (inout Float32, Float32) -> Void = (+=)
     lazy var hellMinFrequency = alertFrequency
+    lazy var hellMaxFrequency: Float32 = 2 * alertFrequency
     
     var timeFactor: Double = 0
     
@@ -158,11 +159,11 @@ private func renderCallback(inRefCon: UnsafeMutableRawPointer,
     
     for frame in 0..<inNumberFrames {
         let pointerIndex = pointer.startIndex.advanced(by: Int(frame))
-        pointer[pointerIndex] = (audio.playingSound || audio.hell)  ? sin(audio.time) * audio.amplitude : 0.0
+        pointer[pointerIndex] = !audio.disabled && (audio.playingSound || audio.hell)  ? sin(audio.time) * audio.amplitude : 0.0
         audio.time += audio.twoPI * audio.frequency / audio.sampleRate
         
         if audio.hell {
-            audio.hellOp(&audio.frequency, 0.1)
+            audio.hellOp(&audio.frequency, (audio.hellMaxFrequency - audio.hellMinFrequency) / 9000)
             if audio.frequency <= audio.hellMinFrequency {
                 audio.hellOp = (+=)
             } else if audio.frequency >= audio.hellMaxFrequency {
