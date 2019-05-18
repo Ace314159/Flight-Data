@@ -78,6 +78,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var onGround = true
     var prevOnGroundTime = Date()
     var setAGL0Timer: Timer?
+    
+    var prevLanding = Date()
+    var prevTakeoff = Date()
 
     let locationManager = CLLocationManager()
     let altimeter = CMAltimeter()
@@ -409,12 +412,19 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         if speed < 30 && dAlt < 50 {
             prevOnGroundTime = Date()
         }
-        if prevOnGroundTime.timeIntervalSinceNow < -5 {
+        if dAlt < -300 && dSpeed < -3 {
+            prevLanding = Date()
+        }
+        if dAlt > 300 && dSpeed > 3 {
+            prevTakeoff = Date()
+        }
+        
+        if (prevTakeoff.timeIntervalSinceNow < -2) && (prevLanding.timeIntervalSinceNow < -2 || prevOnGroundTime.timeIntervalSinceNow < -5) {
             onGround = false
-            onGroundLabel.isHidden = true
+            onGroundLabel.isHidden = false
         } else {
             onGround = true
-            onGroundLabel.isHidden = false
+            onGroundLabel.isHidden = true
         }
         
         if dAlt >= 50 {
