@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503776F72298DD6A00E3C089 /* APNumberPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; };
+		503776F82298DD6A00E3C089 /* APNumberPad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		505EDE29229794D400BEE197 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EDE28229794D400BEE197 /* Alerts.swift */; };
+		505EDE2C22979ECF00BEE197 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; };
+		505EDE2D22979ECF00BEE197 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50D0CBBF21CF4F9300938462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0CBBE21CF4F9300938462 /* AppDelegate.swift */; };
 		50D0CBC121CF4F9300938462 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0CBC021CF4F9300938462 /* ViewController.swift */; };
 		50D0CBC421CF4F9300938462 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50D0CBC221CF4F9300938462 /* Main.storyboard */; };
@@ -34,7 +39,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		505EDE2E22979ED000BEE197 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				503776F82298DD6A00E3C089 /* APNumberPad.framework in Embed Frameworks */,
+				505EDE2D22979ECF00BEE197 /* Eureka.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		503776F52298DD5E00E3C089 /* APNumberPad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNumberPad.framework; path = Carthage/Build/iOS/APNumberPad.framework; sourceTree = "<group>"; };
+		505EDE28229794D400BEE197 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		505EDE2A229797EF00BEE197 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		50D0CBBB21CF4F9300938462 /* Flight Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flight Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D0CBBE21CF4F9300938462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D0CBC021CF4F9300938462 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503776F72298DD6A00E3C089 /* APNumberPad.framework in Frameworks */,
+				505EDE2C22979ECF00BEE197 /* Eureka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +108,8 @@
 				50D0CBD221CF4F9400938462 /* Flight DataTests */,
 				50D0CBDD21CF4F9400938462 /* Flight DataUITests */,
 				50D0CBBC21CF4F9300938462 /* Products */,
+				503776F52298DD5E00E3C089 /* APNumberPad.framework */,
+				505EDE2A229797EF00BEE197 /* Eureka.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +133,7 @@
 				50D0CBC721CF4F9400938462 /* LaunchScreen.storyboard */,
 				50D0CBCA21CF4F9400938462 /* Info.plist */,
 				50D0CBEC21D00CD900938462 /* Audio.swift */,
+				505EDE28229794D400BEE197 /* Alerts.swift */,
 			);
 			path = "Flight Data";
 			sourceTree = "<group>";
@@ -138,6 +166,7 @@
 				50D0CBB721CF4F9300938462 /* Sources */,
 				50D0CBB821CF4F9300938462 /* Frameworks */,
 				50D0CBB921CF4F9300938462 /* Resources */,
+				505EDE2E22979ED000BEE197 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,6 +293,7 @@
 			files = (
 				50D0CBC121CF4F9300938462 /* ViewController.swift in Sources */,
 				50D0CBED21D00CD900938462 /* Audio.swift in Sources */,
+				505EDE29229794D400BEE197 /* Alerts.swift in Sources */,
 				50D0CBBF21CF4F9300938462 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,8 +472,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RG28V4NPA4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Flight Data/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,8 +497,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RG28V4NPA4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Flight Data/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

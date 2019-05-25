@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+
+use_frameworks!
+
+target 'APNumberPad_Example' do
+  pod 'APNumberPad', :path => '../'
+
+  target 'APNumberPad_Tests' do
+    inherit! :search_paths
+  end
+end

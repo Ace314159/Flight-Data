@@ -40,14 +40,16 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var muteBtnSize: NSLayoutConstraint!
     // Alt Buttons
     @IBOutlet weak var setCurrentAltBtn: UIButton!
+    // Alert Buttons
+    @IBOutlet weak var setAlertsBtn: UIButton!
     
     var bgColor: UIColor?
     var inactivityTimer: Timer?
     
     var speed = 0.0
-    var prevSpeed = 0.0
-    var prevSpeedTime = Date()
-    var dSpeed = 0.0
+    // var prevSpeed = 0.0
+    // var prevSpeedTime = Date()
+    // var dSpeed = 0.0
     var relAlt = 0.0
     var altOffset = 0.0
     var absAlt = 0.0
@@ -59,34 +61,43 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var prevDdAlt = 0.0
     
     // MARK: Tresholds
-    var speedTresh = -1.0
-    var altTresh = 0.0
-    let changeIntervalTresh = 30.0
+    //var speedTresh = -1.0
+    public var alertSpeed = -1.0
+    // var altTresh = 0.0
+    // let changeIntervalTresh = 30.0
     
     // MARK: Audio
     let audio = Audio()
     let minAudioSpeed = 20.0
     let maxAudioSpeed = 100.0
-    var higherPitch = true
+    /*var higherPitch = true
     lazy var intervalFactor = audio.regInterval / changeIntervalTresh
     
     var alternatingPitchTimer: Timer?
     var alternatingPitchOriginal = true
     var originalAlternatingPitch: Float = 0.0
-    var otherAlternatingPitch: Float = 0.0
+    var otherAlternatingPitch: Float = 0.0*/
     
-    var onGround = true
-    var prevOnGroundTime = Date()
     var setAGL0Timer: Timer?
+    var onGround = false
+    /*var prevOnGroundTime = Date()
     
     var prevLanding = Date()
-    var prevTakeoff = Date()
+    var prevTakeoff = Date()*/
 
     let locationManager = CLLocationManager()
     let altimeter = CMAltimeter()
+    let motionManager = CMMotionManager.init()
+    
+    @IBOutlet weak var gyroLabel: UILabel!
+    @IBOutlet weak var accelLabel: UILabel!
+    @IBOutlet weak var rawAltLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let navigationController = UINavigationController(rootViewController: self)
+        (UIApplication.shared.delegate as! AppDelegate).window!.rootViewController = navigationController
         
         inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
         
@@ -94,11 +105,23 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         bgColor = view.backgroundColor
         
-        speedPlaceholder.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setSpeedTreshCheck(_:))))
-        
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
+        setAlertsBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setAlerts(_:))))
+        
         setCurrentAltBtn.addTarget(self, action: #selector(self.setCurrentAlt(_:)), for: .touchUpInside)
+        
+        let alerts = Alerts()
+        alerts.preventBack = true
+        navigationController.pushViewController(alerts, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        speedTreshLabel.text = String(format: "Warn @ %.0f", alertSpeed)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,91 +158,44 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
         
+        motionManager.gyroUpdateInterval = 0.1
+        motionManager.accelerometerUpdateInterval = 0.1
+        motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: CMGyroHandler)
+        motionManager.startAccelerometerUpdates(to: OperationQueue.main, withHandler: CMAccelerometerHandler)
+        
         mute()
         audio.start()
         
-        setSpeedTresh()
+        // setSpeedTresh()
     }
     
-    @objc func setSpeedTreshCheck(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state != .ended || !speedEllipse!.contains(gesture.location(in: view)) { return }
-        setSpeedTresh()
+    func CMAccelerometerHandler(data: CMAccelerometerData?, error: Error?) {
+        if error != nil {
+            return
+        }
+        
+        let x = String(format: "%.5f", data!.acceleration.x)
+        let y = String(format: "%.5f", data!.acceleration.y)
+        let z = String(format: "%.5f", data!.acceleration.z)
+        
+        accelLabel.text = [x, y, z].joined(separator: " ")
     }
     
-    func setSpeedTresh() {
-        // Min Speed Alert
-        let alert = UIAlertController(title: "Enter Warning Ground Speed", message: "Advice: use your target approach speed minus the wind speed down the runway minus 5 knots.\nWarning: this speed is *not* your airspeed, much less a stall warning. We will raise alarms at 0 knots, 5 knots and 10 knots below your warning speed.", preferredStyle: .alert)
-        alert.addTextField { (textField: UITextField!) in
-            textField.placeholder = "Minimum Speed"
-            textField.keyboardType = .numberPad
-            textField.delegate = self
-        }
-        let prevMuted = audio.isMuted()
-        if speedTresh >= 0 {
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-                if !prevMuted {
-                    self.unmute()
-                }
-            }))
-        }
-        let setAction  = UIAlertAction(title: "Set", style: .default, handler: { (_) in
-            let textField = alert.textFields![0] as UITextField
-            if textField.text != "" {
-                let tresh = Double(textField.text!)!
-                if self.speedTresh < 0 {
-                    self.speedTresh = tresh >= 0 ? tresh : self.speedTresh
-                    if self.speedTresh >= 0 {
-                        self.speedTreshLabel.text = String(format: "Warn @ %.0f", self.speedTresh)
-                    }
-                    print("Updating Speed Treshold:", self.speedTresh)
-                    self.updateAudioFreq()
-                    if !prevMuted {
-                        self.unmute()
-                    }
-                    return
-                }
-                self.confirm("Confirm Minimum Speed", String(format: "Are you sure you want to set the minimum speed to %.0f knots?", tresh), { (_) in
-                    self.speedTresh = tresh >= 0 ? tresh : self.speedTresh
-                    if self.speedTresh >= 0 {
-                        self.speedTreshLabel.text = String(format: "Warn @ %.0f", self.speedTresh)
-                    }
-                    print("Updating Speed Treshold:", self.speedTresh)
-                    self.updateAudioFreq()
-                    if !prevMuted {
-                        self.unmute()
-                    }
-                })
-                
-            }
-            
-        })
-        setAction.isEnabled = false
-        alert.addAction(setAction)
-        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alert.textFields?[0], queue: OperationQueue.main) { (notification) in
-            let textField = alert.textFields![0]
-            setAction.isEnabled = !textField.text!.isEmpty
+    func CMGyroHandler(data: CMGyroData?, error: Error?) {
+        if error != nil {
+            return
         }
         
-        // High or Low Pitch
-        let actionSheet = UIAlertController(title: "Higher or Lower Pitch?", message: "Should the tone get higher or lower pitched when the speed goes below the warn speed?", preferredStyle: .alert)
-        actionSheet.addAction(UIAlertAction(title: "Higher", style: .default, handler: { (UIAlertAction) in
-            self.higherPitch = true
-            self.present(alert, animated: true, completion: nil)
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Lower", style: .default, handler: { (UIAlertAction) in
-            self.higherPitch = false
-            self.present(alert, animated: true, completion: nil)
-        }))
-        if speedTresh >= 0 {
-            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
-                if !prevMuted {
-                    self.unmute()
-                }
-            }))
-        }
-        
-        mute()
-        self.present(actionSheet, animated: true)
+        let x = String(format: "%.5f", data!.rotationRate.x)
+        let y = String(format: "%.5f", data!.rotationRate.y)
+        let z = String(format: "%.5f", data!.rotationRate.z)
+
+        gyroLabel.text = [x, y, z].joined(separator: " ")
+    }
+    
+    @objc func setAlerts(_ sender: UIButton?) {
+        let newAlerts = Alerts()
+        navigationController?.pushViewController(newAlerts, animated: true)
     }
     
     @objc func setCurrentAlt(_ sender: UIButton?) {
@@ -238,7 +214,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         groundAlt = absAlt - currentAlt
         
         self.updateAltLabels(nil, nil)
-        self.updateAudioInterval()
+        // self.updateAudioInterval()
     }
     
     @objc func muteToggle(_ gesture: UITapGestureRecognizer) {
@@ -265,7 +241,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         audio.unmute()
         muteBtn.image = UIImage(named: "unmuted")
         self.updateAudioFreq()
-        self.updateAudioInterval()
+        // self.updateAudioInterval()
     }
     
     func mute() {
@@ -274,108 +250,12 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func updateAudioFreq() {
-        if onGround {
+        if(speed > alertSpeed) {
             audio.disabled = true
-            if !inactivityTimer!.isValid {
-                inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
-            }
-            return
-        }
-        inactivityTimer!.invalidate()
-        UIApplication.shared.isIdleTimerDisabled = true
-        if !(minAudioSpeed...maxAudioSpeed ~= speed) {
-            audio.disabled = true
-            return
-        }
-        audio.disabled = false
-
-        if speed < speedTresh {
-            let adjustedAlertFrequency = higherPitch ? Float(Double(audio.regFrequency) * pow(2.0, (speedTresh - speed)/6)) : Float(Double(audio.regFrequency) * pow(2.0, 1 - (speedTresh - speed)/6))
-            if speed >= speedTresh - 5  {
-                print("REG")
-                audio.frequency = adjustedAlertFrequency
-                print("Updaing Frequency: Alert", audio.frequency)
-            }
-            if speed < speedTresh - 5 && speed > speedTresh - 10 {
-                print("MID")
-                if !(alternatingPitchTimer?.isValid ?? false) {
-                    alternatingPitchOriginal = true
-                    alternatingPitchTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.alternatePitch), userInfo: nil, repeats: true)
-                }
-                originalAlternatingPitch = adjustedAlertFrequency
-                if higherPitch {
-                    otherAlternatingPitch = adjustedAlertFrequency * pow(2, 1.0/6)
-                } else {
-                    otherAlternatingPitch = adjustedAlertFrequency / pow(2, 1.0/6)
-                }
-            } else {
-                alternatingPitchOriginal = true
-                alternatingPitchTimer?.invalidate()
-            }
-            if speedTresh - 30 <= speed && speed <= speedTresh - 10 && abs(dAlt) > 70 && relAlt + altOffset < 1000 {
-                print("HELL")
-                audio.hellMinFrequency = adjustedAlertFrequency
-                audio.hellMaxFrequency = 2 * adjustedAlertFrequency
-                audio.hell = true
-                speedLabel.layer.removeAllAnimations()
-                speedLabel.alpha = 1
-                
-                UIView.animate(withDuration: 0.3, delay: 0, options: [.repeat, .allowUserInteraction], animations: {
-                    self.view.backgroundColor = self.view.backgroundColor == self.bgColor ? .red : self.bgColor
-                })
-            } else {
-                audio.hell = false
-                view.layer.removeAllAnimations()
-                view.backgroundColor = bgColor
-                
-                UIView.animate(withDuration: 1.0 / 3, delay: 0, options: [.repeat, .allowUserInteraction], animations: {
-                    self.speedLabel.alpha = self.speedLabel.alpha == 1.0 ? 0.1 : 1
-                })
-            }
         } else {
-            // Disable hell mechanisms
-            audio.hell = false
-            alternatingPitchTimer?.invalidate()
-            alternatingPitchOriginal = true
-            
-            if higherPitch {
-                audio.frequency = Float(Double(audio.regFrequency) * pow(2.0, (speed - minAudioSpeed)/(maxAudioSpeed - minAudioSpeed)))
-            } else {
-                audio.frequency = Float(Double(audio.regFrequency) * pow(2.0, (speed - maxAudioSpeed) / (minAudioSpeed - maxAudioSpeed)))
-            }
-            print("Updating Frequency: Regular", audio.frequency)
-            
-            speedLabel.layer.removeAllAnimations()
-            speedLabel.alpha = 1
-            view.layer.removeAllAnimations()
-            view.backgroundColor = bgColor
+            // TODO: Implement
+            audio.disabled = false
         }
-    }
-    
-    @objc func alternatePitch() {
-        if alternatingPitchOriginal {
-            alternatingPitchOriginal = false
-            audio.frequency = originalAlternatingPitch
-        } else {
-            alternatingPitchOriginal = true
-            audio.frequency = otherAlternatingPitch
-        }
-    }
-    
-    func updateAudioInterval() {
-        let d = relAlt + altOffset - altTresh
-        if d <= changeIntervalTresh {
-            audio.interval = intervalFactor * d
-            if d <= 3 {
-                audio.playContinuous = true
-            } else {
-                audio.playContinuous = false
-            }
-        } else {
-            audio.playContinuous = false
-            audio.interval = audio.regInterval
-        }
-        print("Updating Audio Interval:", audio.interval)
     }
     
     func updateAltLabels(_ newRelAlt: Double?, _ timestamp: TimeInterval?) {
@@ -409,7 +289,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             }
         }
         
-        if speed < 30 && dAlt < 50 {
+        /*if speed < 30 && dAlt < 50 {
             prevOnGroundTime = Date()
         }
         if dAlt < -300 && dSpeed < -3 {
@@ -425,7 +305,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         } else {
             onGround = true
             onGroundLabel.isHidden = true
-        }
+        }*/
         
         if dAlt >= 50 {
             setAGL0Timer?.invalidate()
@@ -436,7 +316,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             alt = 0
         }
         let sign = alt.sign == .plus ? "+" : ""
-        let altColor: UIColor = alt > altTresh ? .red : .green
+        // let altColor: UIColor = alt > altTresh ? .red : .green
         
         var d = (50 * (dAlt / 50).rounded())
         if d.sign == .minus && d == 0 {
@@ -445,7 +325,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         let dColor: UIColor = d >= 0 ? .black : .blue
         
         altLabel.text = String(format: "\(sign)%.0f", alt)
-        altLabel.textColor = altColor
+        // altLabel.textColor = altColor
         
         dAltLabel.text = String(format: "%.0f", d)
         dAltLabel.textColor = dColor
@@ -458,9 +338,10 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             print("Altitude Error", error!.localizedDescription)
             return
         }
+        rawAltLabel.text = data!.relativeAltitude.stringValue
         
-        updateAltLabels(Double(exactly: data!.relativeAltitude)! * 3.28084, data!.timestamp)
-        updateAudioInterval()
+        updateAltLabels(data!.relativeAltitude.doubleValue * 3.28084, data!.timestamp)
+        // updateAudioInterval()
         
         print("Updating Relative Altitude:", relAlt)
     }
@@ -469,10 +350,10 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         let speedRaw = manager.location?.speed ?? -1.0
         
         if speedRaw < 0 {
-            prevSpeed = 0
             speed = 0
+            /*prevSpeed = 0
             dSpeed = 0
-            prevSpeedTime = manager.location!.timestamp
+            prevSpeedTime = manager.location!.timestamp*/
             print("Updating Speed - Invalid:", speedRaw)
 
             setCurrentAltBtn.setTitle("Set AGL", for: .normal)
@@ -484,11 +365,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             speedLabel.text = "no GPS"
             speedLabel.textColor = .red
         } else {
-            prevSpeed = speed
             speed = speedRaw * 1.94384
+            print("Updating Speed:", speed)
+            /*prevSpeed = speed
             dSpeed = (speed - prevSpeed) / manager.location!.timestamp.timeIntervalSince(prevSpeedTime)
             prevSpeedTime = manager.location!.timestamp
-            print("Updating Speed:", speed)
             
             if speed < 30 && dAlt < 50 {
                 prevOnGroundTime = Date()
@@ -499,7 +380,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             } else {
                 onGround = true
                 onGroundLabel.isHidden = false
-            }
+            }*/
             
             if speed >= 2 {
                 setAGL0Timer?.invalidate()
@@ -517,10 +398,10 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             }
             
             if speedLabel.text == "no GPS" {
-                speedLabel.fitTextToHeight(speedLabel.frame.height * 0.8)
+                speedLabel.fitTextToHeight(speedLabel.frame.height)
             }
             speedLabel.text = String(format: "%.0f", speed.rounded())
-            speedLabel.textColor = audio.hell ? .black : speed < speedTresh ? .red : .green
+            speedLabel.textColor = audio.hell ? .black : speed < alertSpeed ? .red : .green
         }
         updateAudioFreq()
         
@@ -557,12 +438,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         muteBtnSize.constant = self.view.frame.height * 0.1
         
         setCurrentAltBtn.titleLabel!.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        setAlertsBtn.titleLabel!.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
     }
     
     
