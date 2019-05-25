@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		503776F72298DD6A00E3C089 /* APNumberPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; };
-		503776F82298DD6A00E3C089 /* APNumberPad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		503776FA2299390D00E3C089 /* APNumberPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; };
+		503776FB2299390E00E3C089 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; };
 		505EDE29229794D400BEE197 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EDE28229794D400BEE197 /* Alerts.swift */; };
-		505EDE2C22979ECF00BEE197 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; };
-		505EDE2D22979ECF00BEE197 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50D0CBBF21CF4F9300938462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0CBBE21CF4F9300938462 /* AppDelegate.swift */; };
 		50D0CBC121CF4F9300938462 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0CBC021CF4F9300938462 /* ViewController.swift */; };
 		50D0CBC421CF4F9300938462 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50D0CBC221CF4F9300938462 /* Main.storyboard */; };
@@ -39,21 +37,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		505EDE2E22979ED000BEE197 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				503776F82298DD6A00E3C089 /* APNumberPad.framework in Embed Frameworks */,
-				505EDE2D22979ECF00BEE197 /* Eureka.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		503776F52298DD5E00E3C089 /* APNumberPad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNumberPad.framework; path = Carthage/Build/iOS/APNumberPad.framework; sourceTree = "<group>"; };
 		505EDE28229794D400BEE197 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -79,8 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503776F72298DD6A00E3C089 /* APNumberPad.framework in Frameworks */,
-				505EDE2C22979ECF00BEE197 /* Eureka.framework in Frameworks */,
+				503776FA2299390D00E3C089 /* APNumberPad.framework in Frameworks */,
+				503776FB2299390E00E3C089 /* Eureka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +149,7 @@
 				50D0CBB721CF4F9300938462 /* Sources */,
 				50D0CBB821CF4F9300938462 /* Frameworks */,
 				50D0CBB921CF4F9300938462 /* Resources */,
-				505EDE2E22979ED000BEE197 /* Embed Frameworks */,
+				503776FC2299398A00E3C089 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -285,6 +268,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		503776FC2299398A00E3C089 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/APNumberPad.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50D0CBB721CF4F9300938462 /* Sources */ = {
