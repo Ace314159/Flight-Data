@@ -57,20 +57,23 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var alts: [Double] = []
     var times: [TimeInterval] = []
     var dAlt = 0.0
-    var ddAlt = 0.0
-    var prevDdAlt = 0.0
+    /*var ddAlt = 0.0
+    var prevDdAlt = 0.0*/
     
     // MARK: Tresholds
     //var speedTresh = -1.0
     public var alertSpeed = -1.0
+    public var stallSpeed = -1.0
+    public var safetyMargin = -1.0
+    public var landingHeadwind = -1.0
     // var altTresh = 0.0
     // let changeIntervalTresh = 30.0
     
     // MARK: Audio
     let audio = Audio()
-    let minAudioSpeed = 20.0
+    /*let minAudioSpeed = 20.0
     let maxAudioSpeed = 100.0
-    /*var higherPitch = true
+    var higherPitch = true
     lazy var intervalFactor = audio.regInterval / changeIntervalTresh
     
     var alternatingPitchTimer: Timer?
@@ -88,10 +91,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     let locationManager = CLLocationManager()
     let altimeter = CMAltimeter()
     let motionManager = CMMotionManager.init()
-    
-    @IBOutlet weak var gyroLabel: UILabel!
-    @IBOutlet weak var accelLabel: UILabel!
-    @IBOutlet weak var rawAltLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,9 +157,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
         
-        motionManager.gyroUpdateInterval = 0.1
+        // motionManager.gyroUpdateInterval = 0.1
         motionManager.accelerometerUpdateInterval = 0.1
-        motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: CMGyroHandler)
+        // motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: CMGyroHandler)
         motionManager.startAccelerometerUpdates(to: OperationQueue.main, withHandler: CMAccelerometerHandler)
         
         mute()
@@ -174,14 +173,24 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             return
         }
         
-        let x = String(format: "%.5f", data!.acceleration.x)
+        if data!.acceleration.y < -0.5 {
+            if dAlt > 0 {
+                onGround = false
+                onGroundLabel.isHidden = true
+            } else if dAlt < 0 {
+                onGround = true
+                onGroundLabel.isHidden = false
+            }
+        }
+        
+        /*let x = String(format: "%.5f", data!.acceleration.x)
         let y = String(format: "%.5f", data!.acceleration.y)
         let z = String(format: "%.5f", data!.acceleration.z)
         
-        accelLabel.text = [x, y, z].joined(separator: " ")
+        accelLabel.text = [x, y, z].joined(separator: " ")*/
     }
     
-    func CMGyroHandler(data: CMGyroData?, error: Error?) {
+    /*func CMGyroHandler(data: CMGyroData?, error: Error?) {
         if error != nil {
             return
         }
@@ -191,9 +200,10 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         let z = String(format: "%.5f", data!.rotationRate.z)
 
         gyroLabel.text = [x, y, z].joined(separator: " ")
-    }
+    }*/
     
     @objc func setAlerts(_ sender: UIButton?) {
+        audio.mute()
         let newAlerts = Alerts()
         navigationController?.pushViewController(newAlerts, animated: true)
     }
@@ -240,7 +250,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func unmute() {
         audio.unmute()
         muteBtn.image = UIImage(named: "unmuted")
-        self.updateAudioFreq()
+        self.updateAudio()
         // self.updateAudioInterval()
     }
     
@@ -249,20 +259,58 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         muteBtn.image = UIImage(named: "muted")
     }
     
-    func updateAudioFreq() {
-        if(speed > alertSpeed) {
-            audio.disabled = true
+    func updateAudio() {
+        if speed > alertSpeed {
+            audio.hell = false
+            audio.solidEnabled = false
+            audio.intervalEnabled = false
+            
+            speedLabel.layer.removeAllAnimations()
+            speedLabel.alpha = 1
+            view.layer.removeAllAnimations()
+            view.backgroundColor = bgColor
         } else {
-            // TODO: Implement
-            audio.disabled = false
+            let solidSpeed = alertSpeed - safetyMargin / 2
+            if speed < stallSpeed - landingHeadwind + 3 {
+                audio.hell = true
+                audio.solidEnabled = false
+                audio.intervalEnabled = false
+                
+                speedLabel.layer.removeAllAnimations()
+                speedLabel.alpha = 1
+                
+                UIView.animate(withDuration: 1.0 / 3, delay: 0, options: [.repeat, .allowUserInteraction], animations: {
+                    self.view.backgroundColor = self.view.backgroundColor == self.bgColor ? .red : self.bgColor
+                })
+            } else if speed < solidSpeed {
+                audio.hell = false
+                audio.solidEnabled = true
+                audio.intervalEnabled = false
+                
+                view.layer.removeAllAnimations()
+                view.backgroundColor = bgColor
+                UIView.animate(withDuration: 1.0 / 3, delay: 0, options: [.repeat, .allowUserInteraction], animations: {
+                    self.speedLabel.alpha = self.speedLabel.alpha == 1.0 ? 0.1 : 1
+                })
+            } else {
+                audio.hell = false
+                audio.solidEnabled = false
+                audio.intervalEnabled = true
+                
+                speedLabel.layer.removeAllAnimations()
+                speedLabel.alpha = 1
+                view.layer.removeAllAnimations()
+                view.backgroundColor = bgColor
+            }
+            
         }
     }
     
     func updateAltLabels(_ newRelAlt: Double?, _ timestamp: TimeInterval?) {
         if newRelAlt != nil {
             let curTime = timestamp!
-            let prevTime = times.last ?? -1.0
-            let prevDAlt = dAlt
+            // let prevTime = times.last ?? -1.0
+            // let prevDAlt = dAlt
             relAlt = newRelAlt!
             alts.append(relAlt)
             times.append(curTime)
@@ -278,35 +326,16 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     }
                 }
                 dAlt = (instants[0] + instants[1]*0.5 + instants[2]*0.33) / (1 + 0.5 + 0.33) * 60
-                if prevTime >= 0 {
+                /*if prevTime >= 0 {
                     prevDdAlt = ddAlt
                     ddAlt = (dAlt - prevDAlt) / (curTime - prevTime)
                     print("Updating ddAlt:", ddAlt)
-                }
+                }*/
                 print("Updating dAlt:", dAlt)
                 alts.removeFirst()
                 times.removeFirst()
             }
         }
-        
-        /*if speed < 30 && dAlt < 50 {
-            prevOnGroundTime = Date()
-        }
-        if dAlt < -300 && dSpeed < -3 {
-            prevLanding = Date()
-        }
-        if dAlt > 300 && dSpeed > 3 {
-            prevTakeoff = Date()
-        }
-        
-        if (prevTakeoff.timeIntervalSinceNow < -2) && (prevLanding.timeIntervalSinceNow < -2 || prevOnGroundTime.timeIntervalSinceNow < -5) {
-            onGround = false
-            onGroundLabel.isHidden = false
-        } else {
-            onGround = true
-            onGroundLabel.isHidden = true
-        }*/
-        
         if dAlt >= 50 {
             setAGL0Timer?.invalidate()
         }
@@ -330,6 +359,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         dAltLabel.text = String(format: "%.0f", d)
         dAltLabel.textColor = dColor
         
+        
         absAltLabel.text = String(format: "Current Est MSL @ %.0f", groundAlt + alt)
     }
     
@@ -338,7 +368,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             print("Altitude Error", error!.localizedDescription)
             return
         }
-        rawAltLabel.text = data!.relativeAltitude.stringValue
+        // rawAltLabel.text = data!.relativeAltitude.stringValue
         
         updateAltLabels(data!.relativeAltitude.doubleValue * 3.28084, data!.timestamp)
         // updateAudioInterval()
@@ -398,12 +428,12 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             }
             
             if speedLabel.text == "no GPS" {
-                speedLabel.fitTextToHeight(speedLabel.frame.height)
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
             }
             speedLabel.text = String(format: "%.0f", speed.rounded())
             speedLabel.textColor = audio.hell ? .black : speed < alertSpeed ? .red : .green
         }
-        updateAudioFreq()
+        updateAudio()
         
         guard let altRaw = manager.location?.altitude else { return }
         absAlt = altRaw * 3.28084
@@ -418,7 +448,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func adjustFonts() {
         titleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.15)
         
-        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
+        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
         speedUnitsPos.constant = speedLabel.font.descender + 8
         speedUnitsLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         speedTreshLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)

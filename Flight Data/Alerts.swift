@@ -128,6 +128,9 @@ class Alerts: FormViewController {
         UserDefaults.standard.set(safetyMargin, forKey: "safetyMargin")
         
         (navigationController?.viewControllers[0] as! ViewController).alertSpeed = Double(stallSpeed! + safetyMargin! - landingHeadwind)
+        (navigationController?.viewControllers[0] as! ViewController).stallSpeed = Double(stallSpeed!)
+        (navigationController?.viewControllers[0] as! ViewController).safetyMargin = Double(safetyMargin!)
+        (navigationController?.viewControllers[0] as! ViewController).landingHeadwind = Double(landingHeadwind)
         
         navigationController?.popViewController(animated: true)
     }

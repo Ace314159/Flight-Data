@@ -15,28 +15,39 @@ final class Audio: NSObject {
     // MARK: Audio Variables
     // Constants
     let sampleRate: Float32 = 44100
-    let amplitude: Float32 = 1.0
-    let twoPI: Float32 = 2.0 * Float32.pi
-    let regFrequency: Float32 = 440
+    let amplitude: Float32 = 1
+    let twoPI: Float32 = 2 * Float32.pi
+    /*let regFrequency: Float32 = 440
     let alertFrequency: Float32 = 900
     let regInterval: Double = 0.8
-    let playSoundLen: Double = 0.2
+    let playSoundLen: Double = 0.2*/
     
-    var time: Float32 = 0.0
+    var time: Float32 = 0
+    let mainFrequency: Float32 = 440
+    let interval: Double = 0.5
+    var prevPlayedTime = 0.0
     
-    var frequency: Float32 = 0.0
-    var interval: Double = 0.2 // Length of quiet time
-    
-    var playingSound = false
-    var prevPlayedTime: Double = 0.0
-    var playContinuous = false
-    private var muted = true
-    var disabled = false
+    var intervalEnabled = false
+    var solidEnabled = false
+    lazy var frequency: Float32 = mainFrequency
     
     var hell = false
     var hellOp: (inout Float32, Float32) -> Void = (+=)
+    lazy var hellMinFrequency: Float32 = 900
+    lazy var hellMaxFrequency: Float32 = 2 * hellMinFrequency
+    lazy var hellInterval: Float32 = 0.1
+    
+    private var muted = true
+    /*var playingSound = false
+    var prevPlayedTime: Double = 0.0
+    var playContinuous = false
+    private var muted = true
+    var disabled = false*/
+    
+    /*var hell = false
+    var hellOp: (inout Float32, Float32) -> Void = (+=)
     lazy var hellMinFrequency = alertFrequency
-    lazy var hellMaxFrequency: Float32 = 2 * alertFrequency
+    lazy var hellMaxFrequency: Float32 = 2 * alertFrequency*/
     
     var timeFactor: Double = 0
     
@@ -105,15 +116,10 @@ final class Audio: NSObject {
     
     func mute() {
         muted = true
-        playingSound = false
-        playContinuous = false
     }
     
     func unmute() {
         muted = false
-        playingSound = true
-        playContinuous = false
-        prevPlayedTime = 0.0
     }
     
     deinit {
@@ -134,7 +140,7 @@ private func renderCallback(inRefCon: UnsafeMutableRawPointer,
     let buffer = abl![0]
     let pointer: UnsafeMutableBufferPointer<Float32> = UnsafeMutableBufferPointer(buffer)
     
-    if !audio.isMuted() {
+    /*if !audio.isMuted() {
         if audio.playContinuous {
             audio.playingSound = true
         } else {
@@ -155,15 +161,39 @@ private func renderCallback(inRefCon: UnsafeMutableRawPointer,
                 }
             }
         }
+    }*/
+    
+    var playingSound = false
+    
+    let curTime = audio.timeFactor * Double(inTimeStamp.pointee.mHostTime) / 1000000000
+    if audio.isMuted() {
+        playingSound = false
+    } else if audio.solidEnabled {
+        playingSound = true
+    } else if audio.intervalEnabled {
+        audio.frequency = audio.mainFrequency
+        if curTime > audio.prevPlayedTime + 2 * audio.interval {
+            audio.prevPlayedTime = curTime
+            playingSound = true
+        } else if curTime > audio.prevPlayedTime + audio.interval {
+            playingSound = false
+        } else {
+            playingSound = true
+        }
+    } else if audio.hell {
+        playingSound = true
+    } else {
+        playingSound = false
     }
     
     for frame in 0..<inNumberFrames {
         let pointerIndex = pointer.startIndex.advanced(by: Int(frame))
-        pointer[pointerIndex] = !audio.disabled && (audio.playingSound || audio.hell)  ? sin(audio.time) * audio.amplitude : 0.0
+        pointer[pointerIndex] = playingSound ? sin(audio.time) * audio.amplitude : 0
+        
         audio.time += audio.twoPI * audio.frequency / audio.sampleRate
         
         if audio.hell {
-            audio.hellOp(&audio.frequency, (audio.hellMaxFrequency - audio.hellMinFrequency) / 9000)
+            audio.hellOp(&audio.frequency, audio.hellInterval)
             if audio.frequency <= audio.hellMinFrequency {
                 audio.hellOp = (+=)
             } else if audio.frequency >= audio.hellMaxFrequency {

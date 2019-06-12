@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Carthage/Checkouts/MMNumberKeyboard/Classes">
-   </FileRef>
-   <FileRef
-      location = "group:../Carthage/Checkouts/MMNumberKeyboard">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
