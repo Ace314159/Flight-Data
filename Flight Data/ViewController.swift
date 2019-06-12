@@ -82,7 +82,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var otherAlternatingPitch: Float = 0.0*/
     
     var setAGL0Timer: Timer?
-    var onGround = false
+    var onGround = true
     /*var prevOnGroundTime = Date()
     
     var prevLanding = Date()
@@ -260,7 +260,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func updateAudio() {
-        if speed > alertSpeed {
+        if speed > alertSpeed || onGround {
             audio.hell = false
             audio.solidEnabled = false
             audio.intervalEnabled = false
