@@ -27,7 +27,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var onGroundLabel: UILabel!
     // Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
-    var speedEllipse: UIBezierPath?
     @IBOutlet weak var altPlaceholder: UIView!
     // Positioning Constraints
     @IBOutlet weak var speedUnitsPos: NSLayoutConstraint!
@@ -98,7 +97,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         let navigationController = UINavigationController(rootViewController: self)
         (UIApplication.shared.delegate as! AppDelegate).window!.rootViewController = navigationController
         
-        inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
+        enableInactivityTimer()
         
         setAGL0Timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.setAGL0), userInfo: nil, repeats: false)
         
@@ -125,7 +124,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        speedEllipse = UIBezierPath(ovalIn: speedPlaceholder.frame)
         
         adjustFonts()
         
@@ -177,9 +175,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             if dAlt > 0 {
                 onGround = false
                 onGroundLabel.isHidden = true
+                disableInactivityTimer()
             } else if dAlt < 0 {
                 onGround = true
                 onGroundLabel.isHidden = false
+                enableInactivityTimer()
             }
         }
         
@@ -235,6 +235,15 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         } else {
             mute()
         }
+    }
+    
+    func enableInactivityTimer() {
+        inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
+    }
+    
+    func disableInactivityTimer() {
+        inactivityTimer?.invalidate()
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     @objc func enableIdleTimer() {
@@ -475,15 +484,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func alert(_ title: String, _ message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func confirm(_ title: String, _ message: String, _ handler: @escaping (UIAlertAction) -> Void) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: handler))
         
         self.present(alert, animated: true, completion: nil)
     }

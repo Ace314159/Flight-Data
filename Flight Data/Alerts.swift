@@ -37,7 +37,7 @@ class Alerts: FormViewController {
                 }.onChange { row in
                     self.stallSpeed = row.value
                     self.setAlertSpeed()
-                    row.validate()
+                    _ = self.form.rowBy(tag: "landingHeadwind")?.validate()
                 }.onRowValidationChanged(manageValidationErrors)
             <<< iPadIntRow() { row in
                 row.title = "Safety Margin"
@@ -50,6 +50,7 @@ class Alerts: FormViewController {
                 }.onChange { row in
                     self.safetyMargin = row.value
                     self.setAlertSpeed()
+                    _ = self.form.rowBy(tag: "landingHeadwind")?.validate()
                 }.onRowValidationChanged(manageValidationErrors)
             <<< iPadIntRow() { row in
                 row.title = "Landing Headwind"
@@ -109,6 +110,7 @@ class Alerts: FormViewController {
     }
     
     func setAlertSpeed() {
+        if(!form.validate().isEmpty) { return }
         let alertRow: LabelRow = form.rowBy(tag: "alertSpeed") as! LabelRow
         let actualStallSpeed = stallSpeed ?? 0
         let actualSafetyMargin = safetyMargin ?? 0
