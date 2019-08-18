@@ -238,6 +238,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func enableInactivityTimer() {
+        inactivityTimer?.invalidate()
         inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
     }
     
