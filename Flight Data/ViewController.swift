@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import CoreMotion
+import simd
 
 class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
@@ -155,10 +156,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
         
-        // motionManager.gyroUpdateInterval = 0.1
-        motionManager.accelerometerUpdateInterval = 0.1
-        // motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: CMGyroHandler)
-        motionManager.startAccelerometerUpdates(to: OperationQueue.main, withHandler: CMAccelerometerHandler)
+
+        motionManager.deviceMotionUpdateInterval = 0.1
+        motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: OperationQueue.main, withHandler: CMDeviceMotionHandler)
         
         mute()
         audio.start()
@@ -166,41 +166,16 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         // setSpeedTresh()
     }
     
-    func CMAccelerometerHandler(data: CMAccelerometerData?, error: Error?) {
-        if error != nil {
-            return
+    func CMDeviceMotionHandler(data: CMDeviceMotion?, error: Error?) {
+        if let validData = data {
+            let rotation = simd_quatd(validData.attitude.quaternion)
+            let acceleration = simd_double3(validData.userAcceleration)
+            let rotatedAcceleration = rotation.act(acceleration)
+            
+            onGroundLabel.font = onGroundLabel.font.withSize(25)
+            onGroundLabel.text = String(format: "%f", rotatedAcceleration.x) + "   " + String(format: "%f", rotatedAcceleration.y) + "   " + String(format: "%f", rotatedAcceleration.z)
         }
-        
-        if data!.acceleration.y < -0.5 {
-            if dAlt > 0 {
-                onGround = false
-                onGroundLabel.isHidden = true
-                disableInactivityTimer()
-            } else if dAlt < 0 {
-                onGround = true
-                onGroundLabel.isHidden = false
-                enableInactivityTimer()
-            }
-        }
-        
-        /*let x = String(format: "%.5f", data!.acceleration.x)
-        let y = String(format: "%.5f", data!.acceleration.y)
-        let z = String(format: "%.5f", data!.acceleration.z)
-        
-        accelLabel.text = [x, y, z].joined(separator: " ")*/
     }
-    
-    /*func CMGyroHandler(data: CMGyroData?, error: Error?) {
-        if error != nil {
-            return
-        }
-        
-        let x = String(format: "%.5f", data!.rotationRate.x)
-        let y = String(format: "%.5f", data!.rotationRate.y)
-        let z = String(format: "%.5f", data!.rotationRate.z)
-
-        gyroLabel.text = [x, y, z].joined(separator: " ")
-    }*/
     
     @objc func setAlerts(_ sender: UIButton?) {
         audio.mute()
@@ -346,6 +321,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 times.removeFirst()
             }
         }
+        
         if dAlt >= 50 {
             setAGL0Timer?.invalidate()
         }
@@ -407,20 +383,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         } else {
             speed = speedRaw * 1.94384
             print("Updating Speed:", speed)
-            /*prevSpeed = speed
-            dSpeed = (speed - prevSpeed) / manager.location!.timestamp.timeIntervalSince(prevSpeedTime)
-            prevSpeedTime = manager.location!.timestamp
-            
-            if speed < 30 && dAlt < 50 {
-                prevOnGroundTime = Date()
-            }
-            if prevOnGroundTime.timeIntervalSinceNow < -5 {
-                onGround = false
-                onGroundLabel.isHidden = true
-            } else {
-                onGround = true
-                onGroundLabel.isHidden = false
-            }*/
             
             if speed >= 2 {
                 setAGL0Timer?.invalidate()
@@ -540,5 +502,17 @@ extension UILabel {
         attribs[.paragraphStyle] = paragraphStyle
         
         return attribs
+    }
+}
+
+extension simd_quatd {
+    init(_ q: CMQuaternion) {
+        self.init(ix: q.x, iy: q.y, iz: q.z, r: q.w)
+    }
+}
+
+extension simd_double3 {
+    init(_ a: CMAcceleration) {
+        self.init(a.x, a.y, a.z)
     }
 }
