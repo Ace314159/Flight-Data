@@ -8,12 +8,12 @@
   "tvOS" : [
 
   ],
-  "commitish" : "5.0.0",
+  "commitish" : "5.0.1",
   "iOS" : [
     {
       "name" : "Eureka",
-      "hash" : "95d04d49e2f1f480058041ff1362bed1928520e833d32256d99ee38e7a10332e",
-      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+      "hash" : "02cf3a3c9ded57a401716e9b3556935bf4aff82fa788f40c118336210fd74f7e",
+      "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]
 }
