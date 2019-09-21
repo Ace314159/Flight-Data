@@ -8,6 +8,7 @@
 
 import Foundation
 import AudioUnit
+import CoreAudio
 
 final class Audio: NSObject {
     private var audioUnit: AudioUnit!
@@ -140,28 +141,6 @@ private func renderCallback(inRefCon: UnsafeMutableRawPointer,
     let buffer = abl![0]
     let pointer: UnsafeMutableBufferPointer<Float32> = UnsafeMutableBufferPointer(buffer)
     
-    /*if !audio.isMuted() {
-        if audio.playContinuous {
-            audio.playingSound = true
-        } else {
-            let time = audio.timeFactor * Double(inTimeStamp.pointee.mHostTime) / 1000000000
-            if audio.playingSound {
-                if time >= audio.prevPlayedTime + audio.playSoundLen {
-                    audio.playingSound = false
-                    audio.prevPlayedTime = time
-                } else {
-                    audio.playingSound = true
-                }
-            } else {
-                if time >= audio.prevPlayedTime + audio.interval {
-                    audio.playingSound = true
-                    audio.prevPlayedTime = time
-                } else {
-                    audio.playingSound = false
-                }
-            }
-        }
-    }*/
     
     var playingSound = false
     

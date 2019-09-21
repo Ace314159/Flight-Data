@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CoreLocation
 import CoreMotion
-import simd
 
 class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
@@ -26,6 +25,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var altTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var onGroundLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     // Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
     @IBOutlet weak var altPlaceholder: UIView!
@@ -47,9 +47,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var inactivityTimer: Timer?
     
     var speed = 0.0
-    // var prevSpeed = 0.0
-    // var prevSpeedTime = Date()
-    // var dSpeed = 0.0
     var relAlt = 0.0
     var altOffset = 0.0
     var absAlt = 0.0
@@ -57,36 +54,24 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     var alts: [Double] = []
     var times: [TimeInterval] = []
     var dAlt = 0.0
-    /*var ddAlt = 0.0
-    var prevDdAlt = 0.0*/
+    
+    var speeds: [Double] = []
+    var speedTimes: [Date] = []
+    var aglStart: Date?
+    var agls: [Double] = []
+    var aglTimes: [Date] = []
     
     // MARK: Tresholds
-    //var speedTresh = -1.0
     public var alertSpeed = -1.0
     public var stallSpeed = -1.0
     public var safetyMargin = -1.0
     public var landingHeadwind = -1.0
-    // var altTresh = 0.0
-    // let changeIntervalTresh = 30.0
     
     // MARK: Audio
     let audio = Audio()
-    /*let minAudioSpeed = 20.0
-    let maxAudioSpeed = 100.0
-    var higherPitch = true
-    lazy var intervalFactor = audio.regInterval / changeIntervalTresh
-    
-    var alternatingPitchTimer: Timer?
-    var alternatingPitchOriginal = true
-    var originalAlternatingPitch: Float = 0.0
-    var otherAlternatingPitch: Float = 0.0*/
     
     var setAGL0Timer: Timer?
     var onGround = true
-    /*var prevOnGroundTime = Date()
-    
-    var prevLanding = Date()
-    var prevTakeoff = Date()*/
 
     let locationManager = CLLocationManager()
     let altimeter = CMAltimeter()
@@ -156,25 +141,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
         
-
-        motionManager.deviceMotionUpdateInterval = 0.1
-        motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: OperationQueue.main, withHandler: CMDeviceMotionHandler)
-        
         mute()
         audio.start()
-        
-        // setSpeedTresh()
-    }
-    
-    func CMDeviceMotionHandler(data: CMDeviceMotion?, error: Error?) {
-        if let validData = data {
-            let rotation = simd_quatd(validData.attitude.quaternion)
-            let acceleration = simd_double3(validData.userAcceleration)
-            let rotatedAcceleration = rotation.act(acceleration)
-            
-            onGroundLabel.font = onGroundLabel.font.withSize(25)
-            onGroundLabel.text = String(format: "%f", rotatedAcceleration.x) + "   " + String(format: "%f", rotatedAcceleration.y) + "   " + String(format: "%f", rotatedAcceleration.z)
-        }
     }
     
     @objc func setAlerts(_ sender: UIButton?) {
@@ -210,6 +178,44 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         } else {
             mute()
         }
+    }
+    
+    func getPrevSecond(vals: inout [Double], times: inout [Date]) -> Double? {
+        let checkDate = Date().addingTimeInterval(-1)
+        if times.count < 1 {
+            return nil
+        }
+        
+        while times.count >= 2 && times[1] <= checkDate {
+            times.remove(at: 0)
+            vals.remove(at: 0)
+        }
+        if times.count >= 2 {
+            times.remove(at: 0)
+            vals.remove(at: 0)
+            return vals[0]
+        }
+        if times[0] <= checkDate {
+            return vals[0]
+        }
+        return nil
+    }
+    func checkOnGround() {
+        if speed < stallSpeed - landingHeadwind - 10 && relAlt + altOffset < 100 {
+            onGround = true
+            onGroundLabel.isHidden = false
+            enableInactivityTimer()
+        } else {
+            onGround = false
+            onGroundLabel.isHidden = true
+            disableInactivityTimer()
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        timeLabel.text = dateFormatter.string(from: Date())
+        
+        NSLog("%f %f %f", speed, relAlt + altOffset, dAlt)
     }
     
     func enableInactivityTimer() {
@@ -339,20 +345,29 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
         let dColor: UIColor = d >= 0 ? .black : .blue
         
+        if timestamp != nil {
+            agls.append(relAlt + altOffset)
+            aglTimes.append(aglStart!.addingTimeInterval(timestamp!))
+        }
+        
         altLabel.text = String(format: "\(sign)%.0f", alt)
         // altLabel.textColor = altColor
         
         dAltLabel.text = String(format: "%.0f", d)
         dAltLabel.textColor = dColor
         
-        
         absAltLabel.text = String(format: "Current Est MSL @ %.0f", groundAlt + alt)
+        
+        checkOnGround()
     }
     
     func CMAltitudeHandler(data: CMAltitudeData?, error: Error?)  {
         if error != nil {
             print("Altitude Error", error!.localizedDescription)
             return
+        }
+        if aglStart == nil {
+            aglStart = Date().addingTimeInterval(-data!.timestamp)
         }
         // rawAltLabel.text = data!.relativeAltitude.stringValue
         
@@ -383,6 +398,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         } else {
             speed = speedRaw * 1.94384
             print("Updating Speed:", speed)
+        
+            speeds.append(speed)
+            speedTimes.append(manager.location!.timestamp)
             
             if speed >= 2 {
                 setAGL0Timer?.invalidate()
@@ -405,6 +423,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             speedLabel.text = String(format: "%.0f", speed.rounded())
             speedLabel.textColor = audio.hell ? .black : speed < alertSpeed ? .red : .green
         }
+        checkOnGround()
         updateAudio()
         
         guard let altRaw = manager.location?.altitude else { return }
@@ -502,17 +521,5 @@ extension UILabel {
         attribs[.paragraphStyle] = paragraphStyle
         
         return attribs
-    }
-}
-
-extension simd_quatd {
-    init(_ q: CMQuaternion) {
-        self.init(ix: q.x, iy: q.y, iz: q.z, r: q.w)
-    }
-}
-
-extension simd_double3 {
-    init(_ a: CMAcceleration) {
-        self.init(a.x, a.y, a.z)
     }
 }

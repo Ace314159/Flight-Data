@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,19 +23,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="667" height="214.5"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no GPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yol-E5-NKM">
-                                                <rect key="frame" x="229.5" y="8" width="208" height="70"/>
+                                                <rect key="frame" x="241" y="8" width="185.5" height="66.5"/>
                                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warn @ -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldr-bx-wMZ">
-                                                <rect key="frame" x="297.5" y="98.5" width="72" height="20.5"/>
+                                                <rect key="frame" x="297.5" y="95" width="72" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="knots GS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6x-l9-OFC" userLabel="Units">
-                                                <rect key="frame" x="299" y="78" width="69.5" height="20.5"/>
+                                                <rect key="frame" x="299" y="74.5" width="69.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -72,13 +70,13 @@
                                         <rect key="frame" x="0.0" y="214.5" width="667" height="160.5"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnQ-Ex-5dQ">
-                                                <rect key="frame" x="8" y="-15" width="30.5" height="70"/>
+                                                <rect key="frame" x="8" y="-15" width="30.5" height="66.5"/>
                                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fpm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-Uy-Ltv" userLabel="Units">
-                                                <rect key="frame" x="8" y="55" width="30.5" height="20.5"/>
+                                                <rect key="frame" x="8" y="51.5" width="30.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -117,10 +115,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phn-fg-Asc">
+                                                <rect key="frame" x="8" y="132" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="top" secondItem="fnQ-Ex-5dQ" secondAttribute="bottom" id="01F-YS-Oiz"/>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="9Vf-HY-C3w"/>
+                                            <constraint firstItem="Phn-fg-Asc" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="9yv-z4-Q2r"/>
+                                            <constraint firstItem="BhU-Kb-K4I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Phn-fg-Asc" secondAttribute="trailing" id="BJ9-Wr-V80"/>
                                             <constraint firstItem="VkS-he-80D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D8K-fI-BSd" secondAttribute="leading" id="Dpz-OR-TKJ"/>
                                             <constraint firstItem="Mzk-LH-PWg" firstAttribute="top" secondItem="D8K-fI-BSd" secondAttribute="top" constant="-15" id="ELn-CF-Afj"/>
                                             <constraint firstAttribute="trailing" secondItem="VkS-he-80D" secondAttribute="trailing" constant="8" id="GO0-nJ-6kt"/>
@@ -138,6 +144,7 @@
                                             <constraint firstItem="BhU-Kb-K4I" firstAttribute="top" secondItem="Da9-OC-eSS" secondAttribute="bottom" constant="8" id="mSr-aV-nsY"/>
                                             <constraint firstAttribute="bottom" secondItem="BhU-Kb-K4I" secondAttribute="bottom" constant="8" id="rNs-O5-Qr9"/>
                                             <constraint firstItem="Mzk-LH-PWg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnQ-Ex-5dQ" secondAttribute="trailing" id="tfv-lO-eXm"/>
+                                            <constraint firstAttribute="bottom" secondItem="Phn-fg-Asc" secondAttribute="bottom" constant="8" id="u4h-bj-lM3"/>
                                             <constraint firstAttribute="trailing" secondItem="QYL-ao-NB1" secondAttribute="trailing" constant="8" id="vSa-hN-l6T"/>
                                             <constraint firstItem="QYL-ao-NB1" firstAttribute="top" secondItem="Mzk-LH-PWg" secondAttribute="bottom" id="wVv-HJ-bRo"/>
                                             <constraint firstAttribute="bottom" secondItem="VkS-he-80D" secondAttribute="bottom" constant="8" id="yUW-kt-nFZ"/>
@@ -204,6 +211,7 @@
                         <outlet property="speedTreshLabel" destination="ldr-bx-wMZ" id="4SG-Y5-uFK"/>
                         <outlet property="speedUnitsLabel" destination="n6x-l9-OFC" id="8uN-dk-eqC"/>
                         <outlet property="speedUnitsPos" destination="ZIM-HK-oPj" id="Z8B-nE-L2s"/>
+                        <outlet property="timeLabel" destination="Phn-fg-Asc" id="9G3-zM-Ok1"/>
                         <outlet property="titleLabel" destination="BhU-Kb-K4I" id="JrT-Xa-Cce"/>
                     </connections>
                 </viewController>
