@@ -50,19 +50,29 @@
                                                 <rect key="frame" x="8" y="8" width="68" height="30"/>
                                                 <state key="normal" title="Set Alerts"/>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JQ-5K-yW7" customClass="PreviewView" customModule="Flight_Data" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="38" width="215" height="161.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8JQ-5K-yW7" secondAttribute="height" multiplier="4:3" id="anM-Fg-as0"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="thU-2g-8uV" secondAttribute="bottom" id="2De-DP-FAp"/>
                                             <constraint firstItem="n6x-l9-OFC" firstAttribute="centerX" secondItem="Hqv-Zf-rkg" secondAttribute="centerX" id="5Z6-zI-Lej"/>
                                             <constraint firstAttribute="trailing" secondItem="thU-2g-8uV" secondAttribute="trailing" constant="8" id="6zq-zQ-Vzi"/>
                                             <constraint firstItem="ypS-iI-WZu" firstAttribute="leading" secondItem="Hqv-Zf-rkg" secondAttribute="leading" constant="8" id="8Dy-fR-2Nd"/>
+                                            <constraint firstItem="8JQ-5K-yW7" firstAttribute="top" secondItem="ypS-iI-WZu" secondAttribute="bottom" id="CE0-WL-1rI"/>
                                             <constraint firstItem="ldr-bx-wMZ" firstAttribute="centerX" secondItem="Hqv-Zf-rkg" secondAttribute="centerX" id="CVA-8f-d1n"/>
+                                            <constraint firstItem="ldr-bx-wMZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8JQ-5K-yW7" secondAttribute="trailing" constant="8" id="IIa-Wq-fTZ"/>
                                             <constraint firstItem="ypS-iI-WZu" firstAttribute="top" secondItem="Hqv-Zf-rkg" secondAttribute="top" constant="8" id="NMG-di-0rB"/>
                                             <constraint firstItem="ldr-bx-wMZ" firstAttribute="top" secondItem="n6x-l9-OFC" secondAttribute="bottom" id="NnX-TJ-nv1"/>
                                             <constraint firstItem="yol-E5-NKM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ypS-iI-WZu" secondAttribute="trailing" id="P3i-sx-Ywt"/>
+                                            <constraint firstItem="8JQ-5K-yW7" firstAttribute="leading" secondItem="Hqv-Zf-rkg" secondAttribute="leading" constant="8" id="RRl-KV-m6Y"/>
                                             <constraint firstItem="thU-2g-8uV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hqv-Zf-rkg" secondAttribute="leading" id="Rzo-2G-Hy6"/>
                                             <constraint firstItem="yol-E5-NKM" firstAttribute="top" secondItem="Hqv-Zf-rkg" secondAttribute="top" constant="8" id="Xnz-5N-gW7"/>
                                             <constraint firstItem="n6x-l9-OFC" firstAttribute="top" secondItem="yol-E5-NKM" secondAttribute="bottom" id="ZIM-HK-oPj"/>
+                                            <constraint firstItem="yol-E5-NKM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8JQ-5K-yW7" secondAttribute="trailing" constant="8" id="rX2-5F-V9G"/>
                                             <constraint firstItem="yol-E5-NKM" firstAttribute="centerX" secondItem="Hqv-Zf-rkg" secondAttribute="centerX" id="v8z-1b-46J"/>
                                         </constraints>
                                     </view>
@@ -100,11 +110,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkS-he-80D">
-                                                <rect key="frame" x="572" y="122.5" width="87" height="30"/>
+                                                <rect key="frame" x="548" y="116.5" width="111" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Set AGL to 0"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn To Fly \\ Heads-Up Display" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-Kb-K4I">
-                                                <rect key="frame" x="208.5" y="132" width="250.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn To Fly \\ HUD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-Kb-K4I">
+                                                <rect key="frame" x="259.5" y="132" width="148" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -161,6 +172,7 @@
                                     <constraint firstAttribute="trailing" secondItem="D8K-fI-BSd" secondAttribute="trailing" id="1U3-Lk-xCT"/>
                                     <constraint firstItem="D8K-fI-BSd" firstAttribute="height" secondItem="Hqv-Zf-rkg" secondAttribute="height" multiplier="3:4" id="7H7-2R-sKw"/>
                                     <constraint firstAttribute="trailing" secondItem="Hqv-Zf-rkg" secondAttribute="trailing" id="BgV-nR-9to"/>
+                                    <constraint firstItem="fnQ-Ex-5dQ" firstAttribute="top" secondItem="8JQ-5K-yW7" secondAttribute="bottom" id="QBg-GQ-DyU"/>
                                     <constraint firstItem="Hqv-Zf-rkg" firstAttribute="top" secondItem="GKW-9x-lDS" secondAttribute="top" id="bm6-BU-clf"/>
                                     <constraint firstItem="D8K-fI-BSd" firstAttribute="top" secondItem="Hqv-Zf-rkg" secondAttribute="bottom" id="ev4-E0-Ias"/>
                                     <constraint firstItem="D8K-fI-BSd" firstAttribute="width" secondItem="Hqv-Zf-rkg" secondAttribute="width" id="hvC-47-oD6"/>
@@ -171,6 +183,7 @@
                             </stackView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muted" translatesAutoresizingMaskIntoConstraints="NO" id="SvF-Vi-IwX" userLabel="muteBtn">
                                 <rect key="frame" x="609" y="8" width="50" height="50"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SvF-Vi-IwX" secondAttribute="height" multiplier="1:1" id="06j-ml-f1X"/>
                                     <constraint firstAttribute="width" constant="50" id="zIP-DK-txb"/>
@@ -197,6 +210,7 @@
                         <outlet property="altTitleLabel" destination="thU-2g-8uV" id="lHM-zT-XSG"/>
                         <outlet property="altUnitsLabel" destination="QYL-ao-NB1" id="3ZM-Gb-wHb"/>
                         <outlet property="altUnitsPos" destination="01F-YS-Oiz" id="B7b-av-Lv2"/>
+                        <outlet property="cameraView" destination="8JQ-5K-yW7" id="Tqv-jM-l8L"/>
                         <outlet property="dAltLabel" destination="fnQ-Ex-5dQ" id="ZMJ-bU-sTc"/>
                         <outlet property="dAltPos" destination="gXQ-sN-Ahq" id="eg2-Qe-Qbz"/>
                         <outlet property="dAltUnitsLabel" destination="Ode-Uy-Ltv" id="b6R-HH-YQg"/>

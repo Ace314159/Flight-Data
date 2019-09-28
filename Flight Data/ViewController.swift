@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreLocation
 import CoreMotion
+import AVFoundation
+
 
 class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
@@ -26,22 +28,24 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var onGroundLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    // Placeholder Views
+    // MARK: Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
     @IBOutlet weak var altPlaceholder: UIView!
-    // Positioning Constraints
+    // MARK: Positioning Constraints
     @IBOutlet weak var speedUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var altUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var dAltUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var altPos: NSLayoutConstraint!
     @IBOutlet weak var dAltPos: NSLayoutConstraint!
-    // Mute Button
+    // MARK: Mute Button
     @IBOutlet weak var muteBtn: UIImageView!
     @IBOutlet weak var muteBtnSize: NSLayoutConstraint!
-    // Alt Buttons
+    // MARK: Alt Buttons
     @IBOutlet weak var setCurrentAltBtn: UIButton!
-    // Alert Buttons
+    // MARK: Alert Buttons
     @IBOutlet weak var setAlertsBtn: UIButton!
+    // MARK: Camera
+    @IBOutlet weak var cameraView: PreviewView!
     
     var bgColor: UIColor?
     var inactivityTimer: Timer?
@@ -139,6 +143,27 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             return
         }
         
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            self.setupCamera()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.setupCamera()
+                } else {
+                    self.alert("Camera Required", "Please enable the camera for this app in Settings.")
+                }
+            }
+        case .denied:
+            alert("Camera Required", "Please enable the camera for this app in Settings.")
+            return
+        case .restricted:
+            alert("Camera Required", "A camera is required for this app to work")
+            return
+        @unknown default:
+            fatalError()
+        }
+        
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
         
         mute()
@@ -180,6 +205,36 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
     }
     
+    func getCamera() -> AVCaptureDevice {
+        if let device = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back) {
+            return device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+            return device
+        } else {
+            fatalError("Missing expected back camera device.")
+        }
+    }
+    
+    func setupCamera() {
+        let session = AVCaptureSession()
+        session.beginConfiguration()
+        guard
+            let videoDeviceInput = try? AVCaptureDeviceInput(device: getCamera()),
+            session.canAddInput(videoDeviceInput)
+            else { return }
+        session.addInput(videoDeviceInput)
+        session.sessionPreset = .photo
+        let photoOutput = AVCapturePhotoOutput()
+        guard session.canAddOutput(photoOutput) else { return }
+        session.addOutput(photoOutput)
+        session.commitConfiguration()
+        
+        cameraView.videoPreviewLayer.session = session
+        cameraView.videoPreviewLayer.connection?.videoOrientation = .landscapeLeft
+        
+        session.startRunning()
+    }
+    
     func getPrevSecond(vals: inout [Double], times: inout [Date]) -> Double? {
         let checkDate = Date().addingTimeInterval(-1)
         if times.count < 1 {
@@ -219,16 +274,19 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func enableInactivityTimer() {
+        NSLog("Enabling Inactivity Timer")
         inactivityTimer?.invalidate()
-        inactivityTimer = Timer.scheduledTimer(timeInterval: 18 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
+        inactivityTimer = Timer.scheduledTimer(timeInterval: 30 * 60, target: self, selector: #selector(self.enableIdleTimer), userInfo: nil, repeats: false)
     }
     
     func disableInactivityTimer() {
+        NSLog("Disabling Inactivity Timer")
         inactivityTimer?.invalidate()
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
     @objc func enableIdleTimer() {
+        NSLog("Enabling Idle Timer")
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
@@ -252,6 +310,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     func updateAudio() {
         if speed > alertSpeed || onGround {
+            muteBtn.tintColor = UIColor.black
+            
             audio.hell = false
             audio.solidEnabled = false
             audio.intervalEnabled = false
@@ -263,6 +323,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         } else {
             let solidSpeed = alertSpeed - safetyMargin / 2
             if speed < stallSpeed - landingHeadwind + 3 {
+                muteBtn.tintColor = UIColor(red: 0.55, green: 0, blue: 0, alpha: 1)
+                
                 audio.hell = true
                 audio.solidEnabled = false
                 audio.intervalEnabled = false
@@ -274,6 +336,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     self.view.backgroundColor = self.view.backgroundColor == self.bgColor ? .red : self.bgColor
                 })
             } else if speed < solidSpeed {
+                muteBtn.tintColor = UIColor.black
+                
                 audio.hell = false
                 audio.solidEnabled = true
                 audio.intervalEnabled = false
@@ -284,6 +348,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     self.speedLabel.alpha = self.speedLabel.alpha == 1.0 ? 0.1 : 1
                 })
             } else {
+                muteBtn.tintColor = UIColor.black
+                
                 audio.hell = false
                 audio.solidEnabled = false
                 audio.intervalEnabled = true
@@ -391,7 +457,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             setCurrentAltBtn.isEnabled = false
             
             if speedLabel.text != "no GPS" {
-                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.625)
             }
             speedLabel.text = "no GPS"
             speedLabel.textColor = .red
@@ -521,5 +587,17 @@ extension UILabel {
         attribs[.paragraphStyle] = paragraphStyle
         
         return attribs
+    }
+}
+
+
+class PreviewView: UIView {
+    override class var layerClass: AnyClass {
+        return AVCaptureVideoPreviewLayer.self
+    }
+    
+    /// Convenience wrapper to get layer as its statically known type.
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
+        return layer as! AVCaptureVideoPreviewLayer
     }
 }
