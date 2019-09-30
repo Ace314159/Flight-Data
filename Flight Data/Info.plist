@@ -22,10 +22,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This is required to get altitude and speed</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This is required to allow you to see what the camera sees</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This is required to get altitude and speed</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

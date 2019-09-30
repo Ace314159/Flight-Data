@@ -310,7 +310,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     func updateAudio() {
         if speed > alertSpeed || onGround {
-            muteBtn.tintColor = UIColor.black
+            if #available(iOS 13.0, *) {
+                muteBtn.tintColor = UIColor.label
+            } else {
+                muteBtn.tintColor = UIColor.black
+            }
             
             audio.hell = false
             audio.solidEnabled = false
@@ -336,7 +340,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     self.view.backgroundColor = self.view.backgroundColor == self.bgColor ? .red : self.bgColor
                 })
             } else if speed < solidSpeed {
-                muteBtn.tintColor = UIColor.black
+                if #available(iOS 13.0, *) {
+                    muteBtn.tintColor = UIColor.label
+                } else {
+                    muteBtn.tintColor = UIColor.black
+                }
                 
                 audio.hell = false
                 audio.solidEnabled = true
@@ -348,7 +356,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     self.speedLabel.alpha = self.speedLabel.alpha == 1.0 ? 0.1 : 1
                 })
             } else {
-                muteBtn.tintColor = UIColor.black
+                if #available(iOS 13.0, *) {
+                    muteBtn.tintColor = UIColor.label
+                } else {
+                    muteBtn.tintColor = UIColor.black
+                }
                 
                 audio.hell = false
                 audio.solidEnabled = false
