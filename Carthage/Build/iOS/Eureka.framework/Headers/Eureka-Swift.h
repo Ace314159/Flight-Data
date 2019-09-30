@@ -226,9 +226,9 @@ SWIFT_CLASS("_TtC6Eureka16DecimalFormatter")
 /// Creates an NSNumber from the given String
 /// \param obj Pointer to NSNumber object to assign
 ///
-/// \param for String with number assumed to have the configured min. fraction digits.
+/// \param string String with number assumed to have the configured min. fraction digits.
 ///
-/// \param range Unused range parameter
+/// \param rangep Unused range parameter
 ///
 - (BOOL)getObjectValue:(id _Nullable * _Nullable)obj forString:(NSString * _Nonnull)string range:(NSRange * _Nullable)rangep error:(NSError * _Nullable * _Nullable)error;
 @end
@@ -558,9 +558,9 @@ SWIFT_CLASS("_TtC6Eureka16DecimalFormatter")
 /// Creates an NSNumber from the given String
 /// \param obj Pointer to NSNumber object to assign
 ///
-/// \param for String with number assumed to have the configured min. fraction digits.
+/// \param string String with number assumed to have the configured min. fraction digits.
 ///
-/// \param range Unused range parameter
+/// \param rangep Unused range parameter
 ///
 - (BOOL)getObjectValue:(id _Nullable * _Nullable)obj forString:(NSString * _Nonnull)string range:(NSRange * _Nullable)rangep error:(NSError * _Nullable * _Nullable)error;
 @end
@@ -894,9 +894,9 @@ SWIFT_CLASS("_TtC6Eureka16DecimalFormatter")
 /// Creates an NSNumber from the given String
 /// \param obj Pointer to NSNumber object to assign
 ///
-/// \param for String with number assumed to have the configured min. fraction digits.
+/// \param string String with number assumed to have the configured min. fraction digits.
 ///
-/// \param range Unused range parameter
+/// \param rangep Unused range parameter
 ///
 - (BOOL)getObjectValue:(id _Nullable * _Nullable)obj forString:(NSString * _Nonnull)string range:(NSRange * _Nullable)rangep error:(NSError * _Nullable * _Nullable)error;
 @end
@@ -1226,9 +1226,9 @@ SWIFT_CLASS("_TtC6Eureka16DecimalFormatter")
 /// Creates an NSNumber from the given String
 /// \param obj Pointer to NSNumber object to assign
 ///
-/// \param for String with number assumed to have the configured min. fraction digits.
+/// \param string String with number assumed to have the configured min. fraction digits.
 ///
-/// \param range Unused range parameter
+/// \param rangep Unused range parameter
 ///
 - (BOOL)getObjectValue:(id _Nullable * _Nullable)obj forString:(NSString * _Nonnull)string range:(NSRange * _Nullable)rangep error:(NSError * _Nullable * _Nullable)error;
 @end
