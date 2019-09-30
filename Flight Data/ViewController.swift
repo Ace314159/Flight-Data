@@ -331,9 +331,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func updateAudio() {
         if speed > alertSpeed || onGround {
             if #available(iOS 13.0, *) {
-                muteBtn.tintColor = UIColor.label
+                muteBtn.tintColor = .label
             } else {
-                muteBtn.tintColor = UIColor.black
+                muteBtn.tintColor = .black
             }
             
             audio.hell = false
@@ -361,9 +361,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 })
             } else if speed < solidSpeed {
                 if #available(iOS 13.0, *) {
-                    muteBtn.tintColor = UIColor.label
+                    muteBtn.tintColor = .label
                 } else {
-                    muteBtn.tintColor = UIColor.black
+                    muteBtn.tintColor = .black
                 }
                 
                 audio.hell = false
@@ -377,9 +377,9 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 })
             } else {
                 if #available(iOS 13.0, *) {
-                    muteBtn.tintColor = UIColor.label
+                    muteBtn.tintColor = .label
                 } else {
-                    muteBtn.tintColor = UIColor.black
+                    muteBtn.tintColor = .black
                 }
                 
                 audio.hell = false
@@ -441,7 +441,12 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         if d.sign == .minus && d == 0 {
             d = 0
         }
-        let dColor: UIColor = d >= 0 ? .black : .blue
+        var dColor: UIColor
+        if #available(iOS 13.0, *) {
+            dColor = d >= 0 ? .label : .blue
+        } else {
+            dColor = d >= 0 ? .black : .blue
+        }
         
         if timestamp != nil {
             agls.append(relAlt + altOffset)
