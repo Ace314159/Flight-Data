@@ -183,7 +183,7 @@
                             </stackView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muted" translatesAutoresizingMaskIntoConstraints="NO" id="SvF-Vi-IwX" userLabel="muteBtn">
                                 <rect key="frame" x="609" y="8" width="50" height="50"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SvF-Vi-IwX" secondAttribute="height" multiplier="1:1" id="06j-ml-f1X"/>
                                     <constraint firstAttribute="width" constant="50" id="zIP-DK-txb"/>
