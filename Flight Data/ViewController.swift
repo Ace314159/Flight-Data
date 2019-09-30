@@ -230,9 +230,29 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         session.commitConfiguration()
         
         cameraView.videoPreviewLayer.session = session
-        cameraView.videoPreviewLayer.connection?.videoOrientation = .landscapeLeft
-        
+        orientCameraView()
+
         session.startRunning()
+    }
+    
+    func orientCameraView() {
+        var orientation: AVCaptureVideoOrientation {
+            switch UIApplication.shared.statusBarOrientation {
+            case .landscapeRight:       return .landscapeRight
+            case .landscapeLeft:        return .landscapeLeft
+            case .portrait:             return .portrait
+            case .portraitUpsideDown:   return .portraitUpsideDown
+            default:                    return .landscapeLeft
+            }
+        }
+        cameraView.videoPreviewLayer.connection?.videoOrientation = orientation
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (context) -> Void in
+            self.orientCameraView()
+        })
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     func getPrevSecond(vals: inout [Double], times: inout [Date]) -> Double? {
