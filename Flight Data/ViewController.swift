@@ -494,7 +494,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             setCurrentAltBtn.isEnabled = false
             
             if speedLabel.text != "no GPS" {
-                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.625)
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
             }
             speedLabel.text = "no GPS"
             speedLabel.textColor = .red
@@ -521,7 +521,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             }
             
             if speedLabel.text == "no GPS" {
-                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 1.1)
             }
             speedLabel.text = String(format: "%.0f", speed.rounded())
             speedLabel.textColor = audio.hell ? .black : speed < alertSpeed ? .red : .green
