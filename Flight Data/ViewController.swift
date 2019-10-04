@@ -84,6 +84,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         let navigationController = UINavigationController(rootViewController: self)
         (UIApplication.shared.delegate as! AppDelegate).window!.rootViewController = navigationController
         
@@ -277,13 +279,17 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     func checkOnGround() {
         if speed < stallSpeed - landingHeadwind - 10 && relAlt + altOffset < 100 {
+            if !onGround {
+                enableInactivityTimer()
+            }
             onGround = true
             onGroundLabel.isHidden = false
-            enableInactivityTimer()
         } else {
+            if onGround {
+                disableInactivityTimer()
+            }
             onGround = false
             onGroundLabel.isHidden = true
-            disableInactivityTimer()
         }
         
         let dateFormatter = DateFormatter()
