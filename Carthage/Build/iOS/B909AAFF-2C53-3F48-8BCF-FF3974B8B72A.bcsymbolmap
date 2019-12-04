@@ -324,11 +324,18 @@ _$s6Eureka21TriplePickerInlineRowCyxq_q0_GAA0dE4TypeAAWp
 _$s6EurekaMXM
 _symbolic 6Eureka4CellCyxG
 _$s6Eureka16PickerInlineCellCMI
+_got.$sSQMp
+_got.$s6Eureka8BaseCellCMn
+_got.$s6Eureka8BaseCellC5setupyyFTq
+_got.$s6Eureka8BaseCellC6updateyyFTq
+_got.$s6Eureka8BaseCellC9didSelectyyFTq
 _$s6Eureka16PickerInlineCellCMP
 _symbolic _____ 6Eureka16PickerInlineCellC
 _$s6Eureka16PickerInlineCellCMF
 _symbolic 6Eureka3RowCy_____yxGG 6Eureka16PickerInlineCellC
 _$s6Eureka16_PickerInlineRowCMI
+_got.$s6Eureka7BaseRowCMn
+_got.$s6Eureka7BaseRowC3tagACSSSg_tcfCTq
 _$s6Eureka16_PickerInlineRowCMP
 _symbolic _____ 6Eureka16_PickerInlineRowC
 _symbolic SayxG
@@ -336,6 +343,8 @@ _symbolic SSSg
 _$s6Eureka16_PickerInlineRowCMF
 _symbolic _____yxG 6Eureka16_PickerInlineRowC
 _$s6Eureka15PickerInlineRowCMI
+_got.$s6Eureka3RowCMn
+_got.$s6Eureka3RowC15customDidSelectyyFTq
 _$s6Eureka15PickerInlineRowCMP
 _symbolic _____ 6Eureka15PickerInlineRowC
 _$s6Eureka15PickerInlineRowCMF
@@ -452,22 +461,43 @@ _symbolic 6Eureka22_TriplePickerInlineRowCyxq_q0_GSgXwz_x_q_q0_SQRzSQR_SQR0_r1_l
 _symbolic 6Eureka22_DoublePickerInlineRowCyxq_GSgXw
 _symbolic 6Eureka22_DoublePickerInlineRowCyxq_GSgXwz_x_q_SQRzSQR_r0_lXX
 _symbolic G0R0_
+_got.$s6Eureka8CellTypeMp
+_got.$s6Eureka29NoValueDisplayTextConformanceMp
+_got.$s6Eureka7RowTypeMp
 _symbolic 6Eureka15PickerInlineRowC
 _symbolic $s6Eureka13InlineRowTypeP
 _$s6Eureka15PickerInlineRowCyxGAA0cD4TypeAAMA
+_got.$s6Eureka13InlineRowTypeMp
+_got.$s6Eureka17BaseInlineRowTypeMp
 _symbolic 6Eureka21DoublePickerInlineRowC
 _$s6Eureka21DoublePickerInlineRowCyxq_GAA0dE4TypeAAMA
 _symbolic 6Eureka21TriplePickerInlineRowC
 _$s6Eureka21TriplePickerInlineRowCyxq_q0_GAA0dE4TypeAAMA
+_got.$ss35_HasCustomAnyHashableRepresentationMp
 _$s10FoundationMXM
+_got.$ss35_HasCustomAnyHashableRepresentationP03_tobcD0s0cD0VSgyFTq
 _$sSo19NSKeyValueChangeKeyas35_HasCustomAnyHashableRepresentationSCMc
 _symbolic $sSY
 _$sSo19NSKeyValueChangeKeyaSYSCMA
+_got.$sSYMp
+_got.$s8RawValueSYTl
+_got.$sSY8rawValuexSg03RawB0Qz_tcfCTq
+_got.$sSY8rawValue03RawB0QzvgTq
 _$sSo19NSKeyValueChangeKeyaSYSCMc
+_got.$ss20_SwiftNewtypeWrapperMp
+_got.$ss20_SwiftNewtypeWrapperPSYTb
+_got.$ss20_SwiftNewtypeWrapperPs35_HasCustomAnyHashableRepresentationTb
 _$sSo19NSKeyValueChangeKeyas20_SwiftNewtypeWrapperSCMc
+_got.$sSQ2eeoiySbx_xtFZTq
 _$sSo19NSKeyValueChangeKeyaSQSCMc
 _symbolic $ss21_ObjectiveCBridgeableP
 _$sSo19NSKeyValueChangeKeyas21_ObjectiveCBridgeableSCMA
+_got.$ss21_ObjectiveCBridgeableMp
+_got.$s15_ObjectiveCTypes01_A11CBridgeablePTl
+_got.$ss21_ObjectiveCBridgeableP09_bridgeToA1C01_A5CTypeQzyFTq
+_got.$ss21_ObjectiveCBridgeableP016_forceBridgeFromA1C_6resulty01_A5CTypeQz_xSgztFZTq
+_got.$ss21_ObjectiveCBridgeableP024_conditionallyBridgeFromA1C_6resultSb01_A5CTypeQz_xSgztFZTq
+_got.$ss21_ObjectiveCBridgeableP026_unconditionallyBridgeFromA1Cyx01_A5CTypeQzSgFZTq
 _$sSo19NSKeyValueChangeKeyas21_ObjectiveCBridgeableSCMc
 _$sSo21NSAttributedStringKeyas35_HasCustomAnyHashableRepresentationSCMc
 _$sSo21NSAttributedStringKeyaSYSCMA
@@ -478,16 +508,45 @@ _$sSo21NSAttributedStringKeyas21_ObjectiveCBridgeableSCMA
 _$sSo21NSAttributedStringKeyas21_ObjectiveCBridgeableSCMc
 _symbolic $ss25ExpressibleByArrayLiteralP
 _$sSo18UIViewAutoresizingVs25ExpressibleByArrayLiteralSCMA
+_got.$ss25ExpressibleByArrayLiteralMp
 _$s5UIKitMXM
+_got.$s19ArrayLiteralElements013ExpressibleByaB0PTl
+_got.$ss25ExpressibleByArrayLiteralP05arrayD0x0cD7ElementQzd_tcfCTq
 _$sSo18UIViewAutoresizingVs25ExpressibleByArrayLiteralSCMc
 _$sSo18UIViewAutoresizingVSQSCMc
 _symbolic $ss10SetAlgebraP
 _$sSo18UIViewAutoresizingVs10SetAlgebraSCMA
+_got.$ss10SetAlgebraMp
+_got.$ss10SetAlgebraPSQTb
+_got.$ss10SetAlgebraPs25ExpressibleByArrayLiteralTb
+_got.$s7Elements10SetAlgebraPTl
+_got.$ss10SetAlgebraPxycfCTq
+_got.$ss10SetAlgebraP8containsySb7ElementQzFTq
+_got.$ss10SetAlgebraP5unionyxxnFTq
+_got.$ss10SetAlgebraP12intersectionyxxFTq
+_got.$ss10SetAlgebraP19symmetricDifferenceyxxnFTq
+_got.$ss10SetAlgebraP6insertySb8inserted_7ElementQz17memberAfterInserttAFnFTq
+_got.$ss10SetAlgebraP6removey7ElementQzSgAEFTq
+_got.$ss10SetAlgebraP6update4with7ElementQzSgAFn_tFTq
+_got.$ss10SetAlgebraP9formUnionyyxnFTq
+_got.$ss10SetAlgebraP16formIntersectionyyxFTq
+_got.$ss10SetAlgebraP23formSymmetricDifferenceyyxnFTq
+_got.$ss10SetAlgebraP11subtractingyxxFTq
+_got.$ss10SetAlgebraP8isSubset2ofSbx_tFTq
+_got.$ss10SetAlgebraP10isDisjoint4withSbx_tFTq
+_got.$ss10SetAlgebraP10isSuperset2ofSbx_tFTq
+_got.$ss10SetAlgebraP7isEmptySbvgTq
+_got.$ss10SetAlgebraPyxqd__ncSTRd__7ElementQyd__ACRtzlufCTq
+_got.$ss10SetAlgebraP8subtractyyxFTq
 _$sSo18UIViewAutoresizingVs10SetAlgebraSCMc
 _$sSo18UIViewAutoresizingVSYSCMA
 _$sSo18UIViewAutoresizingVSYSCMc
 _symbolic $ss9OptionSetP
 _$sSo18UIViewAutoresizingVs9OptionSetSCMA
+_got.$ss9OptionSetMp
+_got.$ss9OptionSetPSYTb
+_got.$ss9OptionSetPs0B7AlgebraTb
+_got.$ss9OptionSetP8rawValuex03RawD0Qz_tcfCTq
 _$sSo18UIViewAutoresizingVs9OptionSetSCMc
 _$sSo25UITableViewRowActionStyleVSQSCMc
 _$sSo25UITableViewRowActionStyleVSYSCMA
@@ -495,13 +554,18 @@ _$sSo25UITableViewRowActionStyleVSYSCMc
 _$sSo16UITableViewStyleVSQSCMc
 _$sSo16UITableViewStyleVSYSCMA
 _$sSo16UITableViewStyleVSYSCMc
+_got.$sSHMp
+_got.$sSHSQTb
+_got.$sSH9hashValueSivgTq
+_got.$sSH4hash4intoys6HasherVz_tFTq
+_got.$sSH13_rawHashValue4seedS2i_tFTq
 _$sSo21NSAttributedStringKeyaSHSCMc
 _$sSo19NSKeyValueChangeKeyaSHSCMc
 ___swift_reflection_version
-Apple clang version 11.0.0 (clang-1100.0.33.7)
+Apple clang version 11.0.0 (clang-1100.0.33.9)
 <swift-imported-modules>
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka
-Apple Swift version 5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/PickerInlineRow.swift
 $s6Eureka15PickerInlineRowC3tagACyxGSSSg_tcfcyAA0bC4CellCyxG_AeA0bD0CyxGtcfU_yAI_AeLtcfU_TA
 <compiler-generated>
@@ -968,6 +1032,7 @@ _$s6Eureka18PopoverSelectorRowCyxGAA0D4TypeAAWp
 _symbolic 6Eureka11SelectorRowCyxG
 _$s6Eureka19_PopoverSelectorRowCMI
 _symbolic 6Eureka8BaseCellC
+_got.$s6Eureka7BaseRowC9didSelectyyFTq
 _$s6Eureka19_PopoverSelectorRowCMP
 _symbolic _____ 6Eureka19_PopoverSelectorRowC
 _$s6Eureka19_PopoverSelectorRowCMF
@@ -1187,7 +1252,7 @@ $ss12_ArrayBufferV21needsElementTypeCheckSbvgSo18NSLayoutConstraintC_Tg5
 $ss22_ContiguousArrayBufferV19_uninitializedCount15minimumCapacityAByxGSi_SitcfCSo18NSLayoutConstraintC_Tg5Tf4nnd_n
 $ss22_ContiguousArrayBufferV18_initStorageHeader5count8capacityySi_SitFSo18NSLayoutConstraintC_Tg5
 _swift_stdlib_malloc_size
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/usr/lib/swift/shims/LibcShims.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/shims/LibcShims.h
 $ss23_ContiguousArrayStorageCySo18NSLayoutConstraintCGMa
 $ss22_ContiguousArrayBufferVAByxGycfCSo18NSLayoutConstraintC_Tg5
 $ss17_NativeDictionaryV7_insert2at3key5valueys10_HashTableV6BucketV_xnq_ntFSS_yXlTg5
@@ -1383,6 +1448,8 @@ _$s6Eureka12RuleRequiredVMF
 _symbolic 6Eureka12RuleRequiredV
 _symbolic $s6Eureka8RuleTypeP
 _$s6Eureka12RuleRequiredVyxGAA0B4TypeAAMA
+_got.$s6Eureka8RuleTypeMp
+_got.$s6Eureka12BaseRuleTypeMp
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Validations/RuleRequired.swift
 $s6Eureka12RuleRequiredVMa
 $s6Eureka12RuleRequiredVwst
@@ -1443,6 +1510,7 @@ _symbolic 4Cell6Eureka12TypedRowTypeP_5ValueAB0caE0PQZ
 _$s6Eureka23SelectorAlertControllerCyxGAA08TypedRowD4TypeAAWp
 _symbolic $s6Eureka23AlertOptionsProviderRowP
 _$s6Eureka23AlertOptionsProviderRow_pMF
+_got.$s6Eureka18OptionsProviderRowMp
 l_OBJC_LABEL_PROTOCOL_$_NSObject
 l_OBJC_PROTOCOL_REFERENCE_$_NSObject
 _symbolic So17UIAlertControllerC
@@ -1457,6 +1525,8 @@ _$s6Eureka23SelectorAlertControllerCMF
 _symbolic 6Eureka23SelectorAlertControllerC
 _symbolic $s6Eureka22TypedRowControllerTypeP
 _$s6Eureka23SelectorAlertControllerCyxGAA08TypedRowD4TypeAAMA
+_got.$s6Eureka22TypedRowControllerTypeMp
+_got.$s6Eureka17RowControllerTypeMp
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/Controllers/SelectorAlertController.swift
 $s6Eureka23SelectorAlertControllerCMr
 $s6Eureka23SelectorAlertControllerCMi
@@ -1734,6 +1804,7 @@ _symbolic $s6Eureka18InputTypeInitiableP
 _$s6Eureka18InputTypeInitiable_pMF
 _symbolic $s6Eureka19FieldRowConformanceP
 _$s6Eureka19FieldRowConformance_pMF
+_got.$s6Eureka20FormatterConformanceMp
 _symbolic 6Eureka3RowCyxG
 _$s6Eureka15FormatteableRowCMI
 _$s6Eureka15FormatteableRowCMP
@@ -1756,6 +1827,9 @@ _$s6Eureka10_FieldCellC25calculatedTitlePercentage33_3A88909586E8B5678F695AC90DD
 l_OBJC_LABEL_PROTOCOL_$_UITextFieldDelegate
 l_OBJC_PROTOCOL_REFERENCE_$_UITextFieldDelegate
 _$s6Eureka10_FieldCellCMI
+_got.$s6Eureka8BaseCellC27cellCanBecomeFirstResponderSbyFTq
+_got.$s6Eureka8BaseCellC24cellBecomeFirstResponder13withDirectionSbAA0I0O_tFTq
+_got.$s6Eureka8BaseCellC24cellResignFirstResponderSbyFTq
 _$s6Eureka10_FieldCellCMP
 _symbolic _____ 6Eureka10_FieldCellC
 _symbolic So11UITextFieldCSgXw
@@ -1811,6 +1885,12 @@ _$sSS8UTF8ViewVABSlsWL
 _$sS2is17FixedWidthIntegersWL
 _$ss16IndexingIteratorVySS8UTF8ViewVGAByxGStsWL
 _$ss5UInt8VABSUsWL
+_got.$sSiMn
+_got.$sSfMn
+_got.$sSSMn
+_got.$s10Foundation3URLVMn
+_got.$sSdMn
+_got.$s6Eureka21KeyboardReturnHandlerMp
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/Common/FieldRow.swift
 $s5Value6Eureka13TypedCellTypePQzSgAB04BaseD0CRbzAB0dE0RzAB09TextInputD0RzlWOh
 $s5Value6Eureka13TypedCellTypePQzSgAB04BaseD0CRbzAB0dE0RzAB09TextInputD0RzlWOc
@@ -1956,6 +2036,7 @@ $sSa13_adoptStorage_5countSayxG_SpyxGts016_ContiguousArrayB0CyxGn_SitFZSo21NSAtt
 $ss22_ContiguousArrayBufferV5count7storageAByxGSi_s01_aB7StorageCyxGtcfCSo21NSAttributedStringKeya_ypt_Tg5
 $ss22_ContiguousArrayBufferV18_initStorageHeader5count8capacityySi_SitFSo21NSAttributedStringKeya_ypt_Tg5
 $ss23_ContiguousArrayStorageCySo21NSAttributedStringKeya_yptGMa
+_stdlib_isOSVersionAtLeast
 value.get
 Source/Core/Row.swift
 $s6Eureka5RowOfCySSGMa
@@ -2156,6 +2237,7 @@ _associated conformance 6Eureka23_SelectorViewControllerCyxq_GAA08TypedRowD4Type
 _$s6Eureka23_SelectorViewControllerCyxq_GAA08TypedRowD4TypeAAWp
 _symbolic $s6Eureka18OptionsProviderRowP
 _$s6Eureka18OptionsProviderRow_pMF
+_got.$s6Eureka12TypedRowTypeMp
 _symbolic 19OptionsProviderType_____Qz 6Eureka18OptionsProviderRowP
 _symbolic $s6Eureka26OptionsProviderConformanceP
 _$s6Eureka26OptionsProviderConformance_pMF
@@ -2170,7 +2252,10 @@ _symbolic y6Eureka18FormViewControllerC_ySayxGSgctc
 _$s6Eureka15OptionsProviderOMF
 _symbolic 6Eureka18FormViewControllerC
 _$s6Eureka23_SelectorViewControllerCMI
+_got.$s6Eureka17SelectableRowTypeMp
 _symbolic 19OptionsProviderType______6Option_____QY_ 6Eureka18OptionsProviderRowP AA0bC11ConformanceP
+_got.$s6Eureka18FormViewControllerCMn
+_got.$s6Eureka18FormViewControllerC5styleACSo07UITableC5StyleV_tcfCTq
 _$s6Eureka23_SelectorViewControllerCMP
 _symbolic _____ 6Eureka23_SelectorViewControllerC
 _symbolic yxcSg
@@ -2305,6 +2390,7 @@ _$s6Eureka16DecimalFormatterCMF
 _$sS2SSysWL
 _$sSaySSGML
 _$sSaySSGSayxGSKsWL
+_got.$s6Eureka17FormatterProtocolMp
 _objc_classes
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/Common/DecimalFormatter.swift
 getObjectValue
@@ -3036,12 +3122,35 @@ _$ss23_ContiguousArrayStorageCy6Eureka7BaseRowCGML
 _symbolic 6Eureka9ConditionO
 _symbolic $ss27ExpressibleByBooleanLiteralP
 _$s6Eureka9ConditionOs27ExpressibleByBooleanLiteralAAMA
+_got.$ss27ExpressibleByBooleanLiteralMp
+_got.$ss27ExpressibleByBooleanLiteralP0cD4TypeAB_s01_ab7BuiltincD0Tn
+_got.$s18BooleanLiteralTypes013ExpressibleByaB0PTl
+_got.$ss27ExpressibleByBooleanLiteralP07booleanD0x0cD4TypeQz_tcfCTq
 _symbolic $ss26ExpressibleByStringLiteralP
 _$s6Eureka9ConditionOs26ExpressibleByStringLiteralAAMA
+_got.$ss26ExpressibleByStringLiteralMp
+_got.$ss26ExpressibleByStringLiteralPs0ab23ExtendedGraphemeClusterD0Tb
+_got.$ss26ExpressibleByStringLiteralP0cD4TypeAB_s01_ab7BuiltincD0Tn
+_got.$s17StringLiteralTypes013ExpressibleByaB0PTl
+_got.$ss26ExpressibleByStringLiteralP06stringD0x0cD4TypeQz_tcfCTq
 _symbolic $ss43ExpressibleByExtendedGraphemeClusterLiteralP
 _$s6Eureka9ConditionOs43ExpressibleByExtendedGraphemeClusterLiteralAAMA
+_got.$ss43ExpressibleByExtendedGraphemeClusterLiteralMp
+_got.$ss43ExpressibleByExtendedGraphemeClusterLiteralPs0ab13UnicodeScalarF0Tb
+_got.$ss43ExpressibleByExtendedGraphemeClusterLiteralP0cdeF4TypeAB_s01_ab7BuiltincdeF0Tn
+_got.$s34ExtendedGraphemeClusterLiteralTypes013ExpressibleByabcD0PTl
+_got.$ss43ExpressibleByExtendedGraphemeClusterLiteralP08extendeddeF0x0cdeF4TypeQz_tcfCTq
 _symbolic $ss33ExpressibleByUnicodeScalarLiteralP
 _$s6Eureka9ConditionOs33ExpressibleByUnicodeScalarLiteralAAMA
+_got.$ss33ExpressibleByUnicodeScalarLiteralMp
+_got.$ss33ExpressibleByUnicodeScalarLiteralP0cdE4TypeAB_s01_ab7BuiltincdE0Tn
+_got.$s24UnicodeScalarLiteralTypes013ExpressibleByabC0PTl
+_got.$ss33ExpressibleByUnicodeScalarLiteralP07unicodedE0x0cdE4TypeQz_tcfCTq
+_got.$ss5ErrorMp
+_got.$ss5ErrorP7_domainSSvgTq
+_got.$ss5ErrorP5_codeSivgTq
+_got.$ss5ErrorP9_userInfoyXlSgvgTq
+_got.$ss5ErrorP19_getEmbeddedNSErroryXlSgyFTq
 _$s6Eureka20RowNavigationOptionsVs9OptionSetAAMA
 _$s6Eureka20RowNavigationOptionsVSYAAMA
 _$s6Eureka20RowNavigationOptionsVs10SetAlgebraAAMA
@@ -3050,6 +3159,7 @@ _$s6Eureka20InlineRowHideOptionsVs9OptionSetAAMA
 _$s6Eureka20InlineRowHideOptionsVSYAAMA
 _$s6Eureka20InlineRowHideOptionsVs10SetAlgebraAAMA
 _$s6Eureka20InlineRowHideOptionsVs25ExpressibleByArrayLiteralAAMA
+_got.$s6Eureka12FormDelegateMp
 _$s6Eureka13ConditionTypeOSHAAMc
 _$s6Eureka13ConditionTypeOSQAAMc
 _objc_categories
@@ -3205,7 +3315,6 @@ $s6Eureka17BaseInlineRowType_pMa
 $s6Eureka18FormViewControllerC05tableC0_6commit8forRowAtySo07UITableC0C_So0jC16CellEditingStyleV10Foundation9IndexPathVtFyycfU_TA
 $s6Eureka18FormViewControllerC05tableC0_6commit8forRowAtySo07UITableC0C_So0jC16CellEditingStyleV10Foundation9IndexPathVtFyycfU_
 objectdestroy.18
-_stdlib_isOSVersionAtLeast
 $s6Eureka29HeaderFooterViewRepresentable_pSgWOc
 $s6Eureka18FormViewControllerC14viewWillAppearyySbFySo06UIViewD28TransitionCoordinatorContext_pcfU1_TA
 objectdestroy.12
@@ -3910,12 +4019,78 @@ _$ss23_ContiguousArrayStorageCySay6Eureka7BaseRowCGGML
 _symbolic 6Eureka4FormC
 _symbolic $sSl
 _$s6Eureka4FormCSlAAMA
+_got.$sSlMp
+_got.$sSlSTTb
+_got.$sSl5IndexSl_SLTn
+_got.$sSl7IndicesSl_SlTn
+_got.$sSl11SubSequenceSl_SlTn
+_got.$s5IndexSlTl
+_got.$s11SubSequenceSlTl
+_got.$s7IndicesSlTl
+_got.$sSl10startIndex0B0QzvgTq
+_got.$sSl8endIndex0B0QzvgTq
+_got.$sSly7ElementQz5IndexQzcirTq
+_got.$sSly11SubSequenceQzSny5IndexQzGcigTq
+_got.$sSl7indices7IndicesQzvgTq
+_got.$sSl7isEmptySbvgTq
+_got.$sSl5countSivgTq
+_got.$sSl30_customIndexOfEquatableElementy0B0QzSgSg0E0QzFTq
+_got.$sSl34_customLastIndexOfEquatableElementy0C0QzSgSg0F0QzFTq
+_got.$sSl5index_8offsetBy5IndexQzAD_SitFTq
+_got.$sSl5index_8offsetBy07limitedC05IndexQzSgAE_SiAEtFTq
+_got.$sSl8distance4from2toSi5IndexQz_AEtFTq
+_got.$sSl20_failEarlyRangeCheck_6boundsy5IndexQz_SnyADGtFTq
+_got.$sSl20_failEarlyRangeCheck_6boundsy5IndexQz_SNyADGtFTq
+_got.$sSl20_failEarlyRangeCheck_6boundsySny5IndexQzG_AEtFTq
+_got.$sSl5index5after5IndexQzAD_tFTq
+_got.$sSl9formIndex5aftery0B0Qzz_tFTq
 _symbolic $sST
 _$s6Eureka4FormCSTAAMA
+_got.$sSTMp
+_got.$sST8IteratorST_StTn
+_got.$s7ElementSTTl
+_got.$s8IteratorSTTl
+_got.$sST12makeIterator0B0QzyFTq
+_got.$sST19underestimatedCountSivgTq
+_got.$sST31_customContainsEquatableElementySbSg0D0QzFTq
+_got.$sST22_copyToContiguousArrays0cD0Vy7ElementQzGyFTq
+_got.$sST13_copyContents12initializing8IteratorQz_SitSry7ElementQzG_tFTq
+_got.$sST32withContiguousStorageIfAvailableyqd__Sgqd__SRy7ElementQzGKXEKlFTq
 _symbolic $sSM
 _$s6Eureka4FormCSMAAMA
+_got.$sSMMp
+_got.$sSMSlTb
+_got.$sSM11SubSequenceSl_SMTn
+_got.$sSMy7ElementQz5IndexQzcisTq
+_got.$sSMy7ElementQz5IndexQzciMTq
+_got.$sSMy11SubSequenceQzSny5IndexQzGcisTq
+_got.$sSMy11SubSequenceQzSny5IndexQzGciMTq
+_got.$sSM9partition2by5IndexQzSb7ElementQzKXE_tKFTq
+_got.$sSM6swapAtyy5IndexQz_ACtFTq
+_got.$sSM42_withUnsafeMutableBufferPointerIfSupportedyqd__Sgqd__Sry7ElementQzGzKXEKlFTq
+_got.$sSM39withContiguousMutableStorageIfAvailableyqd__Sgqd__Sry7ElementQzGzKXEKlFTq
 _symbolic $sSm
 _$s6Eureka4FormCSmAAMA
+_got.$sSmMp
+_got.$sSmSlTb
+_got.$sSm11SubSequenceSl_SmTn
+_got.$sSmxycfCTq
+_got.$sSm15replaceSubrange_4withySny5IndexQzG_qd__ntSlRd__7ElementQyd__AFRtzlFTq
+_got.$sSm15reserveCapacityyySiFTq
+_got.$sSm9repeating5countx7ElementQz_SitcfCTq
+_got.$sSmyxqd__cSTRd__7ElementQyd__AARtzlufCTq
+_got.$sSm6appendyy7ElementQznFTq
+_got.$sSm6append10contentsOfyqd__n_tSTRd__7ElementQyd__ACRtzlFTq
+_got.$sSm6insert_2aty7ElementQzn_5IndexQztFTq
+_got.$sSm6insert10contentsOf2atyqd__n_5IndexQztSlRd__7ElementQyd__AFRtzlFTq
+_got.$sSm6remove2at7ElementQz5IndexQz_tFTq
+_got.$sSm14removeSubrangeyySny5IndexQzGFTq
+_got.$sSm17_customRemoveLast7ElementQzSgyFTq
+_got.$sSm17_customRemoveLastySbSiFTq
+_got.$sSm11removeFirst7ElementQzyFTq
+_got.$sSm11removeFirstyySiFTq
+_got.$sSm9removeAll15keepingCapacityySb_tFTq
+_got.$sSm9removeAll5whereySb7ElementQzKXE_tKFTq
 _$s6Eureka4FormC10KVOWrapperC8sectionsSo14NSMutableArrayCvgTq
 _$s6Eureka4FormC10KVOWrapperC12_allSectionsSayAA7SectionCGvgTq
 _$s6Eureka4FormC10KVOWrapperC12_allSectionsSayAA7SectionCGvsTq
@@ -4802,6 +4977,7 @@ _symbolic _____ 6Eureka15_PickerInputRowC
 _$s6Eureka15_PickerInputRowCMF
 _symbolic _____yxG 6Eureka15_PickerInputRowC
 _$s6Eureka14PickerInputRowCMI
+_got.$s6Eureka18InputTypeInitiableMp
 _$s6Eureka14PickerInputRowCMP
 _symbolic _____ 6Eureka14PickerInputRowC
 _$s6Eureka14PickerInputRowCMF
@@ -4983,6 +5159,11 @@ _symbolic _____ 6Eureka5TupleV
 _$s6Eureka5TupleVMF
 _symbolic 6Eureka11_PickerCellCy_____yxq_GG 6Eureka5TupleV
 _$s6Eureka16DoublePickerCellCMI
+_got.$s6Eureka11_PickerCellCMn
+_got.$s6Eureka11_PickerCellC18numberOfComponents2inSiSo12UIPickerViewC_tFTq
+_got.$s6Eureka11_PickerCellC10pickerView_23numberOfRowsInComponentSiSo08UIPickerE0C_SitFTq
+_got.$s6Eureka11_PickerCellC10pickerView_11titleForRow12forComponentSSSgSo08UIPickerE0C_S2itFTq
+_got.$s6Eureka11_PickerCellC10pickerView_12didSelectRow11inComponentySo08UIPickerE0C_S2itFTq
 _$s6Eureka16DoublePickerCellCMP
 _symbolic _____ 6Eureka16DoublePickerCellC
 _$s6Eureka16DoublePickerCellCMF
@@ -5138,6 +5319,7 @@ _symbolic 6Eureka9_AlertRowCyxGSgXwz_x_AA8BaseCellCRbzAA0E4TypeRzlXX
 _symbolic 6Eureka9_AlertRowC
 _symbolic $s6Eureka16PresenterRowTypeP
 _$s6Eureka9_AlertRowCyxGAA09PresenterC4TypeAAMA
+_got.$s6Eureka16PresenterRowTypeMp
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/AlertRow.swift
 $s6Eureka9_AlertRowC16presentationModeAA012PresentationE0OyAA08SelectorB10ControllerCyACyxGGGSgvgALyXEfU_ySo06UIViewH0CcfU0_TA
 $s6Eureka9_AlertRowC16presentationModeAA012PresentationE0OyAA08SelectorB10ControllerCyACyxGGGSgvgALyXEfU_AJycfU_TA
@@ -5373,6 +5555,7 @@ _$s6Eureka19TextAreaConformance_pMF
 _$s6Eureka19TextAreaConformanceMp
 _symbolic $s6Eureka8AreaCellP
 _$s6Eureka8AreaCell_pMF
+_got.$s6Eureka13TextInputCellMp
 l_OBJC_LABEL_PROTOCOL_$_UITextViewDelegate
 l_OBJC_PROTOCOL_REFERENCE_$_UITextViewDelegate
 _$s6Eureka13_TextAreaCellCMI
@@ -5550,9 +5733,11 @@ _$s6Eureka5RowOfCySfGML
 _$s6Eureka5RowOfCySdGML
 _$s6Eureka5RowOfCy10Foundation4DateVGML
 _$s10Foundation4DateVACSQAAWL
+_got.$s6Eureka12BaseCellTypeMp
 _symbolic 6Eureka4CellC
 _symbolic $s6Eureka13TypedCellTypeP
 _$s6Eureka4CellCyxGAA05TypedB4TypeAAMA
+_got.$s6Eureka13TypedCellTypeMp
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Core/Cell.swift
 $s10Foundation4DateVSgWOc
 $s10Foundation4DateVSgWOh
@@ -5672,6 +5857,7 @@ _$s6Eureka18CountDownPickerRowCMf
 _symbolic _____ 6Eureka18CountDownPickerRowC
 _$s6Eureka18CountDownPickerRowCMF
 _$sSo12UIDatePickerCML
+_got.$s6Eureka21DatePickerRowProtocolMp
 _$s6Eureka14DatePickerCellC04dateC12ValueChangedyySo06UIDateC0CFTq
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/DatePickerRow.swift
 $s6Eureka13DatePickerRowCMr
@@ -5812,6 +5998,11 @@ _$s6Eureka21_DoublePickerInputRowC021displayValueForSecondE0ySSq_cvpfiSSq_cfU_TA
 _$s6Eureka20DoublePickerInputRowCyxq_GAA0E4TypeAAWp
 _symbolic 6Eureka16_PickerInputCellCyAA5TupleVyxq_GG
 _$s6Eureka21DoublePickerInputCellCMI
+_got.$s6Eureka16_PickerInputCellCMn
+_got.$s6Eureka16_PickerInputCellC18numberOfComponents2inSiSo12UIPickerViewC_tFTq
+_got.$s6Eureka16_PickerInputCellC10pickerView_23numberOfRowsInComponentSiSo08UIPickerF0C_SitFTq
+_got.$s6Eureka16_PickerInputCellC10pickerView_11titleForRow12forComponentSSSgSo08UIPickerF0C_S2itFTq
+_got.$s6Eureka16_PickerInputCellC10pickerView_12didSelectRow11inComponentySo08UIPickerF0C_S2itFTq
 _$s6Eureka21DoublePickerInputCellCMP
 _symbolic _____ 6Eureka21DoublePickerInputCellC
 _$s6Eureka21DoublePickerInputCellCMF
@@ -6859,8 +7050,6 @@ _$s6Eureka23NavigationAccessoryViewCAA0bC0A2aDP11nextEnabledSbvgTW
 _$s6Eureka23NavigationAccessoryViewCAA0bC0A2aDP11nextEnabledSbvsTW
 _$s6Eureka23NavigationAccessoryViewCAA0bC0A2aDP11nextEnabledSbvMTW
 _$s6Eureka23NavigationAccessoryViewCAA0bC0A2aDP11nextEnabledSbvMTW.resume.0
-_$s6Eureka23NavigationAccessoryViewC15previousEnabledSbvsTf4dn_n
-_$s6Eureka23NavigationAccessoryViewC11nextEnabledSbvsTf4dn_n
 _$s6Eureka23NavigationAccessoryViewC5frameACSo6CGRectV_tcfcTf4xn_n
 _$s6Eureka23NavigationAccessoryViewC5coderACSgSo7NSCoderC_tcfcTf4gn_n
 _$sIeg_SgWOy
@@ -6898,14 +7087,14 @@ $ss22_ContiguousArrayBufferV19firstElementAddressSpyxGvgSo15UIBarButtonItemC_Tg5
 $ss22_ContiguousArrayBufferV5count7storageAByxGSi_s01_aB7StorageCyxGtcfCSo15UIBarButtonItemC_Tg5
 $ss22_ContiguousArrayBufferV18_initStorageHeader5count8capacityySi_SitFSo15UIBarButtonItemC_Tg5
 $ss23_ContiguousArrayStorageCySo15UIBarButtonItemCGMa
-nextEnabled.set
-nextEnabled.get
-nextButton.get
-previousEnabled.set
-previousEnabled.get
-previousButton.get
 nextEnabled.modify
+nextEnabled.set
+nextButton.get
+nextEnabled.get
 previousEnabled.modify
+previousEnabled.set
+previousButton.get
+previousEnabled.get
 previousClosure.modify
 doneClosure.set
 doneClosure.get
@@ -7040,8 +7229,9 @@ $sSo9UIStepperCMa
 $sSo7UILabelCMa
 shouldShowTitle.get
 $sSdSgSSSgIegno_AaBIegyo_TR
-stepper.set
+setupValueLabel
 valueLabel.set
+stepper.set
 $s6Eureka11StepperCellC5style15reuseIdentifierACSo011UITableViewC5StyleV_SSSgtcfcy10Foundation12NotificationVcfU_
 $s6Eureka11StepperCellC7stepperSo9UIStepperCSgvsTo
 $s6Eureka11StepperCellC7stepperSo9UIStepperCSgvgTo
@@ -7069,6 +7259,7 @@ _$s6Eureka15AlertOptionsRowCMI
 _$s6Eureka15AlertOptionsRowCMP
 _symbolic _____ 6Eureka15AlertOptionsRowC
 _$s6Eureka15AlertOptionsRowCMF
+_got.$s6Eureka23AlertOptionsProviderRowMp
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Rows/Common/AlertOptionsRow.swift
 $s6Eureka15AlertOptionsRowCMr
 $s6Eureka15AlertOptionsRowCMi
@@ -7279,6 +7470,8 @@ _$s6Eureka21_ButtonRowWithPresentCyxGAA09PresenterC4TypeAAWp
 _$s6Eureka20ButtonRowWithPresentCyxGAA0C4TypeAAWp
 _symbolic 6Eureka3RowCyAA12ButtonCellOfCy0B5ValueAA05TypedB14ControllerTypePQzGG
 _$s6Eureka21_ButtonRowWithPresentCMI
+_got.$s6Eureka3RowC16customUpdateCellyyFTq
+_got.$s6Eureka7BaseRowC7prepare3forySo17UIStoryboardSegueC_tFTq
 _$s6Eureka21_ButtonRowWithPresentCMP
 _symbolic _____ 6Eureka21_ButtonRowWithPresentC
 _symbolic 6Eureka16PresentationModeOyxGSg
@@ -7397,6 +7590,8 @@ _symbolic 10ObjectiveC8ObjCBoolVIeyBy_
 _symbolic So20UITableViewRowActionC
 _symbolic 10Foundation9IndexPathVz_Xx
 _$ss23_ContiguousArrayStorageCy6Eureka16ContextualAction_pGML
+_got.$sSo25UITableViewRowActionStyleVMn
+_got.$sSo23UIContextualActionStyleVMn
 _$s6Eureka11SwipeActionC010contextualC06forRowAA010ContextualC0_pAA04BaseF0C_tFTq
 _$s6Eureka16ContextualActionTL
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Core/SwipeActions.swift
@@ -7633,6 +7828,7 @@ _symbolic yx_6Eureka7SectionCtcSg
 _$s6Eureka16HeaderFooterViewVMF
 _symbolic 6Eureka16HeaderFooterViewV
 _$s6Eureka16HeaderFooterViewVyxGs26ExpressibleByStringLiteralAAMA
+_got.$s6Eureka29HeaderFooterViewRepresentableMp
 _$s6Eureka16HeaderFooterViewVyxGs43ExpressibleByExtendedGraphemeClusterLiteralAAMA
 _$s6Eureka16HeaderFooterViewVyxGs33ExpressibleByUnicodeScalarLiteralAAMA
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/Eureka/Source/Core/HeaderFooterView.swift
@@ -7860,6 +8056,7 @@ _$s6Eureka15RuleSmallerThanVyxGAA0B4TypeAAWp
 _$s6Eureka22RuleSmallerOrEqualThanVyxGAA0B4TypeAAWp
 _$s6Eureka15RuleGreaterThanVWV
 _$s6Eureka15RuleGreaterThanVMI
+_got.$sSLMp
 _$s6Eureka15RuleGreaterThanVMP
 _symbolic _____ 6Eureka15RuleGreaterThanV
 _$s6Eureka15RuleGreaterThanVMF
@@ -8219,6 +8416,14 @@ _symbolic $s6Eureka21SelectableSectionTypeP
 _$s6Eureka21SelectableSectionType_pMF
 _symbolic 13SelectableRow_____Qz 6Eureka21SelectableSectionTypeP
 _$s6Eureka17SelectableSectionCMI
+_got.$s6Eureka7SectionCMn
+_got.$s6Eureka7SectionCyACyACccfCTq
+_got.$s6Eureka7SectionCACycfCTq
+_got.$s6Eureka7SectionCyACxcSTRzAA7BaseRowC7ElementRtzlufCTq
+_got.$s6Eureka7SectionC17rowsHaveBeenAdded_2atySayAA7BaseRowCG_10Foundation8IndexSetVtFTq
+_got.$s6Eureka7SectionCyACSS_yACctcfCTq
+_got.$s6Eureka7SectionC6header6footer_ACSS_SSyACXEtcfCTq
+_got.$s6Eureka7SectionC6footer_ACSS_yACXEtcfCTq
 _$s6Eureka17SelectableSectionCMP
 _symbolic _____ 6Eureka17SelectableSectionC
 _$s6Eureka17SelectableSectionCMF
@@ -8307,6 +8512,8 @@ expandInlineRow
 makeRowVisible
 onExpandInlineRow
 onCollapseInlineRow
+_got.$s6Eureka10RuleRegExpCMn
+_got.$s6Eureka10RuleRegExpC7regExpr11allowsEmpty3msg2idACSS_SbS2SSgtcfCTq
 _$s6Eureka9RuleEmailCML
 _$s6Eureka9RuleEmailCMf
 _symbolic _____ 6Eureka9RuleEmailC
@@ -8737,6 +8944,7 @@ _associated conformance 6Eureka18MultivaluedOptionsVs10SetAlgebraAASQ
 _$s6Eureka18MultivaluedOptionsVACs25ExpressibleByArrayLiteralAAWL
 _associated conformance 6Eureka18MultivaluedOptionsVs10SetAlgebraAAs25ExpressibleByArrayLiteral
 _symbolic 6Eureka18MultivaluedOptionsV
+_got.$s6Eureka7SectionC4formAA4FormCSgvgTq
 _symbolic $s6Eureka15SectionDelegateP
 _$s6Eureka15SectionDelegate_pMF
 _OBJC_METACLASS_$__TtCC6Eureka7Section10KVOWrapper
@@ -8778,9 +8986,20 @@ _$s6Eureka11ButtonRowOfCySSGML
 _$s6Eureka11ButtonRowOfCySSGmML
 _$sSay6Eureka7BaseRowCGSayxGSmsWL
 _$s10Foundation25NSFastEnumerationIteratorVACStAAWL
+_got.$s6Eureka7HidableMp
+_got.$s6Eureka8TaggableMp
 _$s6Eureka7SectionCSMAAMA
 _symbolic $sSK
 _$s6Eureka7SectionCSKAAMA
+_got.$sSKMp
+_got.$sSKSlTb
+_got.$sSK7IndicesSl_SKTn
+_got.$sSK11SubSequenceSl_SKTn
+_got.$sSK5index6before5IndexQzAD_tFTq
+_got.$sSK9formIndex6beforey0B0Qzz_tFTq
+_got.$sSK5index_8offsetBy5IndexQzAD_SitFTq
+_got.$sSK5index_8offsetBy07limitedC05IndexQzSgAE_SiAEtFTq
+_got.$sSK8distance4from2toSi5IndexQz_AEtFTq
 _$s6Eureka7SectionCSlAAMA
 _$s6Eureka7SectionCSTAAMA
 _$s6Eureka7SectionCSmAAMA
@@ -9299,6 +9518,9 @@ _$s6Eureka7BaseRowCAA7HidableAAMc
 _$s6Eureka7BaseRowCAA7HidableAAWP
 _$s6Eureka7BaseRowCAA11DisableableAAMc
 _$s6Eureka7BaseRowCAA11DisableableAAWP
+_got.$s6Eureka7BaseRowC16validationErrorsSayAA15ValidationErrorVGvgTq
+_got.$s6Eureka7BaseRowC10wasBlurredSbvgTq
+_got.$s6Eureka7BaseRowC10wasChangedSbvgTq
 _$s6Eureka7BaseRowC16callbackOnChangeyycSgvpWvd
 _$s6Eureka7BaseRowC18callbackCellUpdateyycSgvpWvd
 _$s6Eureka7BaseRowC17callbackCellSetupypSgvpWvd
@@ -9326,6 +9548,8 @@ _$s6Eureka7BaseRowCMF
 _$sSo6NSNullCML
 _$ss18_DictionaryStorageCySS6Eureka7BaseRowCGML
 _$s6Eureka7BaseRowCmML
+_got.$s6Eureka11BaseRowTypeMp
+_got.$s6Eureka11DisableableMp
 _$s6Eureka7BaseRowC16callbackOnChangeyycSgvgTq
 _$s6Eureka7BaseRowC16callbackOnChangeyycSgvsTq
 _$s6Eureka7BaseRowC16callbackOnChangeyycSgvMTq
@@ -9652,7 +9876,12 @@ _$s6Eureka5RowOfC15displayValueForSSSgxSgcSgvM.resume.0
 _$s6Eureka5RowOfC10resetValuexSgvM.resume.0
 _associated conformance 6Eureka3RowCyxGAA05TypedB4TypeAA4Cell_AA0ceD0
 _$s6Eureka3RowCyxGAA05TypedB4TypeAAWp
+_got.$s6Eureka5RowOfC5rulesSayAA20ValidationRuleHelperVyxGGvgTq
 _$s6Eureka5RowOfCMI
+_got.$s6Eureka7BaseRowC9baseValueypSgvgTq
+_got.$s6Eureka7BaseRowC9baseValueypSgvsTq
+_got.$s6Eureka7BaseRowC9baseValueypSgvMTq
+_got.$s6Eureka7BaseRowC8validate7quietlySayAA15ValidationErrorVGSb_tFTq
 _$s6Eureka5RowOfCMP
 _symbolic _____ 6Eureka5RowOfC
 _symbolic SSSgxSgcSg
@@ -9660,6 +9889,8 @@ _symbolic Say6Eureka20ValidationRuleHelperVyxGG
 _$s6Eureka5RowOfCMF
 _symbolic _____y5Value6Eureka13TypedCellTypePQzG 6Eureka5RowOfC
 _$s6Eureka3RowCMI
+_got.$s6Eureka7BaseRowC8baseCellAA0bE0CSgvgTq
+_got.$s6Eureka7BaseRowC10updateCellyyFTq
 _$s6Eureka3RowCMP
 _symbolic _____ 6Eureka3RowC
 _symbolic 6Eureka12CellProviderVyxG
@@ -10314,15 +10545,15 @@ $s6Eureka13_DateFieldRowC3tagACSSSg_tcfcAE10Foundation0B0VSgcfU_
 $s6Eureka13_DateFieldRowCMa
 $s6Eureka8DateCellC23canBecomeFirstResponderSbvgTo
 $s6Eureka8DateCellC9inputViewSo6UIViewCSgvgTo
-Apple clang version 11.0.0 (clang-1100.0.33.8)
-/Users/ace/Library/Caches/org.carthage.CarthageKit/DerivedData/11.0_11A420a/Eureka/5.0.1/Build/Intermediates.noindex/ArchiveIntermediates/Eureka/IntermediateBuildFilesPath/Eureka.build/Release-iphoneos/Eureka.build/DerivedSources/Eureka_vers.c
+Apple clang version 11.0.0 (clang-1100.0.33.12)
+/Users/ace/Library/Caches/org.carthage.CarthageKit/DerivedData/11.2.1_11B500/Eureka/5.1.0/Build/Intermediates.noindex/ArchiveIntermediates/Eureka/IntermediateBuildFilesPath/Eureka.build/Release-iphoneos/Eureka.build/DerivedSources/Eureka_vers.c
 _swift_getFunctionReplacement50
 _swift_getOrigOfReplaceable50
-/BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/bin/clang-11 --driver-mode=g++ -D CMARK_STATIC_DEFINE -D GTEST_HAS_RTTI=0 -D __STDC_CONSTANT_MACROS -D __STDC_FORMAT_MACROS -D __STDC_LIMIT_MACROS -I stdlib/toolchain/CompatibilityDynamicReplacements -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/CompatibilityDynamicReplacements -I include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/llvm/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/llvm/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/cmark/src -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/cmark-macosx-x86_64/src -Wno-unknown-warning-option -Werror=unguarded-availability-new -fno-stack-protector -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -std=c++11 -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-class-memaccess -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -fdiagnostics-color -Werror=switch -Wdocumentation -Wimplicit-fallthrough -Wunreachable-code -Woverloaded-virtual -D OBJC_OLD_DISPATCH_PROTOTYPES=0 -fno-sanitize=all -D LLVM_DISABLE_ABI_BREAKING_CHECKS_ENFORCING=1 -O2 -D NDEBUG -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fno-exceptions -fno-rtti -Wall -Wglobal-constructors -Wexit-time-destructors -fvisibility=hidden -Wall -D SWIFT_TARGET_LIBRARY_NAME=swiftCompatibilityDynamicReplacements -fembed-bitcode=all --target=armv7-apple-ios7.0 -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk -arch armv7 -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/Library/Frameworks -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/AppleInternal/Library/Frameworks -miphoneos-version-min=7.0 -O2 -g -D NDEBUG -MD -MT stdlib/toolchain/CompatibilityDynamicReplacements/CMakeFiles/swiftCompatibilityDynamicReplacements-iphoneos-armv7.dir/DynamicReplaceable.cpp.o -MF stdlib/toolchain/CompatibilityDynamicReplacements/CMakeFiles/swiftCompatibilityDynamicReplacements-iphoneos-armv7.dir/DynamicReplaceable.cpp.o.d -o stdlib/toolchain/CompatibilityDynamicReplacements/CMakeFiles/swiftCompatibilityDynamicReplacements-iphoneos-armv7.dir/DynamicReplaceable.cpp.o -c /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/CompatibilityDynamicReplacements/DynamicReplaceable.cpp -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=512.4 -march=armv7a -stdlib=libc++
-/BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/CompatibilityDynamicReplacements/DynamicReplaceable.cpp
+/BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/bin/clang-11 --driver-mode=g++ -D CMARK_STATIC_DEFINE -D GTEST_HAS_RTTI=0 -D __STDC_CONSTANT_MACROS -D __STDC_FORMAT_MACROS -D __STDC_LIMIT_MACROS -I stdlib/toolchain/CompatibilityDynamicReplacements -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/CompatibilityDynamicReplacements -I include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/llvm/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/llvm/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/cmark/src -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/cmark-macosx-x86_64/src -Wno-unknown-warning-option -Werror=unguarded-availability-new -fno-stack-protector -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -std=c++11 -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-class-memaccess -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -fdiagnostics-color -Werror=switch -Wdocumentation -Wimplicit-fallthrough -Wunreachable-code -Woverloaded-virtual -D OBJC_OLD_DISPATCH_PROTOTYPES=0 -fno-sanitize=all -D LLVM_DISABLE_ABI_BREAKING_CHECKS_ENFORCING=1 -O2 -D NDEBUG -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fno-exceptions -fno-rtti -Wall -Wglobal-constructors -Wexit-time-destructors -fvisibility=hidden -Wall -D SWIFT_TARGET_LIBRARY_NAME=swiftCompatibilityDynamicReplacements -fembed-bitcode=all --target=armv7-apple-ios7.0 -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk -arch armv7 -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/Library/Frameworks -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/AppleInternal/Library/Frameworks -miphoneos-version-min=7.0 -O2 -g -D NDEBUG -MD -MT stdlib/toolchain/CompatibilityDynamicReplacements/CMakeFiles/swiftCompatibilityDynamicReplacements-iphoneos-armv7.dir/DynamicReplaceable.cpp.o -MF stdlib/toolchain/CompatibilityDynamicReplacements/CMakeFiles/swiftCompatibilityDynamicReplacements-iphoneos-armv7.dir/DynamicReplaceable.cpp.o.d -o stdlib/toolchain/CompatibilityDynamicReplacements/CMakeFiles/swiftCompatibilityDynamicReplacements-iphoneos-armv7.dir/DynamicReplaceable.cpp.o -c /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/CompatibilityDynamicReplacements/DynamicReplaceable.cpp -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=512.4 -march=armv7a -stdlib=libc++
+/BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/CompatibilityDynamicReplacements/DynamicReplaceable.cpp
 /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/swift-macosx-x86_64
 swift_getOrigOfReplaceable50
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/CompatibilityDynamicReplacements/DynamicReplaceable.cpp
+Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/CompatibilityDynamicReplacements/DynamicReplaceable.cpp
 /BuildRoot/Library/Caches/com.apple.xbs
 swift_getFunctionReplacement50
 __ZN5swift17getRootSuperclassEv
@@ -10334,17 +10565,17 @@ __ZZN5swift34swift50override_conformsToProtocolEPKNS_14TargetMetadataINS_9InProc
 __ZZZN5swift17getRootSuperclassEvENK3$_0clEvE7TheLazy
 __ZL27ProtocolConformancesSection
 _DummyTargetContextDescriptor
-/BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/bin/clang-11 --driver-mode=g++ -D CMARK_STATIC_DEFINE -D GTEST_HAS_RTTI=0 -D __STDC_CONSTANT_MACROS -D __STDC_FORMAT_MACROS -D __STDC_LIMIT_MACROS -I stdlib/toolchain/Compatibility50 -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50 -I include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/llvm/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/llvm/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/cmark/src -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/cmark-macosx-x86_64/src -Wno-unknown-warning-option -Werror=unguarded-availability-new -fno-stack-protector -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -std=c++11 -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-class-memaccess -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -fdiagnostics-color -Werror=switch -Wdocumentation -Wimplicit-fallthrough -Wunreachable-code -Woverloaded-virtual -D OBJC_OLD_DISPATCH_PROTOTYPES=0 -fno-sanitize=all -D LLVM_DISABLE_ABI_BREAKING_CHECKS_ENFORCING=1 -O2 -D NDEBUG -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fno-exceptions -fno-rtti -Wall -Wglobal-constructors -Wexit-time-destructors -fvisibility=hidden -Wall -D SWIFT_TARGET_LIBRARY_NAME=swiftCompatibility50 -fembed-bitcode=all --target=armv7-apple-ios7.0 -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk -arch armv7 -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/Library/Frameworks -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/AppleInternal/Library/Frameworks -miphoneos-version-min=7.0 -O2 -g -D NDEBUG -MD -MT stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/ProtocolConformance.cpp.o -MF stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/ProtocolConformance.cpp.o.d -o stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/ProtocolConformance.cpp.o -c /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50/ProtocolConformance.cpp -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=512.4 -march=armv7a -stdlib=libc++
-/BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50/ProtocolConformance.cpp
+/BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/bin/clang-11 --driver-mode=g++ -D CMARK_STATIC_DEFINE -D GTEST_HAS_RTTI=0 -D __STDC_CONSTANT_MACROS -D __STDC_FORMAT_MACROS -D __STDC_LIMIT_MACROS -I stdlib/toolchain/Compatibility50 -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50 -I include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/llvm/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/llvm/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/cmark/src -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/cmark-macosx-x86_64/src -Wno-unknown-warning-option -Werror=unguarded-availability-new -fno-stack-protector -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -std=c++11 -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-class-memaccess -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -fdiagnostics-color -Werror=switch -Wdocumentation -Wimplicit-fallthrough -Wunreachable-code -Woverloaded-virtual -D OBJC_OLD_DISPATCH_PROTOTYPES=0 -fno-sanitize=all -D LLVM_DISABLE_ABI_BREAKING_CHECKS_ENFORCING=1 -O2 -D NDEBUG -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fno-exceptions -fno-rtti -Wall -Wglobal-constructors -Wexit-time-destructors -fvisibility=hidden -Wall -D SWIFT_TARGET_LIBRARY_NAME=swiftCompatibility50 -fembed-bitcode=all --target=armv7-apple-ios7.0 -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk -arch armv7 -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/Library/Frameworks -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/AppleInternal/Library/Frameworks -miphoneos-version-min=7.0 -O2 -g -D NDEBUG -MD -MT stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/ProtocolConformance.cpp.o -MF stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/ProtocolConformance.cpp.o.d -o stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/ProtocolConformance.cpp.o -c /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/ProtocolConformance.cpp -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=512.4 -march=armv7a -stdlib=libc++
+/BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/ProtocolConformance.cpp
 addImageCallback
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50/ProtocolConformance.cpp
+Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/ProtocolConformance.cpp
 _getTypeDescriptorLocation
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/include/swift/ABI/Metadata.h
+Sources/swiftlang/swiftlang-1100.0.278/swift/include/swift/ABI/Metadata.h
 get
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/include/swift/Basic/RelativePointer.h
+Sources/swiftlang/swiftlang-1100.0.278/swift/include/swift/Basic/RelativePointer.h
 getTypeKind
 getTypeReferenceKind
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/include/swift/ABI/MetadataValues.h
+Sources/swiftlang/swiftlang-1100.0.278/swift/include/swift/ABI/MetadataValues.h
 applyRelativeOffset<const swift::RelativeDirectPointerImpl<swift::TargetProtocolConformanceDescriptor<swift::InProcess>, false, int>, int>
 __invoke
 operator()
@@ -10352,9 +10583,9 @@ registerAddImageCallback
 swift50override_conformsToProtocol
 _swift50override_class_getSuperclass
 getMetadataForClass
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50/../../public/runtime/Private.h
+Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/../../public/runtime/Private.h
 dyn_cast<swift::TargetForeignClassMetadata<swift::InProcess>, const swift::TargetMetadata<swift::InProcess> >
-Sources/swiftlang/swiftlang-1100.0.270.13/llvm/include/llvm/Support/Casting.h
+Sources/swiftlang/swiftlang-1100.0.278/llvm/include/llvm/Support/Casting.h
 isa<swift::TargetForeignClassMetadata<swift::InProcess>, const swift::TargetMetadata<swift::InProcess> *>
 doit
 classof
@@ -10365,7 +10596,13 @@ getEnumeratedMetadataKind
 CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/usr/include/dispatch/once.h
 /BuildRoot
 getRootSuperclass
-Sources/swiftlang/swiftlang-1100.0.270.13/swift/include/swift/Basic/Lazy.h
+Sources/swiftlang/swiftlang-1100.0.278/swift/include/swift/Basic/Lazy.h
+__ZL29installGetClassHook_untrustedv
+__ZL35getObjCClassByMangledName_untrustedPKcPP10objc_class
 _Overrides
-/BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/bin/clang-11 --driver-mode=g++ -D CMARK_STATIC_DEFINE -D GTEST_HAS_RTTI=0 -D __STDC_CONSTANT_MACROS -D __STDC_FORMAT_MACROS -D __STDC_LIMIT_MACROS -I stdlib/toolchain/Compatibility50 -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50 -I include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/llvm/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/llvm/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/cmark/src -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/cmark-macosx-x86_64/src -Wno-unknown-warning-option -Werror=unguarded-availability-new -fno-stack-protector -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -std=c++11 -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-class-memaccess -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -fdiagnostics-color -Werror=switch -Wdocumentation -Wimplicit-fallthrough -Wunreachable-code -Woverloaded-virtual -D OBJC_OLD_DISPATCH_PROTOTYPES=0 -fno-sanitize=all -D LLVM_DISABLE_ABI_BREAKING_CHECKS_ENFORCING=1 -O2 -D NDEBUG -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fno-exceptions -fno-rtti -Wall -Wglobal-constructors -Wexit-time-destructors -fvisibility=hidden -Wall -D SWIFT_TARGET_LIBRARY_NAME=swiftCompatibility50 -fembed-bitcode=all --target=armv7-apple-ios7.0 -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk -arch armv7 -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/Library/Frameworks -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/AppleInternal/Library/Frameworks -miphoneos-version-min=7.0 -O2 -g -D NDEBUG -MD -MT stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/Overrides.cpp.o -MF stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/Overrides.cpp.o.d -o stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/Overrides.cpp.o -c /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50/Overrides.cpp -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=512.4 -march=armv7a -stdlib=libc++
-/BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.270.13/swift/stdlib/toolchain/Compatibility50/Overrides.cpp
+__ZL15OldGetClassHook
+/BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/bin/clang-11 --driver-mode=g++ -D CMARK_STATIC_DEFINE -D GTEST_HAS_RTTI=0 -D __STDC_CONSTANT_MACROS -D __STDC_FORMAT_MACROS -D __STDC_LIMIT_MACROS -I stdlib/toolchain/Compatibility50 -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50 -I include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/llvm/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/llvm/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/llvm-macosx-x86_64/tools/clang/include -I /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/cmark/src -I /BuildRoot/Library/Caches/com.apple.xbs/Binaries/swiftlang/install/TempContent/Objects/BNI_assert_lightweight/cmark-macosx-x86_64/src -Wno-unknown-warning-option -Werror=unguarded-availability-new -fno-stack-protector -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -std=c++11 -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-class-memaccess -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -fdiagnostics-color -Werror=switch -Wdocumentation -Wimplicit-fallthrough -Wunreachable-code -Woverloaded-virtual -D OBJC_OLD_DISPATCH_PROTOTYPES=0 -fno-sanitize=all -D LLVM_DISABLE_ABI_BREAKING_CHECKS_ENFORCING=1 -O2 -D NDEBUG -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fno-exceptions -fno-rtti -Wall -Wglobal-constructors -Wexit-time-destructors -fvisibility=hidden -Wall -D SWIFT_TARGET_LIBRARY_NAME=swiftCompatibility50 -fembed-bitcode=all --target=armv7-apple-ios7.0 -isysroot /BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk -arch armv7 -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/Library/Frameworks -F/BuildRoot/CrossTrain_SwiftOverlays/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/../../../Developer/AppleInternal/Library/Frameworks -miphoneos-version-min=7.0 -O2 -g -D NDEBUG -MD -MT stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/Overrides.cpp.o -MF stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/Overrides.cpp.o.d -o stdlib/toolchain/Compatibility50/CMakeFiles/swiftCompatibility50-iphoneos-armv7.dir/Overrides.cpp.o -c /BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/Overrides.cpp -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=512.4 -march=armv7a -stdlib=libc++
+/BuildRoot/Library/Caches/com.apple.xbs/Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/Overrides.cpp
+getObjCClassByMangledName_untrusted
+Sources/swiftlang/swiftlang-1100.0.278/swift/stdlib/toolchain/Compatibility50/Overrides.cpp
+installGetClassHook_untrusted

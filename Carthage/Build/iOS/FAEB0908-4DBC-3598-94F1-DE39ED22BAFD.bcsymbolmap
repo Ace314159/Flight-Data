@@ -7,9 +7,11 @@ BCSymbolMap Version: 2.0
 -[APNumberButton touchesEnded:withEvent:]
 -[APNumberButton touchesCancelled:withEvent:]
 -[APNumberButton np_touchesCancelled:withEvent:]
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Apple clang version 11.0.0 (clang-1100.0.33.12)
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/APNumberPad/Classes/APNumberButton.m
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/Example/Pods
+APNumberPad/Classes/APNumberButton.m
+/Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/Example/Pods/Target Support Files/APNumberPad/APNumberPad-dummy.m
 +[APNumberPad numberPadWithDelegate:]
 +[APNumberPad numberPadWithDelegate:numberPadStyleClass:]
@@ -50,14 +52,15 @@ Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 -[APNumberPad setLastTouch:]
 -[APNumberPad .cxx_destruct]
 ___clang_at_available_requires_core_foundation_framework
-l_OBJC_PROTOCOL_$_NSObject
-l_OBJC_LABEL_PROTOCOL_$_NSObject
-l_OBJC_PROTOCOL_$_UITextInputTraits
-l_OBJC_LABEL_PROTOCOL_$_UITextInputTraits
-l_OBJC_PROTOCOL_$_UIKeyInput
-l_OBJC_LABEL_PROTOCOL_$_UIKeyInput
-l_OBJC_PROTOCOL_$_UITextInput
-l_OBJC_LABEL_PROTOCOL_$_UITextInput
+___clang_at_available_requires_core_foundation_framework.cold.1
+__OBJC_PROTOCOL_$_NSObject
+__OBJC_LABEL_PROTOCOL_$_NSObject
+__OBJC_PROTOCOL_$_UITextInputTraits
+__OBJC_LABEL_PROTOCOL_$_UITextInputTraits
+__OBJC_PROTOCOL_$_UIKeyInput
+__OBJC_LABEL_PROTOCOL_$_UIKeyInput
+__OBJC_PROTOCOL_$_UITextInput
+__OBJC_LABEL_PROTOCOL_$_UITextInput
 l_OBJC_PROTOCOL_REFERENCE_$_UITextInput
 _OBJC_IVAR_$_APNumberPad._delegateFlags
 _OBJC_IVAR_$_APNumberPad._clearButtonLongPressGesture
@@ -68,17 +71,18 @@ _OBJC_IVAR_$_APNumberPad._leftButton
 _OBJC_IVAR_$_APNumberPad._delegate
 _OBJC_IVAR_$_APNumberPad._textInput
 _OBJC_IVAR_$_APNumberPad._lastTouch
-l_OBJC_PROTOCOL_$_UIInputViewAudioFeedback
-l_OBJC_LABEL_PROTOCOL_$_UIInputViewAudioFeedback
+__OBJC_PROTOCOL_$_UIInputViewAudioFeedback
+__OBJC_LABEL_PROTOCOL_$_UIInputViewAudioFeedback
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/APNumberPad/Classes/APNumberPad.m
-/Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/APNumberPad/Classes/APNumberPad.h
+APNumberPad/Classes/APNumberPad.m
+APNumberPad/Classes/APNumberPad.h
 NSMakeRange
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
 CGRectMake
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
 CGSizeMake
 UI_USER_INTERFACE_IDIOM
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDevice.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDevice.h
 +[APNumberPadDefaultStyle numberPadFrame]
 +[APNumberPadDefaultStyle separator]
 +[APNumberPadDefaultStyle numberPadBackgroundColor]
@@ -92,9 +96,10 @@ UI_USER_INTERFACE_IDIOM
 +[APNumberPadDefaultStyle functionButtonHighlightedColor]
 +[APNumberPadDefaultStyle clearFunctionButtonImage]
 +[APNumberPadDefaultStyle clearFunctionButtonImageHighlighted]
-l_OBJC_PROTOCOL_$_APNumberPadStyle
-l_OBJC_LABEL_PROTOCOL_$_APNumberPadStyle
+__OBJC_PROTOCOL_$_APNumberPadStyle
+__OBJC_LABEL_PROTOCOL_$_APNumberPadStyle
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/APNumberPad/Classes/APNumberPadDefaultStyle.m
+APNumberPad/Classes/APNumberPadDefaultStyle.m
 APNP_RGBa
 +[NSBundle(APNumberPad) ap_numberPadResourceBundle]
 ___51+[NSBundle(APNumberPad) ap_numberPadResourceBundle]_block_invoke
@@ -102,13 +107,14 @@ ___copy_helper_block_e4_
 ___destroy_helper_block_e4_
 _ap_numberPadResourceBundle.resourceBundle
 _ap_numberPadResourceBundle.onceToken
-___block_descriptor_24_e4__e5_v4@?0l
+___block_descriptor_24_e4__e5_v4?0l
 /Users/ace/Desktop/Gamma/Flight-Data/Carthage/Checkouts/APNumberPad/APNumberPad/Classes/NSBundle+APNumberPad.m
 __destroy_helper_block_e4_
 __copy_helper_block_e4_
 __51+[NSBundle(APNumberPad) ap_numberPadResourceBundle]_block_invoke
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/usr/include/dispatch/once.h
-/Users/ace/Library/Caches/org.carthage.CarthageKit/DerivedData/10.2.1_10E1001/APNumberPad/1.2.3/Build/Intermediates.noindex/ArchiveIntermediates/APNumberPad/IntermediateBuildFilesPath/Pods.build/Release-iphoneos/APNumberPad.build/DerivedSources/APNumberPad_vers.c
+APNumberPad/Classes/NSBundle+APNumberPad.m
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/dispatch/once.h
+/Users/ace/Library/Caches/org.carthage.CarthageKit/DerivedData/11.2.1_11B500/APNumberPad/1.2.3/Build/Intermediates.noindex/ArchiveIntermediates/APNumberPad/IntermediateBuildFilesPath/Pods.build/Release-iphoneos/APNumberPad.build/DerivedSources/APNumberPad_vers.c
 __ZL15__ARCLite__loadv
 __ZL30add_image_hook_autoreleasepoolPK11mach_headerl
 __ZL34__arclite_objc_autoreleasePoolPushv
@@ -121,6 +127,7 @@ __ZL47__arclite_NSOrderedSet_objectAtIndexedSubscriptP12NSOrderedSetP13objc_sele
 __ZL58__arclite_NSMutableOrderedSet_setObject_atIndexedSubscriptP19NSMutableOrderedSetP13objc_selectorP11objc_objectj
 __ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
 __ZL18add_image_hook_ARCPK11mach_headerl
+__ZL27__arclite_objc_loadClassrefPP10objc_class
 __ZL36__arclite_object_setInstanceVariableP11objc_objectPKcPv
 __ZL24__arclite_object_setIvarP11objc_objectP9objc_ivarS0_
 __ZL21__arclite_object_copyP11objc_objectm
@@ -178,11 +185,11 @@ __ZL17_load_method_type
 __ZL23NSAutoreleasePool_class
 __ZZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
 __ZGVZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
-l_OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
-l_OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
+__OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
+__OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
 l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteIndexedSubscripting__
-l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
-l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+__OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+__OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
 l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
 __ZZL18add_image_hook_ARCPK11mach_headerlE7patches
 __ZGVZL18add_image_hook_ARCPK11mach_headerlE7patches
@@ -213,14 +220,15 @@ __ZL25original_protocol_getName
 __ZL36original_objc_copyClassNamesForImage
 __ZL12demangleLock
 __ZL9Demangled
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -fno-sanitize=vptr -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-objc-interface-ivars -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -D OBJC_OLD_DISPATCH_PROTOTYPES=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -Wno-range-loop-analysis -Wno-semicolon-before-method-body -fembed-bitcode=all -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources-normal/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=deprecated-declarations -Wno-error=documentation -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=deprecated-declarations -Wno-error=documentation -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-72/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -Wno-atomic-implicit-seq-cst -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-quoted-include-in-framework-header -mlinker-version=450.3 -march=armv7a
-/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-72/source/arclite.mm
-/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-72
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ --target=armv7-apple-ios4.3 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -fno-sanitize=vptr -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-objc-interface-ivars -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -D OBJC_OLD_DISPATCH_PROTOTYPES=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -Wno-range-loop-analysis -Wno-semicolon-before-method-body -fembed-bitcode=all -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources-normal/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=deprecated-declarations -Wno-error=documentation -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=deprecated-declarations -Wno-error=documentation -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-76/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -mlinker-version=520 -march=armv7a
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-76/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-76
 fixStringForCoreData
+source/arclite.mm
 cxxConstruct
 arclite_uninitialized_function
 scanMangledField
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.Internal.sdk/usr/include/_ctype.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.Internal.sdk/usr/include/_ctype.h
 __isctype
 demangledName
 copySwiftV1DemangledName
@@ -291,6 +299,7 @@ __arclite_object_setIvar
 isScannedOffset
 _ivar_getClass
 __arclite_object_setInstanceVariable
+__arclite_objc_loadClassref
 add_image_hook_ARC
 patch_t<void (id *, id)>
 patch_t<id (id)>
@@ -298,6 +307,7 @@ patch_t<void (id)>
 patch_t<id (id, unsigned long)>
 patch_t<void (id, objc_ivar *, id)>
 patch_t<objc_ivar *(id, const char *, void *)>
+patch_t<Class (Class *)>
 __arclite_NSMutableDictionary__setObject_forKeyedSubscript
 __arclite_NSMutableOrderedSet_setObject_atIndexedSubscript
 __arclite_NSOrderedSet_objectAtIndexedSubscript

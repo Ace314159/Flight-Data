@@ -1,2 +1,2 @@
-github "xmartlabs/Eureka" "master"
+github "xmartlabs/Eureka" ~> 5.0
 github "podkovyrin/APNumberPad"
