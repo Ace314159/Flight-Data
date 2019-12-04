@@ -440,29 +440,24 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         if alt.sign == .minus && alt == 0 {
             alt = 0
         }
-        let sign = alt.sign == .plus ? "+" : ""
         // let altColor: UIColor = alt > altTresh ? .red : .green
         
         var d = (50 * (dAlt / 50).rounded())
         if d.sign == .minus && d == 0 {
             d = 0
         }
-        var dColor: UIColor
-        if #available(iOS 13.0, *) {
-            dColor = d >= 0 ? .label : .blue
-        } else {
-            dColor = d >= 0 ? .black : .blue
-        }
+        let dSign = d >= 0 ? "+" : "-"
+        let dColor: UIColor = d >= 0 ? .blue : .red
         
         if timestamp != nil {
             agls.append(relAlt + altOffset)
             aglTimes.append(aglStart!.addingTimeInterval(timestamp!))
         }
         
-        altLabel.text = String(format: "\(sign)%.0f", alt)
+        altLabel.text = String(format: "%.0f", alt)
         // altLabel.textColor = altColor
         
-        dAltLabel.text = String(format: "%.0f", d)
+        dAltLabel.text = String(format: "\(dSign)%.0f", d)
         dAltLabel.textColor = dColor
         
         absAltLabel.text = String(format: "Current Est MSL @ %.0f", groundAlt + alt)
@@ -500,7 +495,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             setCurrentAltBtn.isEnabled = false
             
             if speedLabel.text != "no GPS" {
-                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.2)
             }
             speedLabel.text = "no GPS"
             speedLabel.textColor = .red
@@ -548,7 +543,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func adjustFonts() {
         titleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.15)
         
-        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
+        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.2)
         speedUnitsPos.constant = speedLabel.font.descender + 8
         speedUnitsLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         speedTreshLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
