@@ -32,7 +32,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var speedPlaceholder: UIView!
     @IBOutlet weak var altPlaceholder: UIView!
     // MARK: Positioning Constraints
-    @IBOutlet weak var speedUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var altUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var dAltUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var altPos: NSLayoutConstraint!
@@ -293,7 +292,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "dd HH:mm:ss"
         timeLabel.text = dateFormatter.string(from: Date())
         
         NSLog("%f %f %f", speed, relAlt + altOffset, dAlt)
@@ -544,7 +543,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         titleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.15)
         
         speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.2)
-        speedUnitsPos.constant = speedLabel.font.descender + 8
         speedUnitsLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         speedTreshLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         
