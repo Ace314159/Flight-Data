@@ -76,6 +76,16 @@ class Alerts: FormViewController {
                 row.tag = "alertSpeed"
                 row.value = "0 knots GS"
                 }
+            +++ Section()
+            <<< ButtonRow() { row in
+                row.title = "Read More"
+                row.onCellSelection { cell, row in
+                    let alert = UIAlertController(title: "Read More", message: "This app was developed by Akash Munagala and designed by Ivo Welch.\n\nThis app has no association with the AOPA.\n\nA pilot can use the iPad video record button (swipe down from top right) to record flights.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                }
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         if stallSpeed != nil {
