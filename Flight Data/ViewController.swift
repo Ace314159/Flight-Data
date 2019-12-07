@@ -292,7 +292,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd HH:mm:ss"
+        dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
         timeLabel.text = dateFormatter.string(from: Date())
         
         NSLog("%f %f %f", speed, relAlt + altOffset, dAlt)
