@@ -445,7 +445,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         if d.sign == .minus && d == 0 {
             d = 0
         }
-        let dSign = d >= 0 ? "+" : "-"
+        let dSign = d >= 0 ? "+" : ""
         let dColor: UIColor = d >= 0 ? .blue : .red
         
         if timestamp != nil {
