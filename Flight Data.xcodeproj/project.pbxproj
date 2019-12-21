@@ -10,6 +10,7 @@
 		503776FA2299390D00E3C089 /* APNumberPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; };
 		503776FB2299390E00E3C089 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; };
 		505EDE29229794D400BEE197 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EDE28229794D400BEE197 /* Alerts.swift */; };
+		50B42C0723AE118E00FA7013 /* AirAmericana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50B42C0623AE118E00FA7013 /* AirAmericana.ttf */; };
 		50D0CBBF21CF4F9300938462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0CBBE21CF4F9300938462 /* AppDelegate.swift */; };
 		50D0CBC121CF4F9300938462 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0CBC021CF4F9300938462 /* ViewController.swift */; };
 		50D0CBC421CF4F9300938462 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50D0CBC221CF4F9300938462 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		503776F52298DD5E00E3C089 /* APNumberPad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNumberPad.framework; path = Carthage/Build/iOS/APNumberPad.framework; sourceTree = "<group>"; };
 		505EDE28229794D400BEE197 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		505EDE2A229797EF00BEE197 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		50B42C0623AE118E00FA7013 /* AirAmericana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirAmericana.ttf; sourceTree = "<group>"; };
 		50D0CBBB21CF4F9300938462 /* Flight Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flight Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D0CBBE21CF4F9300938462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50D0CBC021CF4F9300938462 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		50D0CBBD21CF4F9300938462 /* Flight Data */ = {
 			isa = PBXGroup;
 			children = (
+				50B42C0623AE118E00FA7013 /* AirAmericana.ttf */,
 				50D0CBBE21CF4F9300938462 /* AppDelegate.swift */,
 				50D0CBC021CF4F9300938462 /* ViewController.swift */,
 				50D0CBC521CF4F9400938462 /* Assets.xcassets */,
@@ -249,6 +252,7 @@
 			files = (
 				50D0CBC921CF4F9400938462 /* LaunchScreen.storyboard in Resources */,
 				50D0CBC621CF4F9400938462 /* Assets.xcassets in Resources */,
+				50B42C0723AE118E00FA7013 /* AirAmericana.ttf in Resources */,
 				50D0CBC421CF4F9300938462 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,7 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = RG28V4NPA4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -488,6 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = ace.FlightData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -502,7 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = RG28V4NPA4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,6 +519,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = ace.FlightData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

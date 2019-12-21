@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AirAmericana.ttf">
+            <string>AirAmericana</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -122,20 +127,27 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Set AGL to 0"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn to Fly --- Heads-Up Display v0.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-Kb-K4I">
-                                                <rect key="frame" x="8" y="132" width="297" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn to Fly — Heads-Up Display v0.9" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-Kb-K4I">
+                                                <rect key="frame" x="8" y="127.5" width="240" height="25"/>
+                                                <fontDescription key="fontDescription" name="AirAmericana" family="Air Americana" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the Ground" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da9-OC-eSS">
-                                                <rect key="frame" x="277" y="103.5" width="113" height="20.5"/>
+                                                <rect key="frame" x="277" y="99" width="113" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00/00 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phn-fg-Asc">
-                                                <rect key="frame" x="8" y="103.5" width="123" height="20.5"/>
+                                                <rect key="frame" x="8" y="99" width="123" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-zf-nuU">
+                                                <rect key="frame" x="139" y="99" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -143,6 +155,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="top" secondItem="fnQ-Ex-5dQ" secondAttribute="bottom" id="01F-YS-Oiz"/>
+                                            <constraint firstItem="x9E-zf-nuU" firstAttribute="leading" secondItem="Phn-fg-Asc" secondAttribute="trailing" constant="8" id="1gU-R4-wWa"/>
                                             <constraint firstItem="BhU-Kb-K4I" firstAttribute="top" secondItem="Da9-OC-eSS" secondAttribute="bottom" constant="8" id="3HN-mQ-uL1"/>
                                             <constraint firstItem="Ode-Uy-Ltv" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="9Vf-HY-C3w"/>
                                             <constraint firstItem="Phn-fg-Asc" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="9yv-z4-Q2r"/>
@@ -163,8 +176,10 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BhU-Kb-K4I" secondAttribute="trailing" id="l6e-oF-kLf"/>
                                             <constraint firstItem="fnQ-Ex-5dQ" firstAttribute="leading" secondItem="D8K-fI-BSd" secondAttribute="leading" constant="8" id="mCL-39-BVe"/>
                                             <constraint firstAttribute="bottom" secondItem="BhU-Kb-K4I" secondAttribute="bottom" constant="8" id="rNs-O5-Qr9"/>
+                                            <constraint firstItem="Da9-OC-eSS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x9E-zf-nuU" secondAttribute="trailing" id="rQ0-zD-Hx6"/>
                                             <constraint firstItem="Mzk-LH-PWg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnQ-Ex-5dQ" secondAttribute="trailing" id="tfv-lO-eXm"/>
                                             <constraint firstItem="BhU-Kb-K4I" firstAttribute="top" secondItem="Phn-fg-Asc" secondAttribute="bottom" constant="8" id="u4h-bj-lM3"/>
+                                            <constraint firstItem="BhU-Kb-K4I" firstAttribute="top" secondItem="x9E-zf-nuU" secondAttribute="bottom" constant="8" id="uO4-Pi-IXf"/>
                                             <constraint firstAttribute="trailing" secondItem="QYL-ao-NB1" secondAttribute="trailing" constant="8" id="vSa-hN-l6T"/>
                                             <constraint firstItem="QYL-ao-NB1" firstAttribute="top" secondItem="Mzk-LH-PWg" secondAttribute="bottom" id="wVv-HJ-bRo"/>
                                             <constraint firstAttribute="bottom" secondItem="VkS-he-80D" secondAttribute="bottom" constant="8" id="yUW-kt-nFZ"/>
@@ -226,6 +241,7 @@
                         <outlet property="dAltPos" destination="gXQ-sN-Ahq" id="eg2-Qe-Qbz"/>
                         <outlet property="dAltUnitsLabel" destination="Ode-Uy-Ltv" id="b6R-HH-YQg"/>
                         <outlet property="dAltUnitsPos" destination="wVv-HJ-bRo" id="Ez8-Sz-NrV"/>
+                        <outlet property="headingLabel" destination="x9E-zf-nuU" id="CZM-xK-Dn4"/>
                         <outlet property="muteBtn" destination="SvF-Vi-IwX" id="Jds-rD-1au"/>
                         <outlet property="muteBtnSize" destination="zIP-DK-txb" id="cTu-mm-Jod"/>
                         <outlet property="onGroundLabel" destination="Da9-OC-eSS" id="reW-BV-eTX"/>

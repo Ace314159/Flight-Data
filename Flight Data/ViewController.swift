@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var onGroundLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var headingLabel: UILabel!
     // MARK: Placeholder Views
     @IBOutlet weak var speedPlaceholder: UIView!
     @IBOutlet weak var altPlaceholder: UIView!
@@ -528,6 +529,13 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         }
         checkOnGround()
         updateAudio()
+        
+        let course = manager.location?.course ?? -1.0
+        if course >= 0 {
+            headingLabel.text = String(format: "%.0f°", course)
+        } else {
+            headingLabel.text = "Heading Unavailable"
+        }
         
         guard let altRaw = manager.location?.altitude else { return }
         absAlt = altRaw * 3.28084
