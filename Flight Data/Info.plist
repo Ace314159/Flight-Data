@@ -26,6 +26,10 @@
 	<string>This is required to allow you to see what the camera sees</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This is required to get altitude and speed</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AirAmericana</string>
+	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -52,9 +56,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AirAmericana</string>
-	</array>
 </dict>
 </plist>
