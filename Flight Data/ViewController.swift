@@ -35,8 +35,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     // MARK: Positioning Constraints
     @IBOutlet weak var altUnitsPos: NSLayoutConstraint!
     @IBOutlet weak var dAltUnitsPos: NSLayoutConstraint!
-    @IBOutlet weak var altPos: NSLayoutConstraint!
-    @IBOutlet weak var dAltPos: NSLayoutConstraint!
+    @IBOutlet weak var altTitlePos: NSLayoutConstraint!
     // MARK: Mute Button
     @IBOutlet weak var muteBtn: UIImageView!
     @IBOutlet weak var muteBtnSize: NSLayoutConstraint!
@@ -104,6 +103,21 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         let alerts = Alerts()
         alerts.preventBack = true
         navigationController.pushViewController(alerts, animated: true)
+        
+        /*let image = "kryn-tofinal"
+        speedLabel.text = "75"
+        speedLabel.textColor = .green
+        dAltLabel.text = "-700"
+        dAltLabel.textColor = .red
+        altLabel.text = "165"
+        timeLabel.text = "12/29/19 15:48:59"
+        absAltLabel.text = "Current Est MSL @ 2567"
+        onGroundLabel.isHidden = true
+        setCurrentAltBtn.setTitle("Set AGL to 1000", for: .normal)
+        setCurrentAltBtn.isEnabled = true
+        
+        headingLabel.isHidden = true
+        cameraView.layer.contents = UIImage(named: "processed/\(image).jpeg")!.cgImage*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -556,15 +570,14 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         altTitleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         altLabel.fitTextToHeight(altPlaceholder.frame.height * 0.7)
-        altPos.constant = -(altLabel.font.ascender - altLabel.font.capHeight) + 8
         altUnitsPos.constant = altLabel.font.descender + 8
         altUnitsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
         absAltLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
+        altTitlePos.constant = altLabel.font.descender + 8
         
         dAltLabel.fitTextToHeight(altPlaceholder.frame.height * 0.7)
         dAltUnitsPos.constant = dAltLabel.font.descender + 8
         dAltUnitsLabel.fitTextToHeight(altPlaceholder.frame.height * 0.1)
-        dAltPos.constant = -(dAltLabel.font.ascender - dAltLabel.font.capHeight) + 8
         
         muteBtnSize.constant = self.view.frame.height * 0.1
         
