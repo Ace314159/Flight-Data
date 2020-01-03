@@ -133,6 +133,16 @@ class Alerts: FormViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        var firstResponder: iPadIntRow
+        if stallSpeed == nil {
+            firstResponder = form.rowBy(tag: "stallSpeed")!
+        } else if safetyMargin == nil {
+            firstResponder = form.rowBy(tag: "safetyMargin")!
+        } else {
+            firstResponder = form.rowBy(tag: "landingHeadwind")!
+        }
+        firstResponder.cell.textField.becomeFirstResponder()
     }
     
     @objc func saveAlerts() {
