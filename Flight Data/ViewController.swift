@@ -80,6 +80,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     let altimeter = CMAltimeter()
     let motionManager = CMMotionManager.init()
     
+    var needsToSetupCamera = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,20 +106,21 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         alerts.preventBack = true
         navigationController.pushViewController(alerts, animated: true)
         
-        /*let image = "kryn-tofinal"
-        speedLabel.text = "75"
+        /*let image = "kwhp-20200105-41"
+        speedLabel.text = "60"
         speedLabel.textColor = .green
-        dAltLabel.text = "-700"
+        alertSpeed = 52
+        dAltLabel.text = "-350"
         dAltLabel.textColor = .red
-        altLabel.text = "165"
-        timeLabel.text = "12/29/19 15:48:59"
-        absAltLabel.text = "Current Est MSL @ 2567"
+        altLabel.text = "107"
+        timeLabel.text = "01/04/20 16:01:01"
+        headingLabel.text = "140°"
+        absAltLabel.text = "Current Est MSL @ 1166"
         onGroundLabel.isHidden = true
         setCurrentAltBtn.setTitle("Set AGL to 1000", for: .normal)
         setCurrentAltBtn.isEnabled = true
         
-        headingLabel.isHidden = true
-        cameraView.layer.contents = UIImage(named: "processed/\(image).jpeg")!.cgImage*/
+        cameraView.layer.contents = UIImage(named: "processed/\(image).png")!.cgImage*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,53 +137,27 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         adjustFonts()
         
         if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
             switch CLLocationManager.authorizationStatus() {
             case .notDetermined:
                 locationManager.requestWhenInUseAuthorization()
             case .restricted, .denied:
                 alert("Location Services Required", "Please enable location services for this app in Settings.")
             case .authorizedAlways, .authorizedWhenInUse:
-                print("Access Allowed")
+                locationManager(locationManager, didChangeAuthorization: .authorizedWhenInUse)
             @unknown default:
                 fatalError()
             }
-            
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.distanceFilter = kCLDistanceFilterNone
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
         } else {
             alert("Location Serivces Not Enabled", "Plse enable location services.")
             return
         }
         
-        if !CMAltimeter.isRelativeAltitudeAvailable() {
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
+        } else {
             alert("Relative Altitude Not Available", "This device does not have an altimeter.")
-            return
         }
-        
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized:
-            self.setupCamera()
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    self.setupCamera()
-                } else {
-                    self.alert("Camera Required", "Please enable the camera for this app in Settings.")
-                }
-            }
-        case .denied:
-            alert("Camera Required", "Please enable the camera for this app in Settings.")
-            return
-        case .restricted:
-            alert("Camera Required", "A camera is required for this app to work")
-            return
-        @unknown default:
-            fatalError()
-        }
-        
-        altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: CMAltitudeHandler)
         
         mute()
         audio.start()
@@ -218,6 +195,48 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             unmute()
         } else {
             mute()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = kCLDistanceFilterNone
+            locationManager.startUpdatingLocation()
+            if needsToSetupCamera {
+                self.setupCameraPermissions()
+            }
+        case .notDetermined, .restricted, .denied:
+            alert("Location Services Required", "Please enable location services for this app in Settings.")
+        @unknown default:
+            fatalError()
+        }
+    }
+    
+    func setupCameraPermissions() {
+        needsToSetupCamera = false
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            self.setupCamera()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    if granted {
+                        self.setupCamera()
+                    } else {
+                        self.alert("Camera Required", "Please enable the camera for this app in Settings.")
+                    }
+                }
+            }
+        case .denied:
+            alert("Camera Required", "Please enable the camera for this app in Settings.")
+            return
+        case .restricted:
+            alert("Camera Required", "A camera is required for this app to work")
+            return
+        @unknown default:
+            fatalError()
         }
     }
     
@@ -509,7 +528,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             setCurrentAltBtn.isEnabled = false
             
             if speedLabel.text != "no GPS" {
-                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.2)
+                speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.7)
             }
             speedLabel.text = "no GPS"
             speedLabel.textColor = .red
@@ -564,7 +583,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     func adjustFonts() {
         titleLabel.fitTextToHeight(altPlaceholder.frame.height * 0.15)
         
-        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.2)
+        speedLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.5)
         speedUnitsLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         speedTreshLabel.fitTextToHeight(speedPlaceholder.frame.height * 0.1)
         
