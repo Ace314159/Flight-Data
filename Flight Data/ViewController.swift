@@ -231,10 +231,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             }
         case .denied:
             alert("Camera Required", "Please enable the camera for this app in Settings.")
-            return
         case .restricted:
             alert("Camera Required", "A camera is required for this app to work")
-            return
         @unknown default:
             fatalError()
         }
