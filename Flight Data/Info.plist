@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>This is required to allow you to see what the camera sees</string>
+	<string>This makes it easier to see how you line up and correct to the runway during takeoff and landing and recognize cross-wind and slipping against wind conditions. This also acts as a substitute for a GoPro and adds more information to any screenshots or videos you take.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This is required to get altitude and speed</string>
+	<string>This allows us to get the altitude, speed, and descent information to display.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AirAmericana</string>
