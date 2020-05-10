@@ -46,6 +46,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     // MARK: Camera
     @IBOutlet weak var cameraView: PreviewView!
     
+    var trialTimer: Timer?
+    
     var bgColor: UIColor?
     var inactivityTimer: Timer?
     
@@ -136,6 +138,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         adjustFonts()
         
+        self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
+            let alert = UIAlertController(title: "Demo Period Expired", message: "Your 5 minute demo period has expired. Please restart the app or consider buying the full app to remove this 5 minute restriction.", preferredStyle: UIAlertController.Style.alert)
+            self.present(alert, animated: true, completion: nil)
+        })
+
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             switch CLLocationManager.authorizationStatus() {
