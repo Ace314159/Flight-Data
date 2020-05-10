@@ -94,6 +94,19 @@ class Alerts: FormViewController {
         if safetyMargin != nil {
             _ = form.rowBy(tag: "safetyMargin")?.validate()
         }
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let textView = UITextView(frame: CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: 200))
+            textView.text = "We have spent many hours developing this app, but we find it difficult to reach pilots. Please tell your pilot friends about our app. Thank you!"
+            textView.isEditable = false
+            textView.font = UIFont(name: textView.font!.fontName, size: 50)
+            textView.textAlignment = NSTextAlignment.center
+            textView.isScrollEnabled = false
+            let fixedWidth = textView.frame.size.width
+            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+            textView.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+            view.addSubview(textView)
+        }
     }
     
     func manageValidationErrors(cell: iPadIntCell, row: iPadIntRow) {
@@ -134,7 +147,7 @@ class Alerts: FormViewController {
         
         navigationController?.setNavigationBarHidden(false, animated: false)
         
-        var firstResponder: iPadIntRow
+        /*var firstResponder: iPadIntRow
         if stallSpeed == nil {
             firstResponder = form.rowBy(tag: "stallSpeed")!
         } else if safetyMargin == nil {
@@ -142,7 +155,17 @@ class Alerts: FormViewController {
         } else {
             firstResponder = form.rowBy(tag: "landingHeadwind")!
         }
-        firstResponder.cell.textField.becomeFirstResponder()
+        firstResponder.cell.textField.becomeFirstResponder()*/
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            let alert = UIAlertController(title: "Please Share This App", message: "We have spent many hours developing this app, but we find it difficult to reach pilots. Please tell your pilot friends about our app. Thank you!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+        }
     }
     
     @objc func saveAlerts() {
