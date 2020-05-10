@@ -138,10 +138,24 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         adjustFonts()
         
-        self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
-            let alert = UIAlertController(title: "Demo Period Expired", message: "Your 5 minute demo period has expired. Please restart the app or consider buying the full app to remove this 5 minute restriction.", preferredStyle: UIAlertController.Style.alert)
-            self.present(alert, animated: true, completion: nil)
-        })
+        let purchasedFullVersion = UserDefaults.standard.bool(forKey: "purchased")
+        if purchasedFullVersion {
+            purchaseFullVersionBtn.isHidden = true
+        } else {
+            let alert = UIAlertController(title: "You have not purchased the full version!", message: "In order to remoe the 5 minute demo period. You need to purchase the full version", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+            
+            self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
+                alert.dismiss(animated: true, completion: { () -> Void in
+                    let alert = UIAlertController(title: "Demo Period Expired", message: "Your 5 minute demo period has expired. Please restart the app or consider buying the full app to remove this 5 minute restriction.", preferredStyle: UIAlertController.Style.alert)
+                    self.present(alert, animated: true, completion: nil)
+                })
+                self.locationManager.stopUpdatingLocation()
+                self.altimeter.stopRelativeAltitudeUpdates()
+            })
+        }
+        
 
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
