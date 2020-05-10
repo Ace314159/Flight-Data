@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5010DD06246794FF00411BC8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5010DD05246794FF00411BC8 /* StoreKit.framework */; };
 		503776FA2299390D00E3C089 /* APNumberPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503776F52298DD5E00E3C089 /* APNumberPad.framework */; };
 		503776FB2299390E00E3C089 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505EDE2A229797EF00BEE197 /* Eureka.framework */; };
 		505EDE29229794D400BEE197 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EDE28229794D400BEE197 /* Alerts.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5010DD05246794FF00411BC8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		503776F52298DD5E00E3C089 /* APNumberPad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNumberPad.framework; path = Carthage/Build/iOS/APNumberPad.framework; sourceTree = "<group>"; };
 		505EDE28229794D400BEE197 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		505EDE2A229797EF00BEE197 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5010DD06246794FF00411BC8 /* StoreKit.framework in Frameworks */,
 				503776FA2299390D00E3C089 /* APNumberPad.framework in Frameworks */,
 				503776FB2299390E00E3C089 /* Eureka.framework in Frameworks */,
 			);
@@ -86,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5010DD04246794FF00411BC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5010DD05246794FF00411BC8 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50D0CBB221CF4F9300938462 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +106,7 @@
 				50D0CBBC21CF4F9300938462 /* Products */,
 				503776F52298DD5E00E3C089 /* APNumberPad.framework */,
 				505EDE2A229797EF00BEE197 /* Eureka.framework */,
+				5010DD04246794FF00411BC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -480,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = RG28V4NPA4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -507,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = RG28V4NPA4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

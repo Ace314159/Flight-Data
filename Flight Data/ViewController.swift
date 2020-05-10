@@ -11,9 +11,11 @@ import UIKit
 import CoreLocation
 import CoreMotion
 import AVFoundation
+import StoreKit
 
 
-class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
     
     // MARK: Labels
     @IBOutlet weak var speedLabel: UILabel!
@@ -45,6 +47,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     @IBOutlet weak var setAlertsBtn: UIButton!
     // MARK: Camera
     @IBOutlet weak var cameraView: PreviewView!
+    // MARK: Purchases
+    @IBOutlet weak var purchaseFullVersionBtn: UIButton!
     
     var trialTimer: Timer?
     
@@ -84,10 +88,17 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     var needsToSetupCamera = true
     
+    var fullVersionProduct: SKProduct?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        let request = SKProductsRequest(productIdentifiers: ["fullVersion"])
+        request.delegate = self
+        request.start()
+        SKPaymentQueue.default().add(self)
         
         let navigationController = UINavigationController(rootViewController: self)
         (UIApplication.shared.delegate as! AppDelegate).window!.rootViewController = navigationController
@@ -101,6 +112,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         muteBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.muteToggle(_:))))
         
         setAlertsBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setAlerts(_:))))
+        
+        purchaseFullVersionBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.purchaseFullVersion(_:))))
         
         setCurrentAltBtn.addTarget(self, action: #selector(self.setCurrentAlt(_:)), for: .touchUpInside)
         
@@ -139,9 +152,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         adjustFonts()
         
         let purchasedFullVersion = UserDefaults.standard.bool(forKey: "purchased")
+        print(purchasedFullVersion)
         if purchasedFullVersion {
             purchaseFullVersionBtn.isHidden = true
         } else {
+            purchaseFullVersionBtn.isHidden = false
             let alert = UIAlertController(title: "You have not purchased the full version!", message: "In order to remoe the 5 minute demo period. You need to purchase the full version", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
@@ -182,6 +197,41 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
         
         mute()
         audio.start()
+    }
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print(response.invalidProductIdentifiers)
+        response.products.forEach { product in
+            fullVersionProduct = product
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased:
+                guard let productIdentifier = transaction.original?.payment.productIdentifier else { continue }
+                if productIdentifier != "fullVersion" { continue }
+                trialTimer?.invalidate()
+                purchaseFullVersionBtn.isHidden = true
+                UserDefaults.standard.set(true, forKey: "purchased")
+                break
+            case .restored:
+                self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
+                    self.locationManager.stopUpdatingLocation()
+                    self.altimeter.stopRelativeAltitudeUpdates()
+                })
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc func purchaseFullVersion(_ gesture: UITapGestureRecognizer) {
+        if gesture.state != .ended { return }
+        guard fullVersionProduct != nil else { return }
+        
+        SKPaymentQueue.default().add(SKPayment(product: fullVersionProduct!))
     }
     
     @objc func setAlerts(_ sender: UIButton?) {
