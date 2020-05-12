@@ -221,6 +221,7 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                     self.locationManager.stopUpdatingLocation()
                     self.altimeter.stopRelativeAltitudeUpdates()
                 })
+                UserDefaults.standard.set(false, forKey: "purchased")
             default:
                 break
             }
