@@ -157,17 +157,15 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             purchaseFullVersionBtn.isHidden = true
         } else {
             purchaseFullVersionBtn.isHidden = false
-            let alert = UIAlertController(title: "You have not purchased the full version!", message: "In order to remoe the 5 minute demo period. You need to purchase the full version", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "You have not purchased the full version!", message: "In order to remove the 5 minute demo period. You need to purchase the full version", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
             
-            self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
+            setTrialTimer(onTimer: { () -> Void in
                 alert.dismiss(animated: true, completion: { () -> Void in
-                    let alert = UIAlertController(title: "Demo Period Expired", message: "Your 5 minute demo period has expired. Please restart the app or consider buying the full app to remove this 5 minute restriction.", preferredStyle: UIAlertController.Style.alert)
+                    let alert = UIAlertController(title: "Demo Period Expired", message: "Your 5 minute demo period has expired. Please restart the app and wait for 2 hours or consider buying the full version to remove this restriction.", preferredStyle: UIAlertController.Style.alert)
                     self.present(alert, animated: true, completion: nil)
                 })
-                self.locationManager.stopUpdatingLocation()
-                self.altimeter.stopRelativeAltitudeUpdates()
             })
         }
         
@@ -217,15 +215,21 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
                 UserDefaults.standard.set(true, forKey: "purchased")
                 break
             case .restored:
-                self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
-                    self.locationManager.stopUpdatingLocation()
-                    self.altimeter.stopRelativeAltitudeUpdates()
-                })
+                setTrialTimer()
                 UserDefaults.standard.set(false, forKey: "purchased")
             default:
                 break
             }
         }
+    }
+    
+    func setTrialTimer(onTimer: @escaping () -> Void = { () in }) {
+        self.trialTimer = Timer.scheduledTimer(withTimeInterval: 5 * 60, repeats: false, block: { (Timer) in
+            onTimer()
+            UserDefaults.standard.set(Date() + 2 * 60 * 60, forKey: "enableTime")
+            self.locationManager.stopUpdatingLocation()
+            self.altimeter.stopRelativeAltitudeUpdates()
+        })
     }
     
     @objc func purchaseFullVersion(_ gesture: UITapGestureRecognizer) {

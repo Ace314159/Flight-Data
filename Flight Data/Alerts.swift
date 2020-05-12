@@ -161,6 +161,13 @@ class Alerts: FormViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        let enableTime: Date? = UserDefaults.standard.object(forKey: "enableTime") as? Date
+        if enableTime != nil && enableTime!.timeIntervalSinceNow > 0 {
+            let alert = UIAlertController(title: "Demo Period Expired", message: "Please wait for another \(Int(ceil(enableTime!.timeIntervalSinceNow / 60))) minutes", preferredStyle: UIAlertController.Style.alert)
+            self.present(alert, animated: true)
+            return
+        }
+        
         if UIDevice.current.userInterfaceIdiom == .phone {
             let alert = UIAlertController(title: "Please Share This App", message: "We have spent many hours developing this app, but we find it difficult to reach pilots. Please tell your pilot friends about our app. Thank you!", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
