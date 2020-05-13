@@ -48,19 +48,19 @@
                                                 <rect key="frame" x="258" y="0.0" width="351" height="214.5"/>
                                                 <subviews>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no GPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yol-E5-NKM">
-                                                        <rect key="frame" x="83" y="8" width="185.5" height="66.5"/>
+                                                        <rect key="frame" x="83" y="74" width="185.5" height="66.5"/>
                                                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="60"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warn @ -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldr-bx-wMZ">
-                                                        <rect key="frame" x="139.5" y="90" width="72" height="20.5"/>
+                                                        <rect key="frame" x="139.5" y="156" width="72" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="knots GS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6x-l9-OFC" userLabel="Units">
-                                                        <rect key="frame" x="141" y="69.5" width="69.5" height="20.5"/>
+                                                        <rect key="frame" x="141" y="135.5" width="69.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -70,9 +70,9 @@
                                                     <constraint firstItem="ldr-bx-wMZ" firstAttribute="top" secondItem="n6x-l9-OFC" secondAttribute="bottom" id="6os-S4-mDm"/>
                                                     <constraint firstItem="ldr-bx-wMZ" firstAttribute="centerX" secondItem="Ykr-gm-cFv" secondAttribute="centerX" id="CVT-om-aUT"/>
                                                     <constraint firstItem="n6x-l9-OFC" firstAttribute="top" secondItem="yol-E5-NKM" secondAttribute="baseline" constant="8" id="LMn-ta-BiN"/>
-                                                    <constraint firstItem="yol-E5-NKM" firstAttribute="top" secondItem="Ykr-gm-cFv" secondAttribute="top" constant="8" id="LZv-4d-Pgo"/>
                                                     <constraint firstItem="n6x-l9-OFC" firstAttribute="centerX" secondItem="Ykr-gm-cFv" secondAttribute="centerX" id="MJF-Db-12O"/>
                                                     <constraint firstItem="yol-E5-NKM" firstAttribute="centerX" secondItem="Ykr-gm-cFv" secondAttribute="centerX" id="ixR-br-zry"/>
+                                                    <constraint firstItem="yol-E5-NKM" firstAttribute="centerY" secondItem="Ykr-gm-cFv" secondAttribute="centerY" id="pZ3-m3-y0f"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfm-Vc-gKK">
