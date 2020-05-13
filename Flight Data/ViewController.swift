@@ -198,7 +198,6 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     }
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.invalidProductIdentifiers)
         response.products.forEach { product in
             fullVersionProduct = product
         }
