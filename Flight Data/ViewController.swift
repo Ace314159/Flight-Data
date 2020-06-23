@@ -205,9 +205,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
+            print(transaction.transactionState.rawValue)
             switch transaction.transactionState {
             case .purchased:
                 guard let productIdentifier = transaction.original?.payment.productIdentifier else { continue }
+                print(productIdentifier)
                 if productIdentifier != "fullVersion" { continue }
                 trialTimer?.invalidate()
                 purchaseFullVersionBtn.isHidden = true
@@ -216,6 +218,8 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
             case .restored:
                 setTrialTimer()
                 UserDefaults.standard.set(false, forKey: "purchased")
+            case .failed:
+                alert("In-App Purchase Error", transaction.error!.localizedDescription)
             default:
                 break
             }
@@ -233,7 +237,11 @@ class ViewController: UIViewController, UITextViewDelegate, CLLocationManagerDel
     
     @objc func purchaseFullVersion(_ gesture: UITapGestureRecognizer) {
         if gesture.state != .ended { return }
-        guard fullVersionProduct != nil else { return }
+        guard fullVersionProduct != nil else {
+            alert("Unable to Process Purchase", "Please try again later")
+            return
+        }
+        print("Purchasing")
         
         SKPaymentQueue.default().add(SKPayment(product: fullVersionProduct!))
     }
